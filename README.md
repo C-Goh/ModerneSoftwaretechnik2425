@@ -9,11 +9,11 @@ Was ist Git und warum sollte es verwendet werden?
  # Git mit IntelliJ/PyCharm benutzen: Local Repository und Remote Repository
 -----------------------------------------------------------------------------------------------------------------------------------
   
-Es gibt zwei Arten von Repositories:
-    - Lokales Repository: Speichert den Code und alle Versionen auf dem lokalen Rechner.
-    - Remote Repository: Speichert den Code auf einem entfernten Server (z.B. GitHub, Gitlab), was eine Zusammenarbeit ermöglicht.
+    Es gibt zwei Arten von Repositories:
+        - Lokales Repository: Speichert den Code und alle Versionen auf dem lokalen Rechner.
+        - Remote Repository: Speichert den Code auf einem entfernten Server (z.B. GitHub, Gitlab), was eine Zusammenarbeit ermöglicht.
 
-IntelliJ und PyCharm bieten integrierte Unterstützung für Git. Es kann die Versionskontrolle direkt in der IDE genutzt werden. Ein lokales Repository wird verwendet, um Änderungen am Code auf dem eignen Rechner nachzuverfolgen. Das Remote Repository dient dazu, den Code online zu speichern und ihn mit anderen Entwicklern zu teilen.
+    IntelliJ und PyCharm bieten integrierte Unterstützung für Git. Es kann die Versionskontrolle direkt in der IDE genutzt werden. Ein lokales Repository wird verwendet, um Änderungen am Code auf dem eignen Rechner nachzuverfolgen. Das Remote Repository dient dazu, den Code online zu speichern und ihn mit anderen Entwicklern zu teilen.
 
 
  # Nützliche Git-Tools und Plattformen (z.B. GitHub)
