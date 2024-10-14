@@ -1,4 +1,6 @@
-# ModerneSoftwaretechnik2425
+
+
+# Handout für Git
 
  ## Git mit IntelliJ/PyCharm benutzen: Local Repository und Remote Repository
 ***
@@ -21,15 +23,9 @@ Es gibt verschiedene Git-Tools und Plattformen, welche die Arbeit mit Git erleic
 3. **Bitbucket**: Git-Plattfrom, die sich mit Atlassian-Produkten wie Jira integriert.
 4. **Sourcetree und GitKraken**: Grafische Git-Clients, die eine benutzerfreundliche Oberfläche zur Verwaltung von Branchen, Commits und Merges bieten.
 
-Was ist Git und warum sollte es verwendet werden?
-    o Grundlegende Git-Befehle (z. B. git init, git add, git commit, git push)
 
-    o Git mit IntelliJ/PyCharm benutzen: Local Repository und Remote Repository
-    o Nützliche Git-Tools und Plabormen (z. B. GitHub)
-
-
-# Branches und ihre Nutzung, Umgang mit Merge-Konflikten
------------------------------------------------------------------------------------------------------------------------------------
+## Branches und ihre Nutzung, Umgang mit Merge-Konflikten
+***
   
     1. Was sind Git-Branches?
         Definition: Separate Entwicklungslinien in einem Git-Repository
