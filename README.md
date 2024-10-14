@@ -61,3 +61,11 @@ Es gibt verschiedene Git-Tools und Plattformen, welche die Arbeit mit Git erleic
 2. **GitLab**: Ahnlich die GibHub, bietet jedoch Self-Hosting-Optionen, integrierte CI/CD-Pipelines und detailleirte Projektmanagement-Tools.
 3. **Bitbucket**: Git-Plattfrom, die sich mit Atlassian-Produkten wie Jira integriert.
 4. **Sourcetree und GitKraken**: Grafische Git-Clients, die eine benutzerfreundliche Oberfläche zur Verwaltung von Branchen, Commits und Merges bieten.
+
+
+Erstellt von:
+* Was ist Git und warum sollte es verwendet werden? (Pia Wöhl)
+* Grundlegende Git-Befehle (Pia Wöhl)
+* Branches und ihre Nutzung, Umgang mit Merge-Konflikten (Nina Gierke)
+* Git mit IntelliJ/PyCharm benutzen: Local Repository und Remote Repository (Lina Florin)
+* Nützliche Git-Tools und Plattformen (z.B. GitHub) (Lina Florin)
