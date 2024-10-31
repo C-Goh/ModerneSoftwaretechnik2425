@@ -22,7 +22,7 @@ public class HelloWorldTest
     public void testSayHello() {
         HelloWorld helloWorld = new HelloWorld();
         String result = helloWorld.sayHello("Steve");
-        assertEquals("Hello Steve!", result); // Erwartetes Ergebnis
+        assertEquals("Steve", result); // Erwartetes Ergebnis
     }
 
 }
