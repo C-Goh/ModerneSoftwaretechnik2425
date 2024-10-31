@@ -142,6 +142,21 @@ public class Calculator extends JFrame implements ActionListener {
             calculator.setVisible(true);
         });
     }
+
+
+// Dies ist nur der Testbereich
+    // Methode zur Addition
+    public int add(int a, int b) {
+        return a + b;
+    }
+
+    // Methode zur Subtraktion
+    public int subtract(int a, int b) {
+        return a - b;
+    }
+// Dies ist nur der Testbereich
+
+
 }
 
 
