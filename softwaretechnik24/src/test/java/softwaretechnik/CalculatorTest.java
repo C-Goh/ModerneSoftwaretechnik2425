@@ -1,8 +1,15 @@
 package softwaretechnik;
-import org.junit.Test;
 import static org.junit.Assert.assertEquals;
+import org.junit.Before;
+import org.junit.Test;
+
 
 public class CalculatorTest {
+
+    @Before
+    public void setUp() {
+        System.setProperty("java.awt.headless", "true");
+    }
 
     @Test
     public void testAddition() {
