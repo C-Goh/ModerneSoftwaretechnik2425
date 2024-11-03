@@ -77,7 +77,7 @@
             <artifactId>maven-checkstyle-plugin</artifactId>
             <version>3.1.2</version> <!-- Überprüfe die neueste Version -->
             <configuration>
-                <configLocation>checkstyle.xml</configLocation> <!-- Pfad zur Checkstyle-Konfigurationsdatei -->
+                <configLocation>./softwaretechnik24/checkstyle.xml</configLocation> <!-- Pfad zur Checkstyle-Konfigurationsdatei -->
                 <failOnViolation>true</failOnViolation>
                 <outputDirectory>${project.build.directory}/checkstyle-result</outputDirectory>
             </configuration>
