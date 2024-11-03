@@ -46,13 +46,13 @@ jobs:
       run: mvn com.github.ferstl:depgraph-maven-plugin:4.0.1:graph --file ./softwaretechnik24/pom.xml
     
     - name: Upload Code Coverage Report
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: coverage-report
         path: target/site/jacoco/index.html
 
     - name: Upload Javadoc
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: javadoc
         path: target/site/apidocs/
