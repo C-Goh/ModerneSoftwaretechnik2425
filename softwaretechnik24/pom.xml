@@ -74,6 +74,24 @@
         </plugin>
         <plugin>
             <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-checkstyle-plugin</artifactId>
+            <version>3.1.2</version> <!-- Überprüfe die neueste Version -->
+            <configuration>
+                <configLocation>checkstyle.xml</configLocation> <!-- Pfad zur Checkstyle-Konfigurationsdatei -->
+                <failOnViolation>true</failOnViolation>
+                <outputDirectory>${project.build.directory}/checkstyle-result</outputDirectory>
+            </configuration>
+            <executions>
+                <execution>
+                    <phase>validate</phase>
+                    <goals>
+                        <goal>check</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-javadoc-plugin</artifactId>
             <version>3.3.1</version>
             <executions>
