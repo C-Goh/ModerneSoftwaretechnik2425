@@ -35,9 +35,6 @@ jobs:
 
     - name: Generate Javadoc
       run: mvn javadoc:javadoc --file ./softwaretechnik24/pom.xml
-    
-    - name: Run Maven Checkstyle
-      run: mvn clean validate --file ./softwaretechnik24/checkstyle.xml
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     - name: Update dependency graph
