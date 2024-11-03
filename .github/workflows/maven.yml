@@ -29,6 +29,9 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -B package --file ./softwaretechnik24/pom.xml
+    
+    - name: Run tests with JaCoCo
+      run: mvn test
 
     - name: Generate Javadoc
       run: mvn javadoc:javadoc --file ./softwaretechnik24/pom.xml
@@ -42,4 +45,13 @@ jobs:
       with:
         name: javadoc
         path: target/site/apidocs/
+
+    - name: Generate JaCoCo report
+      run: mvn jacoco:report --file ./softwaretechnik24/pom.xml
+
+    - name: Upload JaCoCo report
+      uses: actions/upload-artifact@v3
+      with:
+        name: jacoco-report
+        path: target/site/jacoco/
 
