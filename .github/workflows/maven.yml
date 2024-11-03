@@ -10,9 +10,17 @@ name: Java CI with Maven
 
 on:
   push:
-    branches: [ "nina" ]
+    branches:
+      - "main"
+      - "nina"
+      - "lina"
+      - "pia"
   pull_request:
-    branches: [ "nina" ]
+    branches:
+      - "main"
+      - "nina"
+      - "lina"
+      - "pia"
 
 jobs:
   build:
