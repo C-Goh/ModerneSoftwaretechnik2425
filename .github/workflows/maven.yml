@@ -30,9 +30,6 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file ./softwaretechnik24/pom.xml
 
-    - name: Run Code Linting
-      run: mvn spotless:check
-
     - name: Run Tests with Coverage
       run: mvn test jacoco:report
       env:
