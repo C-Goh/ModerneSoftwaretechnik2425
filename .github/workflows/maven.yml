@@ -31,7 +31,7 @@ jobs:
       run: mvn -B package --file ./softwaretechnik24/pom.xml
     
     - name: Run tests with JaCoCo
-      run: mvn test
+      run: mvn test --file ./softwaretechnik24/pom.xml
 
     - name: Generate Javadoc
       run: mvn javadoc:javadoc --file ./softwaretechnik24/pom.xml
