@@ -8,8 +8,8 @@ import javafx.stage.Stage;
 public class App extends Application {
     @Override
     public void start(Stage primaryStage) {
-        Label label = new Label("Hello, JavaFX!"); // Violation: line length exceeds 80 characters
-        Scene scene = new Scene(label, 400, 200);
+        final Label label = new Label("Hello, JavaFX!"); // Violation: line length exceeds 80 characters
+        final Scene scene = new Scene(label, 400, 200);
         primaryStage.setScene(scene);
         primaryStage.setTitle("JavaFX App");
         primaryStage.show();

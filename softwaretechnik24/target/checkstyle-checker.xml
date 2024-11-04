@@ -18,5 +18,8 @@
         <module name="MethodName"/>
         <module name="ParameterName"/>
         <module name="TypeName"/>
+        <module name="EmptyLineSeparator"/>
+        <module name="FinalLocalVariable"/>
+        <module name="JavadocType"/>
     </module>
 </module>
