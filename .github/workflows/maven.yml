@@ -20,6 +20,10 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
+    - name: Checkstyle Check
+      working-directory: ./softwaretechnik24
+      run: mvn checkstyle:check 
+
     - name: Install Xvfb
       run: sudo apt-get install -y xvfb
 
