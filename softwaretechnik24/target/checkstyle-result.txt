@@ -1,0 +1,3 @@
+Beginne Prüfung...
+[ERROR] F:\Developing\ModerneSoftwareTechnik2425\softwaretechnik24\src\main\java\softwaretechnik\App.java:11:13: Der Bezeichner 'MyVariable' entspricht nicht dem Muster '^[a-z][a-zA-Z0-9]*$'. [LocalVariableName]
+Prüfung beendet.
