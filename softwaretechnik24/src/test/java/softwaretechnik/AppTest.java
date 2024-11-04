@@ -1,20 +1,19 @@
 package softwaretechnik;
 
-import static org.junit.Assert.assertTrue;
+import javafx.application.Platform;
+import javafx.scene.control.Label;
+import org.junit.jupiter.api.Test;
+import org.testfx.framework.junit5.ApplicationTest;
 
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-/**
- * Unit test for simple App.
- */
-public class AppTest 
-{
-    /**
-     * Rigorous Test :-)
-     */
+public class AppTest extends ApplicationTest {
+
     @Test
-    public void shouldAnswerWithTrue()
-    {
-        assertTrue( true );
+    public void testLabel() {
+        Platform.runLater(() -> {
+            Label label = new Label("Hello, JavaFX!");
+            assertEquals("Hello, JavaFX!", label.getText());
+        });
     }
 }
