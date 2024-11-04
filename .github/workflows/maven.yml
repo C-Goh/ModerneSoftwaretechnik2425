@@ -20,6 +20,9 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
+    - name: Checkstyle Check
+      run: mvn checkstyle:check
+      
     - name: Install Xvfb
       run: sudo apt-get install -y xvfb
 
