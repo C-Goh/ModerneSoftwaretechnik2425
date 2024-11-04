@@ -2,9 +2,17 @@ name: Java CI with Maven
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - "main"
+      - "nina"
+      - "lina"
+      - "pia"
   pull_request:
-    branches: [ "main" ]
+    branches:
+      - "main"
+      - "nina"
+      - "lina"
+      - "pia"
 
 jobs:
   build:
@@ -35,7 +43,30 @@ jobs:
 
     - name: Build with Maven
       run: mvn -B package --file ./softwaretechnik24/pom.xml
+    
+    - name: Run tests with JaCoCo
+      run: mvn test --file ./softwaretechnik24/pom.xml
+
+    - name: Generate Javadoc
+      run: mvn javadoc:javadoc --file ./softwaretechnik24/pom.xml
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     - name: Update dependency graph
       run: mvn com.github.ferstl:depgraph-maven-plugin:4.0.1:graph --file ./softwaretechnik24/pom.xml
+
+    - name: Upload Javadoc
+      uses: actions/upload-artifact@v3
+      with:
+        name: javadoc
+        path: target/site/apidocs/
+
+    - name: Generate JaCoCo report
+      run: mvn jacoco:report --file ./softwaretechnik24/pom.xml
+
+    - name: Upload JaCoCo report
+      uses: actions/upload-artifact@v3
+      with:
+        name: jacoco-report
+        path: target/site/jacoco/
+
+
