@@ -36,7 +36,7 @@ public class App extends Application {
 
     private boolean hasUsers() {
         try (Connection connection = SQLiteManager.getConnection(); Statement statement = connection.createStatement()) {
-            ResultSet resultSet = statement.executeQuery("SELECT COUNT(*) AS count FROM users");
+            final ResultSet resultSet = statement.executeQuery("SELECT COUNT(*) AS count FROM users");
             if (resultSet.next()) {
                 return resultSet.getInt("count") > 0;
             }
@@ -47,15 +47,15 @@ public class App extends Application {
     }
 
     private Scene createUserInputScene(Stage primaryStage) {
-        VBox vbox = new VBox(10);
+        final VBox vbox = new VBox(10);
         vbox.setPadding(new Insets(10));
 
-        Label label = new Label("Enter your name:");
-        TextField nameField = new TextField();
-        Button submitButton = new Button("Create User");
+        final Label label = new Label("Enter your name:");
+        final TextField nameField = new TextField();
+        final Button submitButton = new Button("Create User");
 
         submitButton.setOnAction(event -> {
-            String name = nameField.getText();
+           final String name = nameField.getText();
             if (!name.isEmpty()) {
                 User.createUser(name);
                 primaryStage.setScene(createUserListScene());
@@ -67,12 +67,12 @@ public class App extends Application {
     }
 
     private Scene createUserListScene() {
-        HBox hbox = new HBox(10);
+        final HBox hbox = new HBox(10);
         hbox.setPadding(new Insets(10));
 
-        List<String> userNames = getUserNames();
+        final List<String> userNames = getUserNames();
         for (String userName : userNames) {
-            Label userLabel = new Label(userName);
+            final Label userLabel = new Label(userName);
             hbox.getChildren().add(userLabel);
         }
 
@@ -80,9 +80,9 @@ public class App extends Application {
     }
 
     private List<String> getUserNames() {
-        List<String> userNames = new ArrayList<>();
+        final List<String> userNames = new ArrayList<>();
         try (Connection connection = SQLiteManager.getConnection(); Statement statement = connection.createStatement()) {
-            ResultSet resultSet = statement.executeQuery("SELECT name FROM users");
+            final ResultSet resultSet = statement.executeQuery("SELECT name FROM users");
             while (resultSet.next()) {
                 userNames.add(resultSet.getString("name"));
             }
