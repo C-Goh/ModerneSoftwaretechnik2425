@@ -52,6 +52,7 @@ public class UserTest {
         }
     }
 
+    @Test
     public void createAndDeleteUser() throws SQLException {
         User.createUser("John Doe");
 
@@ -69,6 +70,7 @@ public class UserTest {
         }
     }
 
+    @Test
     public void createAndEditUser() throws SQLException {
         User.createUser("John Doe");
 
@@ -84,6 +86,25 @@ public class UserTest {
             ResultSet resultSet = statement.executeQuery("SELECT * FROM users WHERE name = 'Jane Doe'");
             assertTrue(resultSet.next());
             assertEquals("Jane Doe", resultSet.getString("name"));
+        }
+    }
+
+    @Test
+    public void testFailCreateDuplicateUser() throws SQLException {
+        User.createUser("John Doe");
+
+        try (Connection connection = getConnection(); Statement statement = connection.createStatement()) {
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM users WHERE name = 'John Doe'");
+            assertTrue(resultSet.next());
+            assertEquals("John Doe", resultSet.getString("name"));
+        }
+
+        User.createUser("John Doe");
+
+        try (Connection connection = getConnection(); Statement statement = connection.createStatement()) {
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM users WHERE name = 'John Doe'");
+            assertTrue(resultSet.next());
+            assertEquals("John Doe", resultSet.getString("name"));
         }
     }
 }
