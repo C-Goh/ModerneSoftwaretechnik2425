@@ -46,6 +46,7 @@ public class User {
             LOGGER.log(Level.SEVERE, "Error creating user", e);
         }
     }
+
     public static void deleteUser(String name) {
         final String deleteUserSQL = "DELETE FROM users WHERE name = ?";
         try (Connection connection = SQLiteManager.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(deleteUserSQL)) {
