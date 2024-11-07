@@ -31,4 +31,24 @@ public class User {
         }
     }
 
+    public static void deleteUser(String name) {
+        final String deleteUserSQL = "DELETE FROM users WHERE name = ?";
+        try (Connection connection = SQLiteManager.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(deleteUserSQL)) {
+            preparedStatement.setString(1, name);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            LOGGER.log(Level.SEVERE, "Error deleting user", e);
+        }
+    }
+
+    public static void updateUser(String oldName, String newName) {
+        final String updateUserSQL = "UPDATE users SET name = ? WHERE name = ?";
+        try (Connection connection = SQLiteManager.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(updateUserSQL)) {
+            preparedStatement.setString(1, newName);
+            preparedStatement.setString(2, oldName);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            LOGGER.log(Level.SEVERE, "Error updating user", e);
+        }
+    }
 }

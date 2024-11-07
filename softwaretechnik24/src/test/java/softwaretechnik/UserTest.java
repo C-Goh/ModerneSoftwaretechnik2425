@@ -51,4 +51,39 @@ public class UserTest {
             assertFalse(resultSet.next());
         }
     }
+
+    public void createAndDeleteUser() throws SQLException {
+        User.createUser("John Doe");
+
+        try (Connection connection = getConnection(); Statement statement = connection.createStatement()) {
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM users WHERE name = 'John Doe'");
+            assertTrue(resultSet.next());
+            assertEquals("John Doe", resultSet.getString("name"));
+        }
+
+        User.deleteUser("John Doe");
+
+        try (Connection connection = getConnection(); Statement statement = connection.createStatement()) {
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM users WHERE name = 'John Doe'");
+            assertFalse(resultSet.next());
+        }
+    }
+
+    public void createAndEditUser() throws SQLException {
+        User.createUser("John Doe");
+
+        try (Connection connection = getConnection(); Statement statement = connection.createStatement()) {
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM users WHERE name = 'John Doe'");
+            assertTrue(resultSet.next());
+            assertEquals("John Doe", resultSet.getString("name"));
+        }
+
+        User.updateUser("John Doe", "Jane Doe");
+
+        try (Connection connection = getConnection(); Statement statement = connection.createStatement()) {
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM users WHERE name = 'Jane Doe'");
+            assertTrue(resultSet.next());
+            assertEquals("Jane Doe", resultSet.getString("name"));
+        }
+    }
 }
