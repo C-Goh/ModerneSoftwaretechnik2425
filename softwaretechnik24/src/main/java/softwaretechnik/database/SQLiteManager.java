@@ -9,6 +9,7 @@ import java.util.logging.Logger;
 
 public class SQLiteManager {
     private static final String JDBC_URL = "jdbc:sqlite:softwaretechnik.db";
+
     private static final Logger LOGGER = Logger.getLogger(SQLiteManager.class.getName());
 
 
