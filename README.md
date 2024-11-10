@@ -26,7 +26,7 @@ Sollten keine Codefehler zu finden sein, bereiten wir unsere Umgebung für die T
       run: echo "DISPLAY=:99" >> $GITHUB_ENV
 ```
 
-**Testen und Bauen des Projektes**
+**Testen des Projektes**
 
 Im nächsten Schritt wird das Projekt zunächst getestet und gebaut.
 
@@ -67,7 +67,7 @@ Testet das erfolgreiche Erstellen und danach das Bearbeiten eines USers
 Testet, ob das Erstellen eines Users mit einem bereits vorhanden User Namen fehlschlägt
 ```
 
-** Erstellen einer Dokumentation und eines Dependency-Graphen**
+**Erstellen einer Dokumentation und eines Dependency-Graphen**
 
 Im nächsten Schritt wird automatisiert eine Dokumentation erstellt
 ```
@@ -82,7 +82,7 @@ Danach ein Dependency-Graphen
       run: mvn com.github.ferstl:depgraph-maven-plugin:4.0.1:graph --file ./softwaretechnik24/pom.xml
 ```
 
-** Hochladen der Ergebnisse um sie abzurufen **
+**Hochladen der Ergebnisse um sie abzurufen **
 Zum Schluss wird die generierte Dokumentation und die Testergebnisse hochgeladen
 
 ```
