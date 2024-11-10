@@ -2,6 +2,7 @@
 Unsere Pipline, definiert in .github/workflows/maven.yml, besteht aus folgenden Schritten
 
 **Lint Code-Analyse**
+
 Zunächst wird unser auf Code mit der Dependency "Checkstyles" analysiert. Die Regeln, worauf unser Code analysiert werden soll, wurden vorher in softwaretechnik24/checkstyle.xml definiert
 
 ```
@@ -11,6 +12,7 @@ Zunächst wird unser auf Code mit der Dependency "Checkstyles" analysiert. Die R
 ```
 
 **Vorbereiten der Testumgebung**
+
 Sollten keine Codefehler zu finden sein, bereiten wir unsere Umgebung für die Tests vor. Dieser Schritt ist erforderlich, da wir neben einfachen jUnit Tests auch UI-Tests besitzen. Hierzu ist es notwendig, dass die Umgebung, in der die Github-Action, läuft eine Desktop-Umgebung installiert hat.
 
 ```
@@ -25,6 +27,7 @@ Sollten keine Codefehler zu finden sein, bereiten wir unsere Umgebung für die T
 ```
 
 **Testen und Bauen des Projektes**
+
 Im nächsten Schritt wird das Projekt zunächst getestet und gebaut.
 
 ```
@@ -42,21 +45,30 @@ AppUiTest.java - Ein einfacher UI-Test - hier wird nur überprüf ob die Anwendu
 ```
 UserTest.java - Test der User-Domäne
 
-@VorJedemTest wird die Test-Datenbank neu eingelegt
-@NachJedemTest wird die Test-Datenbank gelöscht, sodass die Tests sich gegenseitig nicht beeinflussen
+@VorJedemTest
+wird die Test-Datenbank neu eingelegt
 
-@Test CreateUser() - Testet das Erstellen eines Nutzers
+@NachJedemTest
+wird die Test-Datenbank gelöscht, sodass die Tests sich gegenseitig nicht beeinflussen
 
-@Test FailCreateUser() - Zu erwartend Fehlschlagender Test. Es soll nicht möglich sein, dass man einen User mit Sonderzeichen im Namen erstellt.
+@Test CreateUser()
+Testet das Erstellen eines Nutzers
 
-@Test CreateAndDeleteUser() - Testet das erfolgreiche Erstellen und danach das Löschen eines Users
+@Test FailCreateUser()
+Zu erwartend Fehlschlagender Test. Es soll nicht möglich sein, dass man einen User mit Sonderzeichen im Namen erstellt.
 
-@Test CreateAndEditUser() - Testet das erfolgreiche Erstellen und danach das Bearbeiten eines USers
+@Test CreateAndDeleteUser()
+Testet das erfolgreiche Erstellen und danach das Löschen eines Users
 
-@Test FailCreateDuplicateUser() - Testet, ob das Erstellen eines Users mit einem bereits vorhanden User Namen fehlschlägt
+@Test CreateAndEditUser()
+Testet das erfolgreiche Erstellen und danach das Bearbeiten eines USers
+
+@Test FailCreateDuplicateUser()
+Testet, ob das Erstellen eines Users mit einem bereits vorhanden User Namen fehlschlägt
 ```
 
-** Erstellen eine Dokumentation und eines Dependency-Graphen**
+** Erstellen einer Dokumentation und eines Dependency-Graphen**
+
 Im nächsten Schritt wird automatisiert eine Dokumentation erstellt
 ```
     - name: Generate Javadoc
