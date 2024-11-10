@@ -33,7 +33,6 @@ Im nächsten Schritt wird das Projekt zunächst getestet und gebaut.
 ```
     - name: Build with Maven
       run: mvn -B package --file ./softwaretechnik24/pom.xml
-
 ```
 Hier bei werden alle Tests aus dem Ordner softwaretechnik24/src/test/java/softwaretechnik verwendet. Zu diesem Zeitpunkt haben wir drei Tests:
 ```
@@ -85,7 +84,7 @@ Danach ein Dependency-Graphen
       run: mvn com.github.ferstl:depgraph-maven-plugin:4.0.1:graph --file ./softwaretechnik24/pom.xml
 ```
 
-**Hochladen der Ergebnisse um sie abzurufen **
+**Hochladen der Ergebnisse um sie abzurufen**
 Zum Schluss wird die generierte Dokumentation und die Testergebnisse hochgeladen
 
 ```
