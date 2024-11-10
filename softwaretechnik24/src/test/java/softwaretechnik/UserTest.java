@@ -94,17 +94,17 @@ public class UserTest {
         User.createUser("John Doe");
 
         try (Connection connection = getConnection(); Statement statement = connection.createStatement()) {
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM users WHERE name = 'John Doe'");
+            ResultSet resultSet = statement.executeQuery("SELECT COUNT(*) AS count FROM users WHERE name = 'John Doe'");
             assertTrue(resultSet.next());
-            assertEquals("John Doe", resultSet.getString("name"));
+            assertEquals(1, resultSet.getInt("count"));
         }
 
         User.createUser("John Doe");
 
         try (Connection connection = getConnection(); Statement statement = connection.createStatement()) {
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM users WHERE name = 'John Doe'");
+            ResultSet resultSet = statement.executeQuery("SELECT COUNT(*) AS count FROM users WHERE name = 'John Doe'");
             assertTrue(resultSet.next());
-            assertEquals("John Doe", resultSet.getString("name"));
+            assertEquals(1, resultSet.getInt("count"));
         }
     }
 }
