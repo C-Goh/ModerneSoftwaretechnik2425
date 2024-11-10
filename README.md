@@ -41,7 +41,7 @@ Platzhalter Test, um das JavaFX Framework zu testen
 ```
 ```
 AppUiTest.java
-Ein einfacher UI-Test - hier wird nur überprüf ob die Anwendung ein Fenster mit dem vorgegebenen Namen öffnet.
+Ein einfacher UI-Test - hier wird nur überprüft ob die Anwendung ein Fenster mit dem vorgegebenen Namen öffnet.
 ```
 ```
 UserTest.java
