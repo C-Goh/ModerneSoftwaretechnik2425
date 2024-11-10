@@ -37,13 +37,16 @@ Im nächsten Schritt wird das Projekt zunächst getestet und gebaut.
 ```
 Hier bei werden alle Tests aus dem Ordner softwaretechnik24/src/test/java/softwaretechnik verwendet. Zu diesem Zeitpunkt haben wir drei Tests:
 ```
-AppTest.java - Platzhalter Test, um das JavaFX Framework zu testen
+AppTest.java
+Platzhalter Test, um das JavaFX Framework zu testen
 ```
 ```
-AppUiTest.java - Ein einfacher UI-Test - hier wird nur überprüf ob die Anwendung ein Fenster mit dem vorgegebenen Namen öffnet.
+AppUiTest.java
+Ein einfacher UI-Test - hier wird nur überprüf ob die Anwendung ein Fenster mit dem vorgegebenen Namen öffnet.
 ```
 ```
-UserTest.java - Test der User-Domäne
+UserTest.java
+Test der User-Domäne
 
 @VorJedemTest
 wird die Test-Datenbank neu eingelegt
