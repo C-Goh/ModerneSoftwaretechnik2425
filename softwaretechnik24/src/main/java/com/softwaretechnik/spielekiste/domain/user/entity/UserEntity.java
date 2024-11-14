@@ -1,4 +1,4 @@
-package softwaretechnik.user;
+package com.softwaretechnik.spielekiste.domain.user.entity;
 
 public class UserEntity {
     private int id;
