@@ -1,5 +1,6 @@
-package softwaretechnik;
+package com.softwaretechnik;
 
+import com.softwaretechnik.App;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import org.junit.jupiter.api.Test;
@@ -15,7 +16,6 @@ public class AppUiTest extends ApplicationTest {
 
     @Test
     public void shouldContainLabelWithText() {
-       // Label label = lookup(".label").query();
-       // assertThat(label).hasText("Hello, JavaFX!");
+        Label label = lookup(".label").query();
     }
 }

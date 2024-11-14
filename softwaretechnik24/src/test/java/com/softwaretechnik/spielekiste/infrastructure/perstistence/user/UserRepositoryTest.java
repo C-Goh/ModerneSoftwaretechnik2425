@@ -1,11 +1,11 @@
-package softwaretechnik;
+package com.softwaretechnik.spielekiste.infrastructure.perstistence.user;
 
-import org.junit.jupiter.api.AfterAll;
+import com.softwaretechnik.spielekiste.domain.user.entity.UserEntity;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import softwaretechnik.database.SQLiteManager;
-import softwaretechnik.user.User;
+import com.softwaretechnik.spielekiste.infrastructure.persistence.database.SQLiteManager;
+import com.softwaretechnik.spielekiste.infrastructure.persistence.user.UserRepositoryImpl;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -13,15 +13,18 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static softwaretechnik.database.SQLiteManager.getConnection;
+import static com.softwaretechnik.spielekiste.infrastructure.persistence.database.SQLiteManager.getConnection;
 
-public class UserTest {
+public class UserRepositoryTest {
+
+    private UserRepositoryImpl userRepository;
 
     @BeforeEach
     public void setUp() throws SQLException {
         String tempDatabaseUrl = "jdbc:sqlite:test.db";
         SQLiteManager.setDatabaseUrl(tempDatabaseUrl);
         SQLiteManager.initializeDatabase();
+        userRepository = new UserRepositoryImpl();
     }
 
     @AfterEach
@@ -33,7 +36,7 @@ public class UserTest {
 
     @Test
     public void testCreateUser() throws SQLException {
-        User.createUser("John Doe");
+        userRepository.createUser(new UserEntity(1, "John Doe"));
 
         try (Connection connection = getConnection(); Statement statement = connection.createStatement()) {
             ResultSet resultSet = statement.executeQuery("SELECT * FROM users WHERE name = 'John Doe'");
@@ -44,7 +47,7 @@ public class UserTest {
 
     @Test
     public void testFailCreateUser() throws SQLException {
-        User.createUser("John$&%/");
+        userRepository.createUser(new UserEntity(1, "John$&%/"));
 
         try (Connection connection = getConnection(); Statement statement = connection.createStatement()) {
             ResultSet resultSet = statement.executeQuery("SELECT * FROM users WHERE name = 'John$&%/'");
@@ -54,7 +57,7 @@ public class UserTest {
 
     @Test
     public void createAndDeleteUser() throws SQLException {
-        User.createUser("John Doe");
+        userRepository.createUser(new UserEntity(1, "John Doe"));
 
         try (Connection connection = getConnection(); Statement statement = connection.createStatement()) {
             ResultSet resultSet = statement.executeQuery("SELECT * FROM users WHERE name = 'John Doe'");
@@ -62,7 +65,7 @@ public class UserTest {
             assertEquals("John Doe", resultSet.getString("name"));
         }
 
-        User.deleteUser("John Doe");
+        userRepository.deleteUser(1);
 
         try (Connection connection = getConnection(); Statement statement = connection.createStatement()) {
             ResultSet resultSet = statement.executeQuery("SELECT * FROM users WHERE name = 'John Doe'");
@@ -72,7 +75,7 @@ public class UserTest {
 
     @Test
     public void createAndEditUser() throws SQLException {
-        User.createUser("John Doe");
+        userRepository.createUser(new UserEntity(1, "John Doe"));
 
         try (Connection connection = getConnection(); Statement statement = connection.createStatement()) {
             ResultSet resultSet = statement.executeQuery("SELECT * FROM users WHERE name = 'John Doe'");
@@ -80,7 +83,7 @@ public class UserTest {
             assertEquals("John Doe", resultSet.getString("name"));
         }
 
-        User.updateUser("John Doe", "Jane Doe");
+        userRepository.updateUser(new UserEntity(1, "Jane Doe"));
 
         try (Connection connection = getConnection(); Statement statement = connection.createStatement()) {
             ResultSet resultSet = statement.executeQuery("SELECT * FROM users WHERE name = 'Jane Doe'");
@@ -91,7 +94,7 @@ public class UserTest {
 
     @Test
     public void testFailCreateDuplicateUser() throws SQLException {
-        User.createUser("John Doe");
+        userRepository.createUser(new UserEntity(1, "John Doe"));
 
         try (Connection connection = getConnection(); Statement statement = connection.createStatement()) {
             ResultSet resultSet = statement.executeQuery("SELECT COUNT(*) AS count FROM users WHERE name = 'John Doe'");
@@ -99,7 +102,7 @@ public class UserTest {
             assertEquals(1, resultSet.getInt("count"));
         }
 
-        User.createUser("John Doe");
+        userRepository.createUser(new UserEntity(2, "John Doe"));
 
         try (Connection connection = getConnection(); Statement statement = connection.createStatement()) {
             ResultSet resultSet = statement.executeQuery("SELECT COUNT(*) AS count FROM users WHERE name = 'John Doe'");

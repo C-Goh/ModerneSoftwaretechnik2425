@@ -1,4 +1,4 @@
-package softwaretechnik;
+package com.softwaretechnik;
 
 import javafx.application.Platform;
 import javafx.scene.control.Label;
