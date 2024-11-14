@@ -1,3 +1,110 @@
+# CI/CD-Pipline
+Unsere Pipline, definiert in .github/workflows/maven.yml, besteht aus folgenden Schritten
+
+**Lint Code-Analyse**
+
+Zunächst wird unser auf Code mit der Dependency "Checkstyles" analysiert. Die Regeln, worauf unser Code analysiert werden soll, wurden vorher in softwaretechnik24/checkstyle.xml definiert
+
+```
+    - name: Checkstyle Check
+      working-directory: ./softwaretechnik24
+      run: mvn checkstyle:check 
+```
+
+**Vorbereiten der Testumgebung**
+
+Sollten keine Codefehler zu finden sein, bereiten wir unsere Umgebung für die Tests vor. Dieser Schritt ist erforderlich, da wir neben einfachen jUnit Tests auch UI-Tests besitzen. Hierzu ist es notwendig, dass die Umgebung, in der die Github-Action, läuft eine Desktop-Umgebung installiert hat.
+
+```
+    - name: Install Xvfb
+      run: sudo apt-get install -y xvfb
+
+    - name: Start Xvfb
+      run: Xvfb :99 &
+
+    - name: Set DISPLAY environment variable
+      run: echo "DISPLAY=:99" >> $GITHUB_ENV
+```
+
+**Testen des Projektes**
+
+Im nächsten Schritt wird das Projekt zunächst getestet und gebaut.
+
+```
+    - name: Build with Maven
+      run: mvn -B package --file ./softwaretechnik24/pom.xml
+```
+Hier bei werden alle Tests aus dem Ordner softwaretechnik24/src/test/java/softwaretechnik verwendet. Zu diesem Zeitpunkt haben wir drei Tests:
+```
+AppTest.java
+Platzhalter Test, um das JavaFX Framework zu testen
+```
+```
+AppUiTest.java
+Ein einfacher UI-Test - hier wird nur überprüft ob die Anwendung ein Fenster mit dem vorgegebenen Namen öffnet.
+```
+```
+UserTest.java
+Test der User-Domäne
+
+@VorJedemTest
+wird die Test-Datenbank neu eingelegt
+
+@NachJedemTest
+wird die Test-Datenbank gelöscht, sodass die Tests sich gegenseitig nicht beeinflussen
+
+@Test CreateUser()
+Testet das Erstellen eines Nutzers
+
+@Test FailCreateUser()
+Zu erwartend Fehlschlagender Test. Es soll nicht möglich sein, dass man einen User mit Sonderzeichen im Namen erstellt.
+
+@Test CreateAndDeleteUser()
+Testet das erfolgreiche Erstellen und danach das Löschen eines Users
+
+@Test CreateAndEditUser()
+Testet das erfolgreiche Erstellen und danach das Bearbeiten eines USers
+
+@Test FailCreateDuplicateUser()
+Testet, ob das Erstellen eines Users mit einem bereits vorhanden User Namen fehlschlägt
+```
+
+**Erstellen einer Dokumentation und eines Dependency-Graphen**
+
+Im nächsten Schritt wird automatisiert eine Dokumentation erstellt
+```
+    - name: Generate Javadoc
+      run: mvn javadoc:javadoc --file ./softwaretechnik24/pom.xml
+```
+
+Danach ein Dependency-Graphen
+
+```
+    - name: Update dependency graph
+      run: mvn com.github.ferstl:depgraph-maven-plugin:4.0.1:graph --file ./softwaretechnik24/pom.xml
+```
+
+**Hochladen der Ergebnisse um sie abzurufen**
+Zum Schluss wird die generierte Dokumentation und die Testergebnisse hochgeladen
+
+```
+    - name: Upload Javadoc
+      uses: actions/upload-artifact@v3
+      with:
+        name: javadoc
+        path: target/site/apidocs/
+
+    - name: Generate JaCoCo report
+      run: mvn jacoco:report --file ./softwaretechnik24/pom.xml
+
+    - name: Upload JaCoCo report
+      uses: actions/upload-artifact@v3
+      with:
+        name: jacoco-report
+        path: target/site/jacoco/
+```
+
+
 # Handout für Git
 
 ## Was ist Git und warum sollte es verwendet werden?
