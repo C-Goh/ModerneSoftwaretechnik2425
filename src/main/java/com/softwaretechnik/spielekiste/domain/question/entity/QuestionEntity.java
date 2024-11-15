@@ -3,8 +3,11 @@ package com.softwaretechnik.spielekiste.domain.question.entity;
 public class QuestionEntity {
     
     private int id;
+
     private String frage;
+
     private String antwort;
+    
     private String[] moeglicheAntworten;
 
     public QuestionEntity() {
