@@ -10,13 +10,28 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Implementation of the UserRepository interface for managing user entities in a SQLite database.
+ */
 public class UserRepositoryImpl implements UserRepository {
     private static final Logger LOGGER = Logger.getLogger(UserRepositoryImpl.class.getName());
 
+    /**
+     * Validates the user name.
+     *
+     * @param name the user name to validate
+     * @return true if the name is valid, false otherwise
+     */
     private static boolean isValidName(String name) {
         return name.matches("[a-zA-Z0-9 ]+");
     }
 
+    /**
+     * Finds a user by name.
+     *
+     * @param name the name of the user to find
+     * @return the UserEntity if found, null otherwise
+     */
     private UserEntity findUserByName(String name) {
         final String getUserSQL = "SELECT * FROM users WHERE name = ?";
         try (Connection connection = SQLiteManager.getConnection();
