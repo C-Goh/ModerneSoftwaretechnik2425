@@ -4,7 +4,7 @@ import com.softwaretechnik.spielekiste.question.domain.entity.QuestionEntity;
 
 public class QuestionDomainService {
 
-    public void validateUser(QuestionEntity frage) {
+    public void validateQuestion(QuestionEntity frage) {
         if (frage.getFrage() == null || frage.getFrage().isEmpty()) {
             throw new IllegalArgumentException("Question text cannot be null or empty");
         }

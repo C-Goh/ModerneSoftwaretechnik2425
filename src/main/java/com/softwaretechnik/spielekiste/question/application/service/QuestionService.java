@@ -1,8 +1,10 @@
-import com.softwaretechnik.spielekiste.question.domain.QuestionDomainService;
-import com.softwaretechnik.spielekiste.question.domain.entity.QuestionEntity;
-import com.softwaretechnik.spielekiste.question.infrastructure.QuestionRepository;
+package com.softwaretechnik.spielekiste.question.application.service;
 
 import java.util.List;
+
+import com.softwaretechnik.spielekiste.question.domain.entity.QuestionEntity;
+import com.softwaretechnik.spielekiste.question.domain.repository.QuestionRepository;
+import com.softwaretechnik.spielekiste.question.domain.service.QuestionDomainService;
 
 public class QuestionService {
     
