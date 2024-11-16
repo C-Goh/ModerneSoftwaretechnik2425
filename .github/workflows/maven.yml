@@ -48,7 +48,7 @@ jobs:
         run: mvn clean install
 
       - name: Generate Javadoc
-        run: mvn javadoc:javadoc --file ./pom.xml
+        run: mvn -X javadoc:javadoc --file ./pom.xml
 
       - name: Update dependency graph
         run: mvn com.github.ferstl:depgraph-maven-plugin:4.0.1:graph --file ./pom.xml
