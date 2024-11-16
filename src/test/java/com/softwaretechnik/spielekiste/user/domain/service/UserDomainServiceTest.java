@@ -1,6 +1,6 @@
-package com.softwaretechnik.spielekiste.domain.user.service;
+package com.softwaretechnik.spielekiste.user.domain.service;
 
-import com.softwaretechnik.spielekiste.domain.user.entity.UserEntity;
+import com.softwaretechnik.spielekiste.user.domain.entity.UserEntity;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -10,7 +10,7 @@ class UserDomainServiceTest {
     private final UserDomainService userDomainService = new UserDomainService();
 
     @Test
-    void validateUser_withValidUser() {
+    public void validateUser_withValidUser() {
         UserEntity user = new UserEntity();
         user.setName("John Doe");
 
@@ -18,7 +18,7 @@ class UserDomainServiceTest {
     }
 
     @Test
-    void validateUser_withNullName() {
+    public void validateUser_withNullName() {
         UserEntity user = new UserEntity();
         user.setName(null);
 
@@ -27,7 +27,7 @@ class UserDomainServiceTest {
     }
 
     @Test
-    void validateUser_withEmptyName() {
+    public void validateUser_withEmptyName() {
         UserEntity user = new UserEntity();
         user.setName("");
 
@@ -36,7 +36,7 @@ class UserDomainServiceTest {
     }
 
     @Test
-    void validateUser_withInvalidName() {
+    public void validateUser_withInvalidName() {
         UserEntity user = new UserEntity();
         user.setName("John@Doe");
 
