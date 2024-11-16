@@ -1,4 +1,4 @@
-package com.softwaretechnik.spielekiste.infrastructure.persistence.database;
+package com.softwaretechnik.spielekiste.infrastructure.persistence;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

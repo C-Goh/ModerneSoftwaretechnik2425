@@ -1,8 +1,8 @@
-package com.softwaretechnik.spielekiste.infrastructure.persistence.user;
+package com.softwaretechnik.spielekiste.user.infrastructure.persistence;
 
-import com.softwaretechnik.spielekiste.domain.user.entity.UserEntity;
-import com.softwaretechnik.spielekiste.domain.user.repository.UserRepository;
-import com.softwaretechnik.spielekiste.infrastructure.persistence.database.SQLiteManager;
+import com.softwaretechnik.spielekiste.infrastructure.persistence.SQLiteManager;
+import com.softwaretechnik.spielekiste.user.domain.entity.UserEntity;
+import com.softwaretechnik.spielekiste.user.domain.repository.UserRepository;
 
 import java.sql.*;
 import java.util.ArrayList;

@@ -1,8 +1,8 @@
-package com.softwaretechnik.spielekiste.application.user;
+package com.softwaretechnik.spielekiste.user.application.service;
 
-import com.softwaretechnik.spielekiste.domain.user.entity.UserEntity;
-import com.softwaretechnik.spielekiste.domain.user.repository.UserRepository;
-import com.softwaretechnik.spielekiste.domain.user.service.UserDomainService;
+import com.softwaretechnik.spielekiste.user.domain.entity.UserEntity;
+import com.softwaretechnik.spielekiste.user.domain.repository.UserRepository;
+import com.softwaretechnik.spielekiste.user.domain.service.UserDomainService;
 
 import java.util.List;
 

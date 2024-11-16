@@ -1,6 +1,6 @@
-package com.softwaretechnik.spielekiste.domain.user.service;
+package com.softwaretechnik.spielekiste.user.domain.service;
 
-import com.softwaretechnik.spielekiste.domain.user.entity.UserEntity;
+import com.softwaretechnik.spielekiste.user.domain.entity.UserEntity;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

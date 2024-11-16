@@ -1,6 +1,6 @@
-package com.softwaretechnik.spielekiste.domain.user.repository;
+package com.softwaretechnik.spielekiste.user.domain.repository;
 
-import com.softwaretechnik.spielekiste.domain.user.entity.UserEntity;
+import com.softwaretechnik.spielekiste.user.domain.entity.UserEntity;
 
 import java.util.List;
 
