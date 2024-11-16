@@ -1,9 +1,6 @@
-package com.softwaretechnik.spielekiste.application.question;
-
-import com.softwaretechnik.spielekiste.domain.question.entity.QuestionEntity;
-import com.softwaretechnik.spielekiste.domain.question.repository.QuestionRepository;
-import com.softwaretechnik.spielekiste.domain.question.service.QuestionDomainService;
-
+import com.softwaretechnik.spielekiste.question.domain.QuestionDomainService;
+import com.softwaretechnik.spielekiste.question.domain.entity.QuestionEntity;
+import com.softwaretechnik.spielekiste.question.infrastructure.QuestionRepository;
 
 import java.util.List;
 

@@ -1,8 +1,7 @@
-package com.softwaretechnik.spielekiste.domain.question.repository;
-
-import com.softwaretechnik.spielekiste.domain.question.entity.QuestionEntity;
-
+package com.softwaretechnik.spielekiste.question.domain.repository;
 import java.util.List;
+
+import com.softwaretechnik.spielekiste.question.domain.entity.QuestionEntity;
 
 public interface QuestionRepository {
     void createQuestion(QuestionEntity frage);

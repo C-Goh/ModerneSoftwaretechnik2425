@@ -1,4 +1,4 @@
-package com.softwaretechnik.spielekiste.domain.question.entity;
+package com.softwaretechnik.spielekiste.question.domain.entity;
 
 public class QuestionEntity {
     
