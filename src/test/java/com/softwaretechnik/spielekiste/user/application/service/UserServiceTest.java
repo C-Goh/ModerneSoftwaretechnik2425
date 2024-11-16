@@ -27,12 +27,12 @@ public class UserServiceTest {
     private UserService userService;
 
     @BeforeEach
-    void setUp() {
+    public void setUp() {
         userService = new UserService(userRepository, userDomainService);
     }
 
     @Test
-    void createUser() {
+    public void createUser() {
         UserEntity user = new UserEntity();
         user.setName("John Doe");
 
@@ -43,7 +43,7 @@ public class UserServiceTest {
     }
 
     @Test
-    void getUserById() {
+    public void getUserById() {
         UserEntity user = new UserEntity();
         when(userRepository.findUserById(1)).thenReturn(user);
 
@@ -54,7 +54,7 @@ public class UserServiceTest {
     }
 
     @Test
-    void updateUser() {
+    public void updateUser() {
         UserEntity user = new UserEntity();
         user.setName("John Doe");
 
@@ -65,7 +65,7 @@ public class UserServiceTest {
     }
 
     @Test
-    void deleteUser() {
+    public void deleteUser() {
         int userId = 1;
         userService.deleteUser(userId);
 
@@ -73,7 +73,7 @@ public class UserServiceTest {
     }
 
     @Test
-    void findAllUsers() {
+    public void findAllUsers() {
         List<UserEntity> users = List.of(new UserEntity(), new UserEntity());
         when(userRepository.findAllUsers()).thenReturn(users);
 

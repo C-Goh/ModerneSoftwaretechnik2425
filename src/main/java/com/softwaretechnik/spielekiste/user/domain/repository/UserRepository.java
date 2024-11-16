@@ -5,13 +5,13 @@ import com.softwaretechnik.spielekiste.domain.user.entity.UserEntity;
 import java.util.List;
 
 public interface UserRepository {
-    void createUser(UserEntity user);
+    public void createUser(UserEntity user);
 
-    UserEntity findUserById(int id);
+    public UserEntity findUserById(int id);
 
-    List<UserEntity> findAllUsers();
+    public List<UserEntity> findAllUsers();
 
-    void updateUser(UserEntity user);
+    public void updateUser(UserEntity user);
 
-    void deleteUser(int id);
+    public void deleteUser(int id);
 }
