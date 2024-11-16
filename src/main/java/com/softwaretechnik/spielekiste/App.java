@@ -1,5 +1,9 @@
-package com.softwaretechnik;
+package com.softwaretechnik.spielekiste;
 
+import com.softwaretechnik.spielekiste.infrastructure.persistence.SQLiteManager;
+import com.softwaretechnik.spielekiste.user.domain.entity.UserEntity;
+import com.softwaretechnik.spielekiste.user.domain.repository.UserRepository;
+import com.softwaretechnik.spielekiste.user.infrastructure.persistence.UserRepositoryImpl;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -9,10 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import com.softwaretechnik.spielekiste.infrastructure.persistence.database.SQLiteManager;
-import com.softwaretechnik.spielekiste.infrastructure.persistence.user.UserRepositoryImpl;
-import com.softwaretechnik.spielekiste.domain.user.entity.UserEntity;
-import com.softwaretechnik.spielekiste.domain.user.repository.UserRepository;
+
 
 import java.util.List;
 

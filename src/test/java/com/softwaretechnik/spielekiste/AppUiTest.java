@@ -1,6 +1,6 @@
-package com.softwaretechnik;
+package com.softwaretechnik.spielekiste;
 
-import com.softwaretechnik.App;
+import com.softwaretechnik.spielekiste.App;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import org.junit.jupiter.api.Test;

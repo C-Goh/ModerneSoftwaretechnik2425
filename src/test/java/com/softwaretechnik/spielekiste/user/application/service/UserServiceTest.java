@@ -1,8 +1,8 @@
-package com.softwaretechnik.spielekiste.application.user;
+package com.softwaretechnik.spielekiste.user.application.service;
 
-import com.softwaretechnik.spielekiste.domain.user.entity.UserEntity;
-import com.softwaretechnik.spielekiste.domain.user.repository.UserRepository;
-import com.softwaretechnik.spielekiste.domain.user.service.UserDomainService;
+import com.softwaretechnik.spielekiste.user.domain.entity.UserEntity;
+import com.softwaretechnik.spielekiste.user.domain.repository.UserRepository;
+import com.softwaretechnik.spielekiste.user.domain.service.UserDomainService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -16,7 +16,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-class UserServiceTest {
+public class UserServiceTest {
 
     @Mock
     private UserRepository userRepository;
@@ -27,12 +27,12 @@ class UserServiceTest {
     private UserService userService;
 
     @BeforeEach
-    void setUp() {
+    public void setUp() {
         userService = new UserService(userRepository, userDomainService);
     }
 
     @Test
-    void createUser() {
+    public void createUser() {
         UserEntity user = new UserEntity();
         user.setName("John Doe");
 
@@ -43,7 +43,7 @@ class UserServiceTest {
     }
 
     @Test
-    void getUserById() {
+    public void getUserById() {
         UserEntity user = new UserEntity();
         when(userRepository.findUserById(1)).thenReturn(user);
 
@@ -54,7 +54,7 @@ class UserServiceTest {
     }
 
     @Test
-    void updateUser() {
+    public void updateUser() {
         UserEntity user = new UserEntity();
         user.setName("John Doe");
 
@@ -65,7 +65,7 @@ class UserServiceTest {
     }
 
     @Test
-    void deleteUser() {
+    public void deleteUser() {
         int userId = 1;
         userService.deleteUser(userId);
 
@@ -73,7 +73,7 @@ class UserServiceTest {
     }
 
     @Test
-    void findAllUsers() {
+    public void findAllUsers() {
         List<UserEntity> users = List.of(new UserEntity(), new UserEntity());
         when(userRepository.findAllUsers()).thenReturn(users);
 
