@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.softwaretechnik.spielekiste.ui.controller.StartPage">
+    <children>
+        <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="400.0" layoutY="177.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Bildmaterial/Profilbild.jpg" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="250.0" layoutY="177.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Bildmaterial/Profilbild.jpg" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="100.0" layoutY="177.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Bildmaterial/Profilbild.jpg" />
+            </image>
+        </ImageView>
+        <Text layoutX="121.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name 1 ">
+            <font>
+                <Font name="Adobe Handwriting Tiffany" size="19.0" />
+            </font>
+        </Text>
+        <Text layoutX="421.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name 3">
+            <font>
+                <Font name="Adobe Handwriting Tiffany" size="19.0" />
+            </font>
+        </Text>
+        <Text layoutX="64.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Willkommen in der Spielekiste!">
+            <font>
+                <Font name="Adobe Handwriting Tiffany" size="38.0" />
+            </font>
+        </Text>
+        <Text layoutX="269.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name 2 ">
+            <font>
+                <Font name="Adobe Handwriting Tiffany" size="19.0" />
+            </font>
+        </Text>
+    </children>
+</Pane>
