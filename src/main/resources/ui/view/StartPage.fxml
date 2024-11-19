@@ -10,17 +10,17 @@
     <children>
         <ImageView fx:id="imageView1" fitHeight="100.0" fitWidth="100.0" layoutX="400.0" layoutY="177.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@Bildmaterial/Profilbild.jpg" />
+                <Image url="/Bildmaterial/Profilbild.jpg" />
             </image>
         </ImageView>
         <ImageView fx:id="imageView2" fitHeight="100.0" fitWidth="100.0" layoutX="250.0" layoutY="177.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@Bildmaterial/Profilbild.jpg" />
+                <Image url="/Bildmaterial/Profilbild.jpg" />
             </image>
         </ImageView>
         <ImageView fx:id="imageView3" fitHeight="100.0" fitWidth="100.0" layoutX="100.0" layoutY="177.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@Bildmaterial/Profilbild.jpg" />
+                <Image url="/Bildmaterial/Profilbild.jpg" />
             </image>
         </ImageView>
         <Text fx:id="text1" layoutX="121.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name 1 ">
