@@ -1,31 +1,35 @@
-package com.softwaretechnik.spielekiste.quiz.domain.service;
+package com.softwaretechnik.spielekiste.quiz.application.service;
 
 import com.softwaretechnik.spielekiste.quiz.domain.repository.QuizRepository;
+import com.softwaretechnik.spielekiste.quiz.domain.service.QuizDomainService;
 
-public class QuizDomainService {
+public class QuizService {
+
     private final QuizRepository quizRepository;
+    private final QuizDomainService quizDomainService;
 
-    public QuizDomainService(QuizRepository quizRepository) {
+    public QuizService(QuizRepository quizRepository, QuizDomainService quizDomainService) {
         this.quizRepository = quizRepository;
+        this.quizDomainService = quizDomainService;
     }
 
     public boolean checkAnswer(int quizId, String answer) {
         // Additional business logic can be added here
-        return quizRepository.checkAnswer(answer);
+        return quizDomainService.checkAnswer(quizId, answer);
     }
 
     public String getQuizQuestion(int quizId) {
         // Additional business logic can be added here
-        return quizRepository.getQuizQuestion(quizId);
+        return quizDomainService.getQuizQuestion(quizId);
     }
 
     public String nextQuestion(int quizId) {
         // Additional business logic can be added here
-        return quizRepository.nextQuestion(quizId);
+        return quizDomainService.nextQuestion(quizId);
     }
 
     public int getFinalResult(int quizId) {
         // Additional business logic can be added here
-        return quizRepository.getFinalResult(quizId);
+        return quizDomainService.getFinalResult(quizId);
     }
 }

@@ -16,11 +16,11 @@ public class QuizEntity {
         this.roundResult = roundResult;
     }
 
-    public int getQuizID() {
+    public int getId() {
         return id;
     }
 
-    public void setQuizID(int id) {
+    public void setId(int id) {
         this.id = id;
     }
 
