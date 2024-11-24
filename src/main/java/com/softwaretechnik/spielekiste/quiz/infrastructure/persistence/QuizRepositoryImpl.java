@@ -16,7 +16,7 @@ public class QuizRepositoryImpl implements QuizRepository {
         try (Connection connection = SQLiteManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(checkAnswerSQL)) {
             preparedStatement.setString(1, answer);
-            ResultSet resultSet = preparedStatement.executeQuery();
+            final ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 return resultSet.getInt(1) > 0;
             }
@@ -32,7 +32,7 @@ public class QuizRepositoryImpl implements QuizRepository {
         try (Connection connection = SQLiteManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(getQuestionSQL)) {
             preparedStatement.setInt(1, quizId);
-            ResultSet resultSet = preparedStatement.executeQuery();
+            final ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 return resultSet.getString("question");
             }
@@ -48,7 +48,7 @@ public class QuizRepositoryImpl implements QuizRepository {
         try (Connection connection = SQLiteManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(nextQuestionSQL)) {
             preparedStatement.setInt(1, quizId);
-            ResultSet resultSet = preparedStatement.executeQuery();
+            final ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 return resultSet.getString("question");
             }
@@ -64,7 +64,7 @@ public class QuizRepositoryImpl implements QuizRepository {
         try (Connection connection = SQLiteManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(getResultSQL)) {
             preparedStatement.setInt(1, quizId);
-            ResultSet resultSet = preparedStatement.executeQuery();
+            final ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 return resultSet.getInt("result");
             }
