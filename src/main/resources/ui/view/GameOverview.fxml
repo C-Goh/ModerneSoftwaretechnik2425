@@ -1,46 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.shape.*?>
 <?import javafx.scene.image.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.softwaretechnik.spielekiste.ui.controller.GameOverview">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ImageView fx:id="calculater" fitHeight="150.0" fitWidth="197.0" layoutX="40.0" layoutY="40.0" onMouseClicked="#handleImageClick" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="257.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="/Bildmaterial/Taschenrechner.png" />
+            <Image url=" /Bildmaterial/Spiel.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="197.0" layoutX="224.0" layoutY="40.0" onMouseClicked="#handleImageClick" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="257.0" layoutY="204.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="/Bildmaterial/Taschenrechner.png" />
+            <Image url="/Bildmaterial/Spiel.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="197.0" layoutX="226.0" layoutY="220.0" onMouseClicked="#handleImageClick" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="50.0" layoutY="205.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="/Bildmaterial/Taschenrechner.png" />
+            <Image url="/Bildmaterial/Spiel.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="197.0" layoutX="41.0" layoutY="220.0" onMouseClicked="#handleImageClick" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="50.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="/Bildmaterial/Taschenrechner.png" />
+            <Image url="/Bildmaterial/Spiel.png" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d3eaff" height="400.0" layoutX="424.0" stroke="TRANSPARENT" strokeType="INSIDE" width="177.0" />
-      <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="480.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView id="profileImageView " fx:id="profileImageView" fitHeight="90.0" fitWidth="90.0" layoutX="477.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="/Bildmaterial/Profilbild.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="90.0" fitWidth="90.0" layoutX="470.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView id="badgeIcon" fx:id="badgeIcon" fitHeight="90.0" fitWidth="90.0" layoutX="477.0" layoutY="155.0" onMouseClicked="#loadAchievementsPage" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="/Bildmaterial/Stern.png" />
+            <Image url="/Bildmaterial/Abzeichen.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="475.0" layoutY="280.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView id="backButton" fx:id="backButton" fitHeight="90.0" fitWidth="90.0" layoutX="477.0" layoutY="264.0" onMouseClicked="#loadStartPage" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="/Bildmaterial/Pfeil.png" />
          </image>

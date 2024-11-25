@@ -1,32 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.softwaretechnik.spielekiste.ui.controller.CreateProfile">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="76.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
+      <Button id="createProfileButton" layoutX="46.0" layoutY="285.0" mnemonicParsing="false" onMouseClicked="#createProfile" prefHeight="61.0" prefWidth="108.0" style="-fx-background-color: #16386C;" text="erstellen" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <TextField id="profilNameField " layoutX="48.0" layoutY="194.0" prefHeight="61.0" prefWidth="279.0" />
+      <Text id="pageTitle" layoutX="48.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Erstelle dein Profil">
+         <font>
+            <Font size="40.0" />
+         </font>
+      </Text>
+      <Text id="pageTitle" layoutX="49.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <ImageView id="profilePicture " fx:id="profileImageView" fitHeight="142.0" fitWidth="142.0" layoutX="392.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="/Bildmaterial/Profilbild.png" />
          </image>
       </ImageView>
-      <Button layoutX="314.0" layoutY="233.0" mnemonicParsing="false" text="Profil erstellen" />
-      <TextField layoutX="314.0" layoutY="187.0" />
-      <Text layoutX="314.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dein Name">
+      <Text id="pageTitle" layoutX="408.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Profilbild">
          <font>
-            <Font name="Adobe Handwriting Tiffany" size="15.0" />
+            <Font size="30.0" />
          </font>
       </Text>
-      <Text layoutX="275.0" layoutY="215.0" strokeType="OUTSIDE" strokeWidth="0.0">
-         <font>
-            <Font name="Adobe Handwriting Tiffany" size="15.0" />
-         </font>
-      </Text>
-      <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="520.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView id="backButton" fx:id="backButton" fitHeight="90.0" fitWidth="90.0" layoutX="419.0" layoutY="269.0" onMouseClicked="#loadStartPage" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="/Bildmaterial/Pfeil.png" />
          </image>
