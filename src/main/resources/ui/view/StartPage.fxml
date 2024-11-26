@@ -12,13 +12,13 @@
             <Font size="40.0" />
          </font>
       </Text>
-      <TextField id="profilNameField " layoutX="92.0" layoutY="157.0" prefHeight="61.0" prefWidth="297.0" />
+      <TextField id="profilNameField" layoutX="92.0" layoutY="157.0" prefHeight="61.0" prefWidth="297.0" />
       <Button id="startButton " layoutX="401.0" layoutY="157.0" mnemonicParsing="false" onMouseClicked="#handleStartButtonClick" prefHeight="61.0" prefWidth="108.0" style="-fx-background-color: #16386C;" text="starten" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Button id="createProfileButton " layoutX="91.0" layoutY="245.0" mnemonicParsing="false" onMouseClicked="#handleCreateProfile" prefHeight="61.0" prefWidth="418.0" style="-fx-background-color: #16386C;" text="Ich habe noch kein Profil" textFill="WHITE">
+      <Button id="createProfileButton" layoutX="91.0" layoutY="245.0" mnemonicParsing="false" onMouseClicked="#handleCreateProfile" prefHeight="61.0" prefWidth="418.0" style="-fx-background-color: #16386C;" text="Ich habe noch kein Profil" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font>

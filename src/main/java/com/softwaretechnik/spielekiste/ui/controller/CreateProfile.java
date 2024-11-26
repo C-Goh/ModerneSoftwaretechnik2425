@@ -26,7 +26,7 @@ public class CreateProfile {
 
     // Methode, die beim Klick auf den Button "Profil erstellen" ausgeführt wird
     @FXML
-    void handleCreateProfile(javafx.event.ActionEvent event) {
+    void createProfile(MouseEvent event) {
         final String name = nameField.getText();
 
         if (name == null || name.trim().isEmpty()) {
