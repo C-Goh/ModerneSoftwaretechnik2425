@@ -26,8 +26,8 @@ public class CreateProfile {
 
     // Methode, die beim Klick auf den Button "Profil erstellen" ausgeführt wird
     @FXML
-    void handleCreateProfile(javafx.event.ActionEvent event) {
-        String name = nameField.getText();
+    void createProfile(MouseEvent event) {
+        final String name = nameField.getText();
 
         if (name == null || name.trim().isEmpty()) {
             System.out.println("Bitte gebe deinen Namen ein");
@@ -36,10 +36,10 @@ public class CreateProfile {
 
         // Verbindung zur Datenbank über SQLiteManager aufbauen
         try (Connection connection = SQLiteManager.getConnection()) {
-            String sql = "INSERT INTO users (name) VALUES (?)";  // SQL-Abfrage zum Hinzufügen des Profils
-            PreparedStatement statement = connection.prepareStatement(sql);
+            final String sql = "INSERT INTO users (name) VALUES (?)";  // SQL-Abfrage zum Hinzufügen des Profils
+            final PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, name);
-            int rowsInserted = statement.executeUpdate();
+            final int rowsInserted = statement.executeUpdate();
 
             if (rowsInserted > 0) {
                 System.out.println("Dein Profil wurde erfolgreich erstellt!");

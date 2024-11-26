@@ -24,7 +24,7 @@ public class StartPage {
     // Diese Methode wird aufgerufen, wenn der "Starten"-Button geklickt wird
     @FXML
     private void handleStartButtonClick(ActionEvent event) {
-        String profilName = profilNameField.getText();
+        final String profilName = profilNameField.getText();
 
         // Hier Logik hinzufügen, die den Profilnamen weiter verarbeitet
         System.out.println("Profilname: " + profilName);
