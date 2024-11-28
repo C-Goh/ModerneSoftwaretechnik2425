@@ -1,5 +1,6 @@
 package com.softwaretechnik.spielekiste.quiz.domain.service;
 
+import com.softwaretechnik.spielekiste.quiz.domain.entity.QuizEntity;
 import com.softwaretechnik.spielekiste.quiz.domain.repository.QuizRepository;
 
 public class QuizDomainService {
@@ -9,23 +10,23 @@ public class QuizDomainService {
         this.quizRepository = quizRepository;
     }
 
-    public boolean checkAnswer(int quizId, String answer) {
-        // Additional business logic can be added here
-        return quizRepository.checkAnswer(answer);
+    public void startQuiz(int quizId) {
+        quizRepository.startQuiz(quizId);
     }
 
-    public String getQuizQuestion(int quizId) {
-        // Additional business logic can be added here
-        return quizRepository.getQuizQuestion(quizId);
+    public QuizEntity.Question getCurrentQuestion(int quizId) {
+        return quizRepository.getCurrentQuestion(quizId);
     }
 
-    public String nextQuestion(int quizId) {
-        // Additional business logic can be added here
+    public String checkAnswer(int quizId, String answer) {
+        return quizRepository.checkAnswer(quizId, answer);
+    }
+
+    public boolean nextQuestion(int quizId) {
         return quizRepository.nextQuestion(quizId);
     }
 
-    public int getFinalResult(int quizId) {
-        // Additional business logic can be added here
+    public String getFinalResult(int quizId) {
         return quizRepository.getFinalResult(quizId);
     }
 }

@@ -3,11 +3,13 @@ package com.softwaretechnik.spielekiste.quiz.domain.repository;
 import com.softwaretechnik.spielekiste.quiz.domain.entity.QuizEntity;
 
 public interface QuizRepository {
-    boolean checkAnswer(String answer);
+    void startQuiz(int quizId);
 
-    String getQuizQuestion(int quizId);
+    QuizEntity.Question getCurrentQuestion(int quizId);
 
-    String nextQuestion(int quizId);
+    String checkAnswer(int quizId, String answer);
 
-    int getFinalResult(int quizId);
+    boolean nextQuestion(int quizId);
+
+    String getFinalResult(int quizId);
 }
