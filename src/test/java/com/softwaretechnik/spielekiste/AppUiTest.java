@@ -15,8 +15,8 @@ public class AppUiTest extends ApplicationTest {
     }
 
     @Test
-    public void shouldContainWelcomeText() {
-        Text welcomeText = lookup("#welcomeText").query();
-        assertThat(welcomeText).hasText("Willkommen in der Spielekiste!");
+    public void shouldContainPageTitle() {
+        Text pageTitle = lookup("#pageTitle").query();
+        assertThat(pageTitle).hasText("Was ist dein Profilname?");
     }
 }
