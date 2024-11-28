@@ -24,16 +24,16 @@ public class QuizRepositoryImpl implements QuizRepository {
              PreparedStatement insertCurrentQuestionStmt = connection.prepareStatement(insertCurrentQuestionSQL)) {
             getQuestionsStmt.setInt(1, quizId);
             final ResultSet resultSet = getQuestionsStmt.executeQuery();
-            List<QuizEntity.Question> questions = new ArrayList<>();
+            final List<QuizEntity.Question> questions = new ArrayList<>();
             while (resultSet.next()) {
-                String question = resultSet.getString("question");
-                String[] answerOptions = resultSet.getString("answer_options").split(",");
-                String correctAnswer = resultSet.getString("correct_answer");
+                final String question = resultSet.getString("question");
+                final String[] answerOptions = resultSet.getString("answer_options").split(",");
+                final String correctAnswer = resultSet.getString("correct_answer");
                 questions.add(new QuizEntity.Question(0, question, Arrays.asList(answerOptions), correctAnswer));
             }
             Collections.shuffle(questions);
-            List<QuizEntity.Question> selectedQuestions = questions.subList(0, Math.min(3, questions.size()));
-            for (QuizEntity.Question q : selectedQuestions) {
+            final List<QuizEntity.Question> selectedQuestions = questions.subList(0, Math.min(3, questions.size()));
+            for (final QuizEntity.Question q : selectedQuestions) {
                 insertCurrentQuestionStmt.setInt(1, quizId);
                 insertCurrentQuestionStmt.setString(2, q.getQuestion());
                 insertCurrentQuestionStmt.setString(3, String.join(",", q.getAnswerOptions()));
@@ -53,9 +53,9 @@ public class QuizRepositoryImpl implements QuizRepository {
             preparedStatement.setInt(1, quizId);
             final ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
-                String question = resultSet.getString("question");
-                String[] answerOptions = resultSet.getString("answer_options").split(",");
-                String correctAnswer = resultSet.getString("correct_answer");
+                final String question = resultSet.getString("question");
+                final String[] answerOptions = resultSet.getString("answer_options").split(",");
+                final String correctAnswer = resultSet.getString("correct_answer");
                 return new QuizEntity.Question(0, question, Arrays.asList(answerOptions), correctAnswer);
             }
         } catch (SQLException e) {
@@ -72,7 +72,7 @@ public class QuizRepositoryImpl implements QuizRepository {
             preparedStatement.setInt(1, quizId);
             final ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
-                String correctAnswer = resultSet.getString("correct_answer");
+                final String correctAnswer = resultSet.getString("correct_answer");
                 if (correctAnswer.equalsIgnoreCase(answer)) {
                     // Update points in the database
                     // ...
@@ -93,7 +93,7 @@ public class QuizRepositoryImpl implements QuizRepository {
         try (Connection connection = SQLiteManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(nextQuestionSQL)) {
             preparedStatement.setInt(1, quizId);
-            int rowsUpdated = preparedStatement.executeUpdate();
+            final int rowsUpdated = preparedStatement.executeUpdate();
             return rowsUpdated > 0;
         } catch (SQLException e) {
             LOGGER.log(Level.SEVERE, "Error moving to next question", e);
@@ -109,9 +109,9 @@ public class QuizRepositoryImpl implements QuizRepository {
             preparedStatement.setInt(1, quizId);
             final ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
-                int points = resultSet.getInt("points");
-                int totalQuestions = resultSet.getInt("total_questions");
-                double percentage = Math.round(((double) points / totalQuestions) * 100);
+                final int points = resultSet.getInt("points");
+                final int totalQuestions = resultSet.getInt("total_questions");
+                final double percentage = Math.round(((double) points / totalQuestions) * 100);
                 return "Final result: " + points + "/" + totalQuestions + " (" + percentage + "%)";
             }
         } catch (SQLException e) {
