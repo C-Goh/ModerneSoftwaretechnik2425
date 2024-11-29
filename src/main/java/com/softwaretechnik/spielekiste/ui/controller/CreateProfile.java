@@ -28,7 +28,7 @@ public class CreateProfile {
     // Methode, die beim Klick auf den Button "Profil erstellen" ausgeführt wird
     @FXML
     void createProfile(MouseEvent event) {
-        final String name = nameField.getText();
+        final String name = nameField.getText(); // `final` hinzugefügt
 
         if (name == null || name.trim().isEmpty()) {
             System.out.println("Bitte gebe deinen Namen ein");
@@ -37,10 +37,10 @@ public class CreateProfile {
 
         // Verbindung zur Datenbank über SQLiteManager aufbauen
         try (Connection connection = SQLiteManager.getConnection()) {
-            final String sql = "INSERT INTO users (name) VALUES (?)";  // SQL-Abfrage zum Hinzufügen des Profils
-            final PreparedStatement statement = connection.prepareStatement(sql);
+            final String sql = "INSERT INTO users (name) VALUES (?)";  // `final` hinzugefügt
+            final PreparedStatement statement = connection.prepareStatement(sql); // `final` hinzugefügt
             statement.setString(1, name);
-            final int rowsInserted = statement.executeUpdate();
+            final int rowsInserted = statement.executeUpdate(); // `final` hinzugefügt
 
             if (rowsInserted > 0) {
                 System.out.println("Dein Profil wurde erfolgreich erstellt!");
@@ -69,7 +69,7 @@ public class CreateProfile {
     @FXML
     public void initialize() {
         // ImageView für den backButton erstellen und setzen
-        ImageView backButtonImage = new ImageView(new Image("/Bildmaterial/Pfeil.png"));
+        final ImageView backButtonImage = new ImageView(new Image("/Bildmaterial/Pfeil.png")); // `final` hinzugefügt
         backButton.setGraphic(backButtonImage);
     }
 }
