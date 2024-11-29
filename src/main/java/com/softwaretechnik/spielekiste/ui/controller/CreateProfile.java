@@ -4,6 +4,7 @@ import com.softwaretechnik.spielekiste.infrastructure.persistence.SQLiteManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
@@ -62,5 +63,13 @@ public class CreateProfile {
     void handleProfilePictureClick(MouseEvent event) {
         System.out.println("Profilbild auswählen");
         // Hier Logik eingebauen, die es dem Benutzer erlaubt, ein Bild aus einem Datei-Dialog auszuwählen
+    }
+
+    // Initialisierungsmethode für den backButton
+    @FXML
+    public void initialize() {
+        // ImageView für den backButton erstellen und setzen
+        ImageView backButtonImage = new ImageView(new Image("/Bildmaterial/Pfeil.png"));
+        backButton.setGraphic(backButtonImage);
     }
 }

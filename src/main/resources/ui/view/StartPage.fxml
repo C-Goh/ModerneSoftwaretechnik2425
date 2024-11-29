@@ -1,27 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.softwaretechnik.spielekiste.ui.controller.StartPage">
    <children>
-      <Text id="pageTitle" layoutX="95.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Was ist dein Profilname?">
+      <Text id="pageTitle" layoutX="104.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Willkommen bei der Spielekiste!">
          <font>
-            <Font size="40.0" />
+            <Font size="30.0" />
          </font>
       </Text>
-      <TextField id="profilNameField" layoutX="92.0" layoutY="157.0" prefHeight="61.0" prefWidth="297.0" />
-      <Button id="startButton " layoutX="401.0" layoutY="157.0" mnemonicParsing="false" onMouseClicked="#handleStartButtonClick" prefHeight="61.0" prefWidth="108.0" style="-fx-background-color: #16386C;" text="starten" textAlignment="CENTER" textFill="WHITE">
+
+      <!-- Button for Profile 1 -->
+      <Button id="buttonProfil1" layoutX="55.0" layoutY="136.0" minHeight="130.0" minWidth="130.0" maxHeight="130.0" maxWidth="130.0" style="-fx-background-color: transparent;" onAction="#onProfilClick">
+         <graphic>
+            <ImageView fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="/Bildmaterial/Profilbild.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+
+      <!-- Button for Profile 2 -->
+      <Button id="buttonProfil2" layoutX="235.0" layoutY="136.0" minHeight="130.0" minWidth="130.0" maxHeight="130.0" maxWidth="130.0" style="-fx-background-color: transparent;" onAction="#onProfilClick">
+         <graphic>
+            <ImageView fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="/Bildmaterial/Profilbild.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+
+      <!-- Button for Profile 3 -->
+      <Button id="buttonProfil3" layoutX="415.0" layoutY="135.0" minHeight="130.0" minWidth="130.0" maxHeight="130.0" maxWidth="130.0" style="-fx-background-color: transparent;" onAction="#onProfilClick">
+         <graphic>
+            <ImageView fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="/Bildmaterial/Profilbild.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+
+      <Text id="profilName1" layoutX="90.0" layoutY="294.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name1">
          <font>
             <Font size="20.0" />
          </font>
-      </Button>
-      <Button id="createProfileButton" layoutX="91.0" layoutY="245.0" mnemonicParsing="false" onMouseClicked="#handleCreateProfile" prefHeight="61.0" prefWidth="418.0" style="-fx-background-color: #16386C;" text="Ich habe noch kein Profil" textFill="WHITE">
+      </Text>
+      <Text id="profilName2" layoutX="270.0" layoutY="294.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name2">
          <font>
             <Font size="20.0" />
          </font>
-      </Button>
+      </Text>
+      <Text id="profilName3" layoutX="450.0" layoutY="294.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name3">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
    </children>
 </Pane>

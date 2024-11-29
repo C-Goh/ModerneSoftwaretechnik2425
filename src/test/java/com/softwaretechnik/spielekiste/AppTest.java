@@ -1,4 +1,4 @@
-package com.softwaretechnik;
+package com.softwaretechnik.spielekiste;
 
 import javafx.application.Platform;
 import javafx.scene.control.Label;
