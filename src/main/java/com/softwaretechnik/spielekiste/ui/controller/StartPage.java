@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 public class StartPage {
 
     @FXML
-    private void onProfilClick(ActionEvent event) {
+    protected void onProfilClick(ActionEvent event) {
         // Stelle sicher, dass das Event von einer Schaltfläche ausgelöst wurde
         if (!(event.getSource() instanceof Button)) {
             System.err.println("Das Event wurde nicht von einer Schaltfläche ausgelöst.");
@@ -31,13 +31,7 @@ public class StartPage {
         loadCreateProfileScene(profilName, event);
     }
 
-    /**
-     * Bestimmt den Profilnamen basierend auf der ID der Schaltfläche.
-     *
-     * @param buttonId die ID der geklickten Schaltfläche
-     * @return der Profilname, oder ein leerer String, wenn die ID unbekannt ist
-     */
-    private String getProfilNameByButtonId(String buttonId) {
+    public String getProfilNameByButtonId(String buttonId) {
         switch (buttonId) {
             case "buttonProfil1":
                 return "Profil 1";
@@ -50,13 +44,7 @@ public class StartPage {
         }
     }
 
-    /**
-     * Lädt die `CreateProfile.fxml`-Datei und zeigt sie in der aktuellen Bühne an.
-     *
-     * @param profilName der Name des Profils, das erstellt wird
-     * @param event      das auslösende Event
-     */
-    private void loadCreateProfileScene(String profilName, ActionEvent event) {
+    protected void loadCreateProfileScene(String profilName, ActionEvent event) {
         try {
             // Lade die FXML-Datei
             final FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/view/CreateProfile.fxml"));
