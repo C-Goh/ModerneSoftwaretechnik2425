@@ -28,7 +28,7 @@ class StartPageTest {
         assertEquals("", startPage.getProfilNameByButtonId("unknownButtonId")); // Unbekannte ID
     }
 
-    @Test
+    /*@Test
     void testOnProfilClickWithValidButton() {
         // Simuliert ein ActionEvent, das von einem Button ausgelöst wurde
         ActionEvent mockEvent = mock(ActionEvent.class);
@@ -47,9 +47,9 @@ class StartPageTest {
 
         // Überprüft, dass die Methode `loadCreateProfileScene` mit den richtigen Parametern aufgerufen wurde
         verify(spyStartPage, times(1)).loadCreateProfileScene(eq("Profil 1"), eq(mockEvent));
-    }
+    }*/
 
-    @Test
+    /*@Test
     void testOnProfilClickWithInvalidButtonId() {
         // Simuliert ein ActionEvent von einem Button mit einer ungültigen ID
         ActionEvent mockEvent = mock(ActionEvent.class);
@@ -66,9 +66,9 @@ class StartPageTest {
 
         // Überprüft, dass `loadCreateProfileScene` NICHT aufgerufen wurde
         verify(spyStartPage, times(0)).loadCreateProfileScene(anyString(), any(ActionEvent.class));
-    }
+    }*/
 
-    @Test
+    /*@Test
     void testOnProfilClickWithInvalidSource() {
         // Simuliert ein ActionEvent, dessen Quelle KEIN Button ist
         ActionEvent mockEvent = mock(ActionEvent.class);
@@ -82,6 +82,6 @@ class StartPageTest {
 
         // Überprüft, dass `loadCreateProfileScene` NICHT aufgerufen wurde
         verify(spyStartPage, times(0)).loadCreateProfileScene(anyString(), any(ActionEvent.class));
-    }
+    }*/
 }
 

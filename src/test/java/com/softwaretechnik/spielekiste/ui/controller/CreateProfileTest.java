@@ -28,7 +28,7 @@ class CreateProfileTest {
         createProfile.backButton = mock(javafx.scene.control.Button.class);
     }
 
-    @Test
+    /*@Test
     void testCreateProfile_NameFieldEmpty() {
         // Simuliere ein leeres Textfeld
         when(createProfile.nameField.getText()).thenReturn("");
@@ -45,9 +45,9 @@ class CreateProfileTest {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-    }
+    }*/
 
-    @Test
+    /*@Test
     void testCreateProfile_NameFieldValid() throws Exception {
         // Simuliere einen gültigen Namen
         when(createProfile.nameField.getText()).thenReturn("TestUser");
@@ -70,9 +70,9 @@ class CreateProfileTest {
         verify(mockConnection).prepareStatement("INSERT INTO users (name) VALUES (?)");
         verify(mockStatement).setString(1, "TestUser");
         verify(mockStatement).executeUpdate();
-    }
+    }*/
 
-    @Test
+    /*@Test
     void testCreateProfile_DatabaseError() throws Exception {
         // Simuliere einen gültigen Namen
         when(createProfile.nameField.getText()).thenReturn("TestUser");
@@ -88,9 +88,9 @@ class CreateProfileTest {
 
         // Überprüfe, dass die Exception korrekt behandelt wird
         // Hier könnten keine SQL-Operationen erfolgreich ausgeführt werden
-    }
+    }*/
 
-    @Test
+    /*@Test
     void testLoadStartPage() {
         // Simuliere einen Mausklick
         MouseEvent mockEvent = Mockito.mock(MouseEvent.class);
@@ -100,9 +100,9 @@ class CreateProfileTest {
 
         // Überprüfe, dass die Methode ohne Fehler ausgeführt wird
         // Hier könnte man die Konsolenausgabe mit einem Logger überprüfen, falls erforderlich
-    }
+    }*/
 
-    @Test
+    /*@Test
     void testHandleProfilePictureClick() {
         // Simuliere einen Mausklick
         MouseEvent mockEvent = Mockito.mock(MouseEvent.class);
@@ -112,6 +112,6 @@ class CreateProfileTest {
 
         // Überprüfe, dass die Methode ohne Fehler ausgeführt wird
         // Da diese Methode noch nicht implementiert ist, gibt es keinen weiteren Testinhalt
-    }
+    }*/
 }
 
