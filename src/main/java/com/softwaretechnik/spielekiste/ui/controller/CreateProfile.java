@@ -29,60 +29,18 @@ public class CreateProfile {
     @FXML
     protected Button backButton;
 
-    /*// Methode, die beim Klick auf den Button "Profil erstellen" ausgeführt wird
+    // Methode zum Laden und Öffnen der GameOverview.fxml
     @FXML
-    void createProfile(MouseEvent event) {
-        final String name = nameField.getText();
-
-        if (name == null || name.trim().isEmpty()) {
-            System.out.println("Bitte gebe deinen Namen ein");
-            return;
-        }
-
-        // Verbindung zur Datenbank über SQLiteManager aufbauen
-        try (Connection connection = SQLiteManager.getConnection()) {
-            final String sql = "INSERT INTO users (name) VALUES (?)";
-            final PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setString(1, name);
-            final int rowsInserted = statement.executeUpdate();
-
-            if (rowsInserted > 0) {
-                System.out.println("Dein Profil wurde erfolgreich erstellt!");
-                openGameOverview(); // Wechselt zur GameOverview.fxml
-            }
-        } catch (Exception e) {
-            System.out.println("Oh nein - es gab einen Fehler beim Erstellen deines Profils: " + e.getMessage());
-            e.printStackTrace();
-        }
-    }*/
-
-    /*// Methode zum Laden und Öffnen der GameOverview.fxml
-    private void openGameOverview() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/GameOverview.fxml"));
-            Scene scene = new Scene(loader.load());
-
-            // Holen der aktuellen Stage und Wechsel der Szene
-            Stage stage = (Stage) createProfileButton.getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            System.out.println("Fehler beim Laden der Spieleübersicht" + e.getMessage());
-            e.printStackTrace();
-        }
-    }*/
-
-@FXML
     void showGameOverview(MouseEvent event) {
         System.out.println("Zeige die Spieleübersicht");
 
         try {
             // Lade die GameOverview.fxml
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/view/GameOverview.fxml"));
-            Scene scene = new Scene(loader.load());
+            final FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/view/GameOverview.fxml"));
+            final Scene scene = new Scene(loader.load());
 
             // Holen der aktuellen Stage und Wechsel der Szene
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            final Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
@@ -98,11 +56,11 @@ public class CreateProfile {
 
         try {
             // Lade die Startseite (z. B. die Startseite.fxml)
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/view/StartPage.fxml"));
-            Scene scene = new Scene(loader.load());
+            final FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/view/StartPage.fxml"));
+            final Scene scene = new Scene(loader.load());
 
             // Holen der aktuellen Stage und Wechsel der Szene
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            final Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
@@ -115,6 +73,6 @@ public class CreateProfile {
     @FXML
     void handleProfilePictureClick(MouseEvent event) {
         System.out.println("Profilbild auswählen");
-        // Hier Logik eingebauen, die es dem Benutzer erlaubt, ein Bild aus einem Datei-Dialog auszuwählen
+        // Hier Logik einbauen, die es dem Benutzer erlaubt, ein Bild aus einem Datei-Dialog auszuwählen
     }
 }

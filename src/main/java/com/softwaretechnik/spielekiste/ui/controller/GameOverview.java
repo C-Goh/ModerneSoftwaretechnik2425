@@ -34,11 +34,11 @@ public class GameOverview {
         System.out.println("Zurück-Button wurde geklickt. Lade Startseite.");
         try {
             // Lade die StartPage.fxml
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/view/StartPage.fxml"));
-            Parent root = loader.load();
+            final FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/view/StartPage.fxml"));
+            final Parent root = loader.load();
 
             // Wechsle zur Startseite
-            Stage stage = (Stage) backButton.getScene().getWindow();
+            final Stage stage = (Stage) backButton.getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.setTitle("Startseite");
             stage.show();
