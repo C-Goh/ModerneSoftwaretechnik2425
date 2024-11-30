@@ -2,55 +2,62 @@ package com.softwaretechnik.spielekiste.ui.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 public class StartPage {
 
-    // FXML-Elemente, die aus der FXML-Datei geladen werden
     @FXML
-    private Text pageTitle;
+    protected void onProfilClick(ActionEvent event) {
+        // Stelle sicher, dass das Event von einer Schaltfläche ausgelöst wurde
+        if (!(event.getSource() instanceof Button)) {
+            System.err.println("Das Event wurde nicht von einer Schaltfläche ausgelöst.");
+            return;
+        }
 
-    @FXML
-    private TextField profilNameField;
+        // Identifiziere die geklickte Schaltfläche
+        final Button clickedButton = (Button) event.getSource();
+        final String profilName = getProfilNameByButtonId(clickedButton.getId());
 
-    @FXML
-    private Button startButton;
+        if (profilName.isEmpty()) {
+            System.err.println("Unbekannte Button-ID: " + clickedButton.getId());
+            return;
+        }
 
-    @FXML
-    private Button createProfileButton;
-
-    // Diese Methode wird aufgerufen, wenn der "Starten"-Button geklickt wird
-    @FXML
-    private void handleStartButtonClick(ActionEvent event) {
-        final String profilName = profilNameField.getText();
-
-        // Hier Logik hinzufügen, die den Profilnamen weiter verarbeitet
-        System.out.println("Profilname: " + profilName);
-
-        // Beispiel: Start-Button Aktion (hier eine einfache Konsolenausgabe)
-        System.out.println("Start-Button wurde geklickt!");
-
-        // loadNewScene();
+        // Lade die FXML-Datei und öffne die neue Szene
+        loadCreateProfileScene(profilName, event);
     }
 
-    // Diese Methode wird aufgerufen, wenn der "Ich habe noch kein Profil"-Button geklickt wird
-    @FXML
-    private void handleCreateProfile(ActionEvent event) {
-        System.out.println("Create Profile Button clicked!");
-
-        // loadCreateProfileScene();
+    public String getProfilNameByButtonId(String buttonId) {
+        switch (buttonId) {
+            case "buttonProfil1":
+                return "Profil 1";
+            case "buttonProfil2":
+                return "Profil 2";
+            case "buttonProfil3":
+                return "Profil 3";
+            default:
+                return ""; // Unbekannte ID
+        }
     }
 
-    // Beispiel einer Methode, um eine neue Szene zu laden (wenn gewünscht)
-    private void loadNewScene() {
-        // Logik zum Laden einer neuen Szene hier
-        System.out.println("Neue Szene wird geladen...");
-    }
+    protected void loadCreateProfileScene(String profilName, ActionEvent event) {
+        try {
+            // Lade die FXML-Datei
+            final FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/view/CreateProfile.fxml"));
+            final Parent root = loader.load();
 
-    private void loadCreateProfileScene() {
-        // Logik zum Erstellen eines Profils hier
-        System.out.println("Erstelle ein neues Profil...");
+            // Hole den aktuellen Stage und aktualisiere die Szene
+            final Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Profil erstellen - " + profilName);
+            stage.show();
+        } catch (Exception e) {
+            System.err.println("Fehler beim Laden der CreateProfile-Szene: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 }
