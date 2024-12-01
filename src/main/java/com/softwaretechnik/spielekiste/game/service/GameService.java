@@ -1,12 +1,13 @@
 package com.softwaretechnik.spielekiste.game.service;
 
+import com.softwaretechnik.spielekiste.user.domain.repository.UserRepository;
 import com.softwaretechnik.spielekiste.user.infrastructure.persistence.UserRepositoryImpl;
 
 public class GameService {
 
-    private UserRepositoryImpl userRepository;
+    private UserRepository userRepository;
 
-    public GameService(UserRepositoryImpl userRepository) {
+    public GameService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
@@ -15,6 +16,7 @@ public class GameService {
             throw new IllegalArgumentException("Invalid input for ending the game.");
         }
 
+        // Save the game points, assuming the aspect will handle it
         System.out.println("Game has ended for User ID: " + userId + ", Game ID: " + gameId);
     }
 }

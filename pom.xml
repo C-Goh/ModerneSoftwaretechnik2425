@@ -17,6 +17,7 @@
     <maven.compiler.source>21</maven.compiler.source>
     <maven.compiler.target>21</maven.compiler.target>
     <jacoco.version>0.8.12</jacoco.version>
+    <aspectj.version>1.9.22</aspectj.version>
   </properties>
 
   <dependencies>
@@ -74,12 +75,18 @@
     <dependency>
       <groupId>org.aspectj</groupId>
       <artifactId>aspectjrt</artifactId>
-      <version>1.9.22.1</version>
+      <version>${aspectj.version}</version>
     </dependency>
     <dependency>
       <groupId>org.aspectj</groupId>
       <artifactId>aspectjweaver</artifactId>
-      <version>1.9.22.1</version>
+      <version>${aspectj.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.testng</groupId>
+      <artifactId>testng</artifactId>
+      <version>RELEASE</version>
+      <scope>compile</scope>
     </dependency>
   </dependencies>
 
@@ -92,8 +99,35 @@
         <directory>src/main/resources</directory>
       </testResource>
     </testResources>
-    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
+        <!--- AspectJ -->
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>aspectj-maven-plugin</artifactId>
+          <version>1.15.0</version>
+          <dependencies>
+            <dependency>
+              <groupId>org.aspectj</groupId>
+              <artifactId>aspectjtools</artifactId>
+              <!-- AspectJ compiler version, in sync with runtime -->
+              <version>${aspectj.version}</version>
+            </dependency>
+          </dependencies>
+          <configuration>
+            <!-- Your favourite Java source/target version -->
+            <complianceLevel>21</complianceLevel>
+          </configuration>
+          <executions>
+            <execution>
+              <goals>
+                <goal>compile</goal>
+                <goal>test-compile</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+        <!--- AspectJ -->
+
         <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
         <plugin>
           <artifactId>maven-clean-plugin</artifactId>
@@ -204,32 +238,6 @@
                 </execution>
             </executions>
         </plugin>
-        <plugin>
-          <groupId>org.codehaus.mojo</groupId>
-          <artifactId>aspectj-maven-plugin</artifactId>
-          <version>1.12.6</version>
-          <configuration>
-            <complianceLevel>1.8</complianceLevel>
-            <source>1.8</source>
-            <target>1.8</target>
-            <aspectLibraries>
-              <aspectLibrary>
-                <groupId>org.aspectj</groupId>
-                <artifactId>aspectjrt</artifactId>
-              </aspectLibrary>
-            </aspectLibraries>
-            <showWeaveInfo>true</showWeaveInfo>
-          </configuration>
-          <executions>
-            <execution>
-              <goals>
-                <goal>compile</goal>
-                <goal>test-compile</goal>
-              </goals>
-            </execution>
-          </executions>
-        </plugin>
       </plugins>
-    </pluginManagement>
   </build>
 </project>

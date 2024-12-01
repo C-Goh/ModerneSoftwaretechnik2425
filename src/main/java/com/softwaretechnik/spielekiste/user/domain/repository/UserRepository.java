@@ -16,4 +16,6 @@ public interface UserRepository {
     public void updateUser(UserEntity user);
 
     public void deleteUser(int id);
+
+    public void saveGamePoints(int userId, int gameId, int points);
 }

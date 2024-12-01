@@ -1,9 +1,0 @@
-<aspectj>
-    <weaver options="-verbose -showWeaveInfo">
-        <include within="com.softwaretechnik.spielekiste..*"/>
-    </weaver>
-    <aspects>
-        <aspect name="com.softwaretechnik.spielekiste.infrastructure.aspect.GamePointsAspect" />
-        <aspect name="com.softwaretechnik.spielekiste.infrastructure.aspect.LoggingAspect"/>
-    </aspects>
-</aspectj>
