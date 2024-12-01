@@ -3,6 +3,7 @@ package com.softwaretechnik.spielekiste.quiz.domain.repository;
 import com.softwaretechnik.spielekiste.infrastructure.persistence.SQLiteManager;
 import com.softwaretechnik.spielekiste.quiz.domain.entity.QuizEntity;
 import com.softwaretechnik.spielekiste.quiz.infrastructure.persistence.QuizRepositoryImpl;
+import com.softwaretechnik.spielekiste.user.infrastructure.config.PropertyLoader;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -22,8 +23,7 @@ public class QuizRepositoryTest {
 
     @BeforeEach
     public void setUp() throws SQLException {
-        String tempDatabaseUrl = "jdbc:sqlite:test.db";
-        SQLiteManager.setDatabaseUrl(tempDatabaseUrl);
+        PropertyLoader.loadProperties("src/test/resources/test-application.properties");
         SQLiteManager.initializeDatabase();
         quizRepository = new QuizRepositoryImpl();
 

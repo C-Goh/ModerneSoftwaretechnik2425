@@ -1,5 +1,6 @@
 package com.softwaretechnik.spielekiste.ui.controller;
 
+import com.softwaretechnik.spielekiste.user.application.service.UserContext;
 import com.softwaretechnik.spielekiste.user.domain.entity.UserEntity;
 import com.softwaretechnik.spielekiste.user.infrastructure.persistence.UserRepositoryImpl;
 import javafx.fxml.FXML;
@@ -45,18 +46,21 @@ public class StartPageController {
 
         if (!users.isEmpty()) {
             button1.setText(users.getFirst().getName());
+            button1.setUserData(users.getFirst().getId());
         } else {
             button1.setText("+");
         }
 
         if (users.size() > 1) {
             button2.setText(users.get(1).getName());
+            button2.setUserData(users.get(1).getId());
         } else {
             button2.setText("+");
         }
 
         if (users.size() > 2) {
             button3.setText(users.get(2).getName());
+            button3.setUserData(users.get(2).getId());
         } else {
             button3.setText("+");
         }
@@ -64,13 +68,14 @@ public class StartPageController {
 
     @FXML
     private void handleButtonClick(MouseEvent event) {
-        Button clickedButton = (Button) event.getSource();
-        String buttonText = clickedButton.getText();
-        if ("+".equals(buttonText)) {
+        final Button clickedButton = (Button) event.getSource();
+        if ("+".equals(clickedButton.getText())) {
             handleCreateProfile(event);
         } else {
-            System.out.println("Selected profile: " + buttonText);
-            // Logic to load the selected profile
+            final int userId = (int) clickedButton.getUserData();
+            final UserRepositoryImpl userRepository = new UserRepositoryImpl();
+            final UserEntity selectedProfile = userRepository.findUserById(userId);
+            UserContext.setCurrentUser(selectedProfile);
         }
     }
 }

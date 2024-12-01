@@ -3,6 +3,7 @@ package com.softwaretechnik.spielekiste.user.domain.repository;
 
 import com.softwaretechnik.spielekiste.infrastructure.persistence.SQLiteManager;
 import com.softwaretechnik.spielekiste.user.domain.entity.UserEntity;
+import com.softwaretechnik.spielekiste.user.infrastructure.config.PropertyLoader;
 import com.softwaretechnik.spielekiste.user.infrastructure.persistence.UserRepositoryImpl;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -23,8 +24,8 @@ public class UserRepositoryTest {
 
     @BeforeEach
     public void setUp() throws SQLException {
-        String tempDatabaseUrl = "jdbc:sqlite:test.db";
-        SQLiteManager.setDatabaseUrl(tempDatabaseUrl);
+        PropertyLoader.loadProperties("src/test/resources/test-application.properties");
+
         SQLiteManager.initializeDatabase();
         userRepository = new UserRepositoryImpl();
     }

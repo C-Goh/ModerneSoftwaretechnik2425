@@ -8,16 +8,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class SQLiteManager {
-    private static String databaseUrl = "jdbc:sqlite:softwaretechnik.db";
-
     private static final Logger LOGGER = Logger.getLogger(SQLiteManager.class.getName());
 
-    public static void setDatabaseUrl(String url) {
-        databaseUrl = url;
-    }
-
     public static Connection getConnection() throws SQLException {
-        LOGGER.log(Level.INFO, "Connecting to database: {0}", databaseUrl);
+        String databaseUrl = System.getProperty("db.url");
+        if (databaseUrl == null || databaseUrl.isEmpty()) {
+            throw new IllegalStateException("Database URL is not set");
+        }
         return DriverManager.getConnection(databaseUrl);
     }
 

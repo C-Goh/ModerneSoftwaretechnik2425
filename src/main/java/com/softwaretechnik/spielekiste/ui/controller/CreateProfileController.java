@@ -35,6 +35,7 @@ public class CreateProfileController {
 
     @FXML
     public void initialize() {
+        profileNameField.setText("");
         UserRepositoryImpl userRepository = new UserRepositoryImpl();
         List<UserEntity> users = userRepository.findAllUsers();
         hasProfiles.set(!users.isEmpty());
