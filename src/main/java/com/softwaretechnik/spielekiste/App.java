@@ -22,7 +22,7 @@ public class App extends Application {
         final String fxmlFile = users.isEmpty() ? "/ui/view/CreateProfile.fxml" : "/ui/view/StartPage.fxml";
         final Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(fxmlFile)));
         primaryStage.setTitle(users.isEmpty() ? "Create Profile" : "Start Page");
-        primaryStage.setScene(new Scene(root));
+        primaryStage.setScene(new Scene(root, 800, 600));
         primaryStage.show();
     }
 

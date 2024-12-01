@@ -28,7 +28,7 @@ public class CreateProfileControllerUITest extends ApplicationTest {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/view/CreateProfile.fxml"));
         Parent root = loader.load();
         CreateProfileController createProfileController = loader.getController();
-        stage.setScene(new Scene(root));
+        stage.setScene(new Scene(root, 800 , 600));
         stage.show();
     }
 
