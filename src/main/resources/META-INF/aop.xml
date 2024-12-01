@@ -4,8 +4,6 @@
     </weaver>
     <aspects>
         <aspect name="com.softwaretechnik.spielekiste.infrastructure.aspect.GamePointsAspect" />
-    </aspects>
-    <aspects>
-        <aspect name="com.softwaretechnik.spielekiste.aspect.LoggingAspect"/>
+        <aspect name="com.softwaretechnik.spielekiste.infrastructure.aspect.LoggingAspect"/>
     </aspects>
 </aspectj>

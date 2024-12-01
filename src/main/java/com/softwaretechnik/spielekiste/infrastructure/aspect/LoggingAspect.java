@@ -7,8 +7,8 @@ import org.aspectj.lang.JoinPoint;
 @Aspect
 public class LoggingAspect {
 
-    @Before("execution(* com.softwaretechnik.spielekiste..*(..))")
+    @Before("execution(* com.softwaretechnik.spielekiste.infrastructure.aspect.*(..))")
     public void logBeforeMethodExecution(JoinPoint joinPoint) {
-        System.out.println("Executing method: " + joinPoint.getSignature().getName());
+        System.out.println("Executing aspect: " + joinPoint.getSignature().getName());
     }
 }

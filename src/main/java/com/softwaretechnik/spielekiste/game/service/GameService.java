@@ -10,12 +10,11 @@ public class GameService {
         this.userRepository = userRepository;
     }
 
-    public void endGame(int userId, int gameId, Integer points) {
-        // Logic for ending the game
-        saveGamePoints(userId, gameId, points);
-    }
+    public void endGame(int userId, int gameId, int points) {
+        if (userId <= 0 || gameId <= 0 || points < 0) {
+            throw new IllegalArgumentException("Invalid input for ending the game.");
+        }
 
-    private void saveGamePoints(int userId, int gameId, Integer points) {
-        userRepository.saveGamePoints(userId, gameId, points);
+        System.out.println("Game has ended for User ID: " + userId + ", Game ID: " + gameId);
     }
 }
