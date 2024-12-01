@@ -3,6 +3,7 @@ package com.softwaretechnik.spielekiste.user.infrastructure.persistence;
 import com.softwaretechnik.spielekiste.infrastructure.persistence.SQLiteManager;
 import com.softwaretechnik.spielekiste.user.domain.entity.UserEntity;
 import com.softwaretechnik.spielekiste.user.domain.repository.UserRepository;
+import com.softwaretechnik.spielekiste.user.domain.service.UserDomainService;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -15,42 +16,16 @@ import java.util.logging.Logger;
  */
 public class UserRepositoryImpl implements UserRepository {
     private static final Logger LOGGER = Logger.getLogger(UserRepositoryImpl.class.getName());
+    private final UserDomainService userDomainService = new UserDomainService();
 
-    /**
-     * Validates the user name.
-     *
-     * @param name the user name to validate
-     * @return true if the name is valid, false otherwise
-     */
-    private static boolean isValidName(String name) {
-        return name.matches("[a-zA-Z0-9 ]+");
-    }
 
-    /**
-     * Finds a user by name.
-     *
-     * @param name the name of the user to find
-     * @return the UserEntity if found, null otherwise
-     */
-    private UserEntity findUserByName(String name) {
-        final String getUserSQL = "SELECT * FROM users WHERE name = ?";
-        try (Connection connection = SQLiteManager.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(getUserSQL)) {
-            preparedStatement.setString(1, name);
-            final ResultSet resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()) {
-                return new UserEntity(resultSet.getInt("id"), resultSet.getString("name"));
-            }
-        } catch (SQLException e) {
-            LOGGER.log(Level.SEVERE, "Error getting user", e);
-        }
-        return null;
-    }
 
     @Override
     public void createUser(UserEntity user) {
-        if (!isValidName(user.getName())) {
-            LOGGER.log(Level.WARNING, "Invalid name: {0}", user.getName());
+        try {
+            userDomainService.validateUser(user);
+        } catch (IllegalArgumentException e) {
+            LOGGER.log(Level.WARNING, e.getMessage());
             return;
         }
 
@@ -59,16 +34,10 @@ public class UserRepositoryImpl implements UserRepository {
             return;
         }
 
-        if (findUserById(user.getId()) != null) {
-            LOGGER.log(Level.WARNING, "User already exists: {0}", user.getName());
-            return;
-        }
-
-        final String insertUserSQL = "INSERT INTO users (id, name) VALUES (?, ?)";
+        final String insertUserSQL = "INSERT INTO users (name) VALUES (?)";
         try (Connection connection = SQLiteManager.getConnection();
              PreparedStatement insertUserStatement = connection.prepareStatement(insertUserSQL)) {
-            insertUserStatement.setInt(1, user.getId());
-            insertUserStatement.setString(2, user.getName());
+            insertUserStatement.setString(1, user.getName());
             insertUserStatement.executeUpdate();
         } catch (SQLException e) {
             LOGGER.log(Level.SEVERE, "Error creating user", e);
@@ -130,5 +99,21 @@ public class UserRepositoryImpl implements UserRepository {
         } catch (SQLException e) {
             LOGGER.log(Level.SEVERE, "Error deleting user", e);
         }
+    }
+
+    @Override
+    public UserEntity findUserByName(String name) {
+        final String getUserSQL = "SELECT * FROM users WHERE name = ?";
+        try (Connection connection = SQLiteManager.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(getUserSQL)) {
+            preparedStatement.setString(1, name);
+            final ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                return new UserEntity(resultSet.getInt("id"), resultSet.getString("name"));
+            }
+        } catch (SQLException e) {
+            LOGGER.log(Level.SEVERE, "Error getting user by name", e);
+        }
+        return null;
     }
 }

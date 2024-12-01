@@ -4,7 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 
-public class GameOverview {
+public class GameOverviewController {
 
     // FXML-Elemente, die mit der FXML-Datei verbunden sind
     @FXML

@@ -13,7 +13,7 @@ public class UserDomainService {
         }
     }
 
-    private boolean isValidName(String name) {
+    public boolean isValidName(String name) {
         return name.matches("[a-zA-Z0-9 ]+");
     }
 }

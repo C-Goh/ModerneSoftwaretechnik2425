@@ -6,14 +6,14 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.softwaretechnik.spielekiste.ui.controller.CreateProfileController">
    <children>
       <Button id="createProfileButton" layoutX="46.0" layoutY="285.0" mnemonicParsing="false" onMouseClicked="#createProfile" prefHeight="61.0" prefWidth="108.0" style="-fx-background-color: #16386C;" text="erstellen" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <TextField id="profilNameField " layoutX="48.0" layoutY="194.0" prefHeight="61.0" prefWidth="279.0" />
+      <TextField fx:id="profileNameField" layoutX="48.0" layoutY="194.0" prefHeight="61.0" prefWidth="279.0" />
       <Text id="pageTitle" layoutX="48.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Erstelle dein Profil">
          <font>
             <Font size="40.0" />
@@ -24,7 +24,7 @@
             <Font size="30.0" />
          </font>
       </Text>
-      <ImageView id="profilePicture " fx:id="profileImageView" fitHeight="142.0" fitWidth="142.0" layoutX="392.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView id="profilePicture" fx:id="profileImageView" fitHeight="142.0" fitWidth="142.0" layoutX="392.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="/Bildmaterial/Profilbild.png" />
          </image>

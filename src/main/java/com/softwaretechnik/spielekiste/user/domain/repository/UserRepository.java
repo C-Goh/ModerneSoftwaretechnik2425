@@ -9,6 +9,8 @@ public interface UserRepository {
 
     public UserEntity findUserById(int id);
 
+    public UserEntity findUserByName(String name);
+
     public List<UserEntity> findAllUsers();
 
     public void updateUser(UserEntity user);
