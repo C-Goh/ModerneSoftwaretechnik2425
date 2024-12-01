@@ -5,6 +5,7 @@ import com.softwaretechnik.spielekiste.quiz.domain.entity.QuizEntity;
 import com.softwaretechnik.spielekiste.quiz.infrastructure.persistence.QuizRepositoryImpl;
 import com.softwaretechnik.spielekiste.user.application.service.UserContext;
 import com.softwaretechnik.spielekiste.user.infrastructure.config.PropertyLoader;
+import com.softwaretechnik.spielekiste.user.infrastructure.persistence.UserRepositoryImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -20,10 +21,14 @@ public class QuizRepositoryImplTest {
 
     private QuizRepositoryImpl quizRepository;
 
+
+
     @BeforeEach
     public void setUp() throws SQLException {
-        quizRepository = new QuizRepositoryImpl();
+        PropertyLoader.loadProperties("src/test/resources/test-application.properties");
         initializeDatabase();
+        quizRepository = new QuizRepositoryImpl();
+
     }
 
     private void initializeDatabase() throws SQLException {

@@ -20,8 +20,18 @@ public class SQLiteManager {
 
     public static void initializeDatabase() {
         try (Connection connection = getConnection(); Statement statement = connection.createStatement()) {
-            final String createUsersTable = "CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, name TEXT)";
+            final String createUsersTable = "CREATE TABLE IF NOT EXISTS users (" +
+                    "id INTEGER PRIMARY KEY, " +
+                    "name TEXT)";
             statement.execute(createUsersTable);
+
+            final String createUserGamePointsTable = "CREATE TABLE IF NOT EXISTS user_game_points (" +
+                    "user_id INTEGER, " +
+                    "game_id INTEGER, " +
+                    "points INTEGER, " +
+                    "FOREIGN KEY(user_id) REFERENCES users(id), " +
+                    "PRIMARY KEY(user_id, game_id))";
+            statement.execute(createUserGamePointsTable);
 
             final String createCurrentQuestionTable = "CREATE TABLE IF NOT EXISTS current_question (" +
                     "quiz_id INTEGER, " +

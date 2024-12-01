@@ -1,10 +1,12 @@
 package com.softwaretechnik.spielekiste.ui.controller;
 
+import com.softwaretechnik.spielekiste.game.service.GameService;
 import com.softwaretechnik.spielekiste.quiz.domain.entity.QuizEntity;
 import com.softwaretechnik.spielekiste.quiz.infrastructure.persistence.QuizRepositoryImpl;
 import com.softwaretechnik.spielekiste.user.application.service.UserContext;
 
 import com.softwaretechnik.spielekiste.user.application.service.UserContext;
+import com.softwaretechnik.spielekiste.user.infrastructure.persistence.UserRepositoryImpl;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -29,11 +31,13 @@ public class QuizController {
     private Label scoreLabel;
 
     final int userId = UserContext.getCurrentUser().getId();
+    final int gameId = 1;
     private int score = 0;
     private int currentQuestionIndex = 0;
     private QuizEntity quiz;
     private QuizRepositoryImpl quizRepository = new QuizRepositoryImpl();
-
+    private UserRepositoryImpl userRepository = new UserRepositoryImpl();
+    private GameService gameService = new GameService(userRepository);
 
     @FXML
     public void initialize() {
@@ -70,6 +74,10 @@ public class QuizController {
             answerButton3.setDisable(true);
             answerButton4.setDisable(true);
             scoreLabel.setText(quizRepository.getFinalResult(quiz.getId(), userId));
+
+            int points = quizRepository.getFinalPoints(quiz.getId(), userId);
+
+            gameService.endGame(userId, gameId, points);
         }
     }
 

@@ -2,6 +2,7 @@ package com.softwaretechnik.spielekiste.user.domain.repository;
 
 
 import com.softwaretechnik.spielekiste.infrastructure.persistence.SQLiteManager;
+import com.softwaretechnik.spielekiste.quiz.infrastructure.persistence.QuizRepositoryImpl;
 import com.softwaretechnik.spielekiste.user.domain.entity.UserEntity;
 import com.softwaretechnik.spielekiste.user.infrastructure.config.PropertyLoader;
 import com.softwaretechnik.spielekiste.user.infrastructure.persistence.UserRepositoryImpl;
@@ -16,6 +17,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import static com.softwaretechnik.spielekiste.infrastructure.persistence.SQLiteManager.getConnection;
+import static com.softwaretechnik.spielekiste.infrastructure.persistence.SQLiteManager.initializeDatabase;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class UserRepositoryTest {
@@ -25,9 +27,9 @@ public class UserRepositoryTest {
     @BeforeEach
     public void setUp() throws SQLException {
         PropertyLoader.loadProperties("src/test/resources/test-application.properties");
-
-        SQLiteManager.initializeDatabase();
+        initializeDatabase();
         userRepository = new UserRepositoryImpl();
+
     }
 
     @AfterEach

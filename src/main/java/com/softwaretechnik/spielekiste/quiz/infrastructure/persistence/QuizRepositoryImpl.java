@@ -101,4 +101,24 @@ public class QuizRepositoryImpl implements QuizRepository {
         }
         return "Error getting final result";
     }
+
+    @Override
+    public int getFinalPoints(int quizId, int userId) {
+        final String getResultSQL = "SELECT COUNT(*) AS total_questions, SUM(CASE WHEN correct_answer = user_answer THEN 1 ELSE 0 END) AS correct_answers FROM quiz_questions WHERE quiz_id = ? AND user_id = ?";
+        try (Connection connection = SQLiteManager.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(getResultSQL)) {
+            preparedStatement.setInt(1, quizId);
+            preparedStatement.setInt(2, userId);
+            final ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                final int totalQuestions = resultSet.getInt("total_questions");
+                final int correctAnswers = resultSet.getInt("correct_answers");
+                final double percentage = Math.round(((double) correctAnswers / totalQuestions) * 100);
+                return correctAnswers;
+            }
+        } catch (SQLException e) {
+            LOGGER.log(Level.SEVERE, "Error getting final result", e);
+        }
+        return 0;
+    }
 }

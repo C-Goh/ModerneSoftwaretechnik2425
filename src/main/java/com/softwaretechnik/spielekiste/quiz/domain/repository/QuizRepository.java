@@ -10,4 +10,6 @@ public interface QuizRepository {
     boolean checkAnswer(int quizId, int questionId, int userId, String answer);
 
     String getFinalResult(int quizId, int userId);
+
+    int getFinalPoints(int quizId, int userId);
 }

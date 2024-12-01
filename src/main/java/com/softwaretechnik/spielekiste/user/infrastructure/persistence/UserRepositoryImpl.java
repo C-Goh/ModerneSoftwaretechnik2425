@@ -117,4 +117,19 @@ public class UserRepositoryImpl implements UserRepository {
         return null;
     }
 
+    public void saveGamePoints(int userId, int gameId, Integer points) {
+        String sql = "INSERT INTO user_game_points (user_id, game_id, points) VALUES (?, ?, ?) " +
+                "ON CONFLICT(user_id, game_id) DO UPDATE SET points = user_game_points.points + excluded.points";
+
+        try (Connection connection = SQLiteManager.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setLong(1, userId);
+            statement.setLong(2, gameId);
+            statement.setInt(3, points);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
