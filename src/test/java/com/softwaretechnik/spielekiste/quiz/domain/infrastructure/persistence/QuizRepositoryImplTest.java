@@ -1,8 +1,10 @@
 package com.softwaretechnik.spielekiste.quiz.domain.infrastructure.persistence;
 
+import com.softwaretechnik.spielekiste.infrastructure.persistence.SQLiteManager;
 import com.softwaretechnik.spielekiste.quiz.domain.entity.QuizEntity;
 import com.softwaretechnik.spielekiste.quiz.infrastructure.persistence.QuizRepositoryImpl;
 import com.softwaretechnik.spielekiste.user.application.service.UserContext;
+import com.softwaretechnik.spielekiste.user.infrastructure.config.PropertyLoader;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -25,16 +27,8 @@ public class QuizRepositoryImplTest {
     }
 
     private void initializeDatabase() throws SQLException {
-        try (Connection connection = DriverManager.getConnection("jdbc:sqlite::memory:");
-             Statement statement = connection.createStatement()) {
-            statement.execute("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, name TEXT)");
-            statement.execute("CREATE TABLE IF NOT EXISTS current_question (quiz_id INTEGER, question_id INTEGER, question TEXT, answer_options TEXT, correct_answer TEXT)");
-            statement.execute("CREATE TABLE IF NOT EXISTS quiz_results (quiz_id INTEGER, user_id INTEGER, points INTEGER, total_questions INTEGER)");
-            statement.execute("CREATE TABLE IF NOT EXISTS quiz_questions (id INTEGER PRIMARY KEY AUTOINCREMENT, quiz_id INTEGER, user_id INTEGER, question TEXT, answer_options TEXT, correct_answer TEXT, user_answer TEXT)");
-            statement.execute("INSERT INTO quiz_questions (quiz_id, user_id, question, answer_options, correct_answer) VALUES (1, 1, 'What is 2+2?', '2,3,4,5', '4')");
-            statement.execute("INSERT INTO quiz_questions (quiz_id, user_id, question, answer_options, correct_answer) VALUES (1, 1, 'What is the capital of France?', 'Berlin,London,Paris,Rome', 'Paris')");
-            statement.execute("INSERT INTO quiz_questions (quiz_id, user_id, question, answer_options, correct_answer) VALUES (1, 1, 'What color is the sky on a clear day?', 'Red,Blue,Green,Yellow', 'Blue')");
-        }
+        PropertyLoader.loadProperties("src/test/resources/test-application.properties");
+        SQLiteManager.initializeDatabase();
     }
 
     @Test
