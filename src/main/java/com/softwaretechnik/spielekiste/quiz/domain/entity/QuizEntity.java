@@ -1,68 +1,29 @@
 package com.softwaretechnik.spielekiste.quiz.domain.entity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class QuizEntity {
-    private int id;
-    private List<Question> questionCatalog;  // All available questions
-    private List<Question> questionList;     // The selected 3 questions
-    private int currentQuestionIndex;
-    private int points;
+    private final int id;
+    private final List<Question> questions;
 
-    public QuizEntity(int id, List<Question> questionCatalog) {
+    public QuizEntity(int id, List<Question> questions) {
         this.id = id;
-        this.questionCatalog = questionCatalog;
-        this.questionList = new ArrayList<>();
-        this.currentQuestionIndex = 0;
-        this.points = 0;
+        this.questions = questions;
     }
 
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public List<Question> getQuestionCatalog() {
-        return questionCatalog;
-    }
-
-    public void setQuestionCatalog(List<Question> questionCatalog) {
-        this.questionCatalog = questionCatalog;
-    }
-
-    public List<Question> getQuestionList() {
-        return questionList;
-    }
-
-    public void setQuestionList(List<Question> questionList) {
-        this.questionList = questionList;
-    }
-
-    public int getCurrentQuestionIndex() {
-        return currentQuestionIndex;
-    }
-
-    public void setCurrentQuestionIndex(int currentQuestionIndex) {
-        this.currentQuestionIndex = currentQuestionIndex;
-    }
-
-    public int getPoints() {
-        return points;
-    }
-
-    public void setPoints(int points) {
-        this.points = points;
+    public List<Question> getQuestions() {
+        return questions;
     }
 
     public static class Question {
-        private int id;
-        private String question;
-        private List<String> answerOptions;
-        private String correctAnswer;
+        private final int id;
+        private final String question;
+        private final List<String> answerOptions;
+        private final String correctAnswer;
 
         public Question(int id, String question, List<String> answerOptions, String correctAnswer) {
             this.id = id;
@@ -75,32 +36,16 @@ public class QuizEntity {
             return id;
         }
 
-        public void setId(int id) {
-            this.id = id;
-        }
-
         public String getQuestion() {
             return question;
-        }
-
-        public void setQuestion(String question) {
-            this.question = question;
         }
 
         public List<String> getAnswerOptions() {
             return answerOptions;
         }
 
-        public void setAnswerOptions(List<String> answerOptions) {
-            this.answerOptions = answerOptions;
-        }
-
         public String getCorrectAnswer() {
             return correctAnswer;
-        }
-
-        public void setCorrectAnswer(String correctAnswer) {
-            this.correctAnswer = correctAnswer;
         }
     }
 }

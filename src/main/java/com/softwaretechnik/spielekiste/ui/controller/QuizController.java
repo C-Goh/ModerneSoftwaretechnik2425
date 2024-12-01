@@ -1,11 +1,15 @@
 package com.softwaretechnik.spielekiste.ui.controller;
 
+import com.softwaretechnik.spielekiste.quiz.domain.entity.QuizEntity;
+import com.softwaretechnik.spielekiste.quiz.infrastructure.persistence.QuizRepositoryImpl;
+import com.softwaretechnik.spielekiste.user.application.service.UserContext;
+
+import com.softwaretechnik.spielekiste.user.application.service.UserContext;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 public class QuizController {
-
     @FXML
     private Label questionLabel;
 
@@ -24,10 +28,16 @@ public class QuizController {
     @FXML
     private Label scoreLabel;
 
+    final int userId = UserContext.getCurrentUser().getId();
     private int score = 0;
+    private int currentQuestionIndex = 0;
+    private QuizEntity quiz;
+    private QuizRepositoryImpl quizRepository = new QuizRepositoryImpl();
+
 
     @FXML
     public void initialize() {
+        startQuiz();
         loadNextQuestion();
     }
 
@@ -38,23 +48,40 @@ public class QuizController {
         loadNextQuestion();
     }
 
+    private void startQuiz() {
+        int quizId = 1; // Example quiz ID
+        quiz = quizRepository.startQuiz(quizId);
+    }
+
     private void loadNextQuestion() {
-        // Load the next question and answers
-        // This is just a placeholder. Replace with actual question loading logic.
-        questionLabel.setText("What is the capital of France?");
-        answerButton1.setText("Paris");
-        answerButton2.setText("London");
-        answerButton3.setText("Berlin");
-        answerButton4.setText("Madrid");
+        if (quiz != null && currentQuestionIndex < quiz.getQuestions().size()) {
+            QuizEntity.Question question = quiz.getQuestions().get(currentQuestionIndex);
+            questionLabel.setText(question.getQuestion());
+            answerButton1.setText(question.getAnswerOptions().get(0));
+            answerButton2.setText(question.getAnswerOptions().get(1));
+            answerButton3.setText(question.getAnswerOptions().get(2));
+            answerButton4.setText(question.getAnswerOptions().get(3));
+            currentQuestionIndex++;
+        } else {
+            // No more questions, show final result
+            questionLabel.setText("Quiz completed!");
+            answerButton1.setDisable(true);
+            answerButton2.setDisable(true);
+            answerButton3.setDisable(true);
+            answerButton4.setDisable(true);
+            scoreLabel.setText(quizRepository.getFinalResult(quiz.getId(), userId));
+        }
     }
 
     private void checkAnswer(String selectedAnswer) {
-        // Check if the selected answer is correct
-        // This is just a placeholder. Replace with actual answer checking logic.
-        if ("Paris".equals(selectedAnswer)) {
-            score++;
+        if (quiz != null && currentQuestionIndex > 0) {
+            QuizEntity.Question currentQuestion = quiz.getQuestions().get(currentQuestionIndex - 1);
+            boolean isCorrect = quizRepository.checkAnswer(quiz.getId(), currentQuestion.getId(), userId, selectedAnswer);
+            if (isCorrect) {
+                score++;
+            }
+            updateScore();
         }
-        updateScore();
     }
 
     private void updateScore() {
