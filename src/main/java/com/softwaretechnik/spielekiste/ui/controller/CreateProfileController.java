@@ -2,6 +2,7 @@ package com.softwaretechnik.spielekiste.ui.controller;
 
 import com.softwaretechnik.spielekiste.user.domain.entity.UserEntity;
 import com.softwaretechnik.spielekiste.user.infrastructure.persistence.UserRepositoryImpl;
+import com.softwaretechnik.spielekiste.user.domain.service.UserDomainService;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXML;
@@ -36,7 +37,8 @@ public class CreateProfileController {
     @FXML
     public void initialize() {
         profileNameField.setText("");
-        UserRepositoryImpl userRepository = new UserRepositoryImpl();
+        UserDomainService userDomainService = new UserDomainService();
+        UserRepositoryImpl userRepository = new UserRepositoryImpl(userDomainService);
         List<UserEntity> users = userRepository.findAllUsers();
         hasProfiles.set(!users.isEmpty());
         backButton.visibleProperty().bind(hasProfiles);
@@ -55,7 +57,8 @@ public class CreateProfileController {
             final UserEntity user = new UserEntity();
             user.setName(name);
 
-            final UserRepositoryImpl userRepository = new UserRepositoryImpl();
+            UserDomainService userDomainService = new UserDomainService();
+            final UserRepositoryImpl userRepository = new UserRepositoryImpl(userDomainService);
             userRepository.createUser(user);
 
             // Load StartPage.fxml
