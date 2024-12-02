@@ -45,8 +45,8 @@ public class StartPageController {
         final List<UserEntity> users = userRepository.findAllUsers();
 
         if (!users.isEmpty()) {
-            button1.setText(users.getFirst().getName());
-            button1.setUserData(users.getFirst().getId());
+            button1.setText(users.get(0).getName());
+            button1.setUserData(users.get(0).getId());
         } else {
             button1.setText("+");
         }
