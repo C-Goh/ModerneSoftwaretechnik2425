@@ -14,7 +14,7 @@
          </font>
       </Button>
       <TextField fx:id="profileNameField" layoutX="48.0" layoutY="194.0" prefHeight="61.0" prefWidth="279.0" />
-      <Text id="pageTitle" layoutX="48.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Erstelle dein Profil">
+      <Text id="pageTitle" layoutX="48.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Was ist dein Profilname?">
          <font>
             <Font size="40.0" />
          </font>

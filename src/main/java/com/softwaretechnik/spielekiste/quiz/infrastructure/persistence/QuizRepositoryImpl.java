@@ -93,7 +93,7 @@ public class QuizRepositoryImpl implements QuizRepository {
             if (resultSet.next()) {
                 final int totalQuestions = resultSet.getInt("total_questions");
                 final int correctAnswers = resultSet.getInt("correct_answers");
-                final double percentage = Math.round(((double) correctAnswers / totalQuestions) * 100);
+                final int percentage = (int) Math.round(((double) correctAnswers / totalQuestions) * 100);
                 return "Final result: " + correctAnswers + "/" + totalQuestions + " (" + percentage + "%)";
             }
         } catch (SQLException e) {
