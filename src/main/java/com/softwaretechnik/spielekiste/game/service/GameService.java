@@ -1,12 +1,16 @@
 package com.softwaretechnik.spielekiste.game.service;
 
 import com.softwaretechnik.spielekiste.user.domain.repository.UserRepository;
-import com.softwaretechnik.spielekiste.user.infrastructure.persistence.UserRepositoryImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class GameService {
 
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
+    // Konstruktorinjektion, Spring sorgt für die Injektion
+    @Autowired
     public GameService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }

@@ -1,7 +1,9 @@
 package com.softwaretechnik.spielekiste.user.domain.service;
 
 import com.softwaretechnik.spielekiste.user.domain.entity.UserEntity;
+import org.springframework.stereotype.Component;
 
+@Component
 public class UserDomainService {
 
     public void validateUser(UserEntity user) {

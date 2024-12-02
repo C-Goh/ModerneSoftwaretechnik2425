@@ -1,6 +1,7 @@
 package com.softwaretechnik.spielekiste.user.domain.repository;
 
 import com.softwaretechnik.spielekiste.user.domain.entity.UserEntity;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 

@@ -4,6 +4,7 @@ import com.softwaretechnik.spielekiste.infrastructure.persistence.SQLiteManager;
 import com.softwaretechnik.spielekiste.user.domain.entity.UserEntity;
 import com.softwaretechnik.spielekiste.user.domain.repository.UserRepository;
 import com.softwaretechnik.spielekiste.user.domain.service.UserDomainService;
+import org.springframework.stereotype.Repository;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -14,11 +15,15 @@ import java.util.logging.Logger;
 /**
  * Implementation of the UserRepository interface for managing user entities in a SQLite database.
  */
+@Repository
 public class UserRepositoryImpl implements UserRepository {
     private static final Logger LOGGER = Logger.getLogger(UserRepositoryImpl.class.getName());
-    private final UserDomainService userDomainService = new UserDomainService();
 
+    private final UserDomainService userDomainService;
 
+    public UserRepositoryImpl(UserDomainService userDomainService) {
+        this.userDomainService = userDomainService;
+    }
 
     @Override
     public void createUser(UserEntity user) {

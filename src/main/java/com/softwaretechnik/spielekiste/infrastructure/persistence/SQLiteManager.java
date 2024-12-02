@@ -1,5 +1,7 @@
 package com.softwaretechnik.spielekiste.infrastructure.persistence;
 
+import org.springframework.stereotype.Component;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -7,6 +9,7 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+@Component
 public class SQLiteManager {
     private static final Logger LOGGER = Logger.getLogger(SQLiteManager.class.getName());
 
