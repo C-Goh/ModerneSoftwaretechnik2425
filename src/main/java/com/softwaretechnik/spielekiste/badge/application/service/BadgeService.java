@@ -13,10 +13,6 @@ public class BadgeService {
         this.badgeRepository = badgeRepository;
     }
 
-    public void createBadge(BadgeEntity badge) {
-        badgeRepository.createBadge(badge);
-    }
-
     public BadgeEntity getBadgeById(int id) {
         return badgeRepository.findBadgeById(id);
     }
@@ -40,6 +36,8 @@ public class BadgeService {
     public List<BadgeEntity> getAllEarnedBadgesByGame(int userId, int gameId) {
         return badgeRepository.findAllEarnedBadgesbyGame(userId, gameId);
     }
+
+    
 
 
 }
