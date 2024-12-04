@@ -33,8 +33,8 @@ public class BadgeService {
         return badgeRepository.findAllBadgesbyGame(gameId);
     }
 
-    public List<BadgeEntity> getAllEarnedBadges(int userId) {
-        return badgeRepository.findAllEarnedBadges(userId);
+    public List<BadgeEntity> getAllEarnedBadges(int userId, boolean hasEarned) {
+        return badgeRepository.findAllEarnedBadges(userId, hasEarned);
     }
 
     public List<BadgeEntity> getAllEarnedBadgesByGame(int userId, int gameId) {

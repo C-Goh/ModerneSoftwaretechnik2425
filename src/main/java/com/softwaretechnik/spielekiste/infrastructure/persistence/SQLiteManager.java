@@ -33,6 +33,19 @@ public class SQLiteManager {
                     "PRIMARY KEY(user_id, game_id))";
             statement.execute(createUserGamePointsTable);
 
+            final String createBadgeTable = "CREATE TABLE IF NOT EXISTS badge (" +
+                    "id INTEGER PRIMARY KEY AUTOINCREMENT, " + // Auto-Inkrement für eindeutige ID
+                    "gameId INTEGER NOT NULL, " +              // Spiel-ID
+                    "userId INTEGER NOT NULL, " +              // Nutzer-ID
+                    "name TEXT NOT NULL, " +                   // Badge-Name
+                    "text TEXT, " +                            // Beschreibung des Badges
+                    "hasEarned BOOLEAN DEFAULT 0, " +         // Status: Abzeichen verdient, Nicht verliehen (false/0)
+                    "FOREIGN KEY(userId) REFERENCES users(id), " + // Fremdschlüssel auf Nutzer
+                    "FOREIGN KEY(gameId) REFERENCES games(id))";   // Fremdschlüssel auf Spiele
+
+            statement.execute(createBadgeTable);
+
+
             final String createCurrentQuestionTable = "CREATE TABLE IF NOT EXISTS current_question (" +
                     "quiz_id INTEGER, " +
                     "question_id INTEGER, " +

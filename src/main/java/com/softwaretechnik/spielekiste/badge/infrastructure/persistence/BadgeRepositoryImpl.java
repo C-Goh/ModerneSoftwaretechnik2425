@@ -1,6 +1,10 @@
 package com.softwaretechnik.spielekiste.badge.infrastructure.persistence;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -125,7 +129,7 @@ public class BadgeRepositoryImpl implements BadgeRepository {
                 }
             }
         } catch (SQLException e) {
-            LOGGER.log(Level.SEVERE, "Error getting badges for userId: " + userId, e);
+            LOGGER.log(Level.SEVERE, "Error getting badges for userId and gameId: " + userId + gameId, e);
         }
         return badges;
     }
