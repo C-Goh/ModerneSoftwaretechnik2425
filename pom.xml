@@ -16,6 +16,8 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>21</maven.compiler.source>
     <maven.compiler.target>21</maven.compiler.target>
+    <jacoco.version>0.8.12</jacoco.version>
+    <aspectj.version>1.9.22</aspectj.version>
   </properties>
 
   <dependencies>
@@ -70,6 +72,22 @@
       <version>5.5.0</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.aspectj</groupId>
+      <artifactId>aspectjrt</artifactId>
+      <version>${aspectj.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.aspectj</groupId>
+      <artifactId>aspectjweaver</artifactId>
+      <version>${aspectj.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.testng</groupId>
+      <artifactId>testng</artifactId>
+      <version>RELEASE</version>
+      <scope>compile</scope>
+    </dependency>
   </dependencies>
 
 
@@ -81,8 +99,35 @@
         <directory>src/main/resources</directory>
       </testResource>
     </testResources>
-    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
+        <!--- AspectJ -->
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>aspectj-maven-plugin</artifactId>
+          <version>1.15.0</version>
+          <dependencies>
+            <dependency>
+              <groupId>org.aspectj</groupId>
+              <artifactId>aspectjtools</artifactId>
+              <!-- AspectJ compiler version, in sync with runtime -->
+              <version>${aspectj.version}</version>
+            </dependency>
+          </dependencies>
+          <configuration>
+            <!-- Your favourite Java source/target version -->
+            <complianceLevel>21</complianceLevel>
+          </configuration>
+          <executions>
+            <execution>
+              <goals>
+                <goal>compile</goal>
+                <goal>test-compile</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+        <!--- AspectJ -->
+
         <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
         <plugin>
           <artifactId>maven-clean-plugin</artifactId>
@@ -99,7 +144,7 @@
         </plugin>
         <plugin>
           <artifactId>maven-surefire-plugin</artifactId>
-          <version>3.0.0-M5</version> <!-- Updated version for JUnit 5 compatibility -->
+          <version>3.0.0-M5</version>
         </plugin>
         <plugin>
           <artifactId>maven-jar-plugin</artifactId>
@@ -172,7 +217,7 @@
         <plugin>
             <groupId>org.jacoco</groupId>
             <artifactId>jacoco-maven-plugin</artifactId>
-            <version>0.8.8</version> <!-- Überprüfe die neueste Version -->
+            <version>0.8.12</version> <!-- Überprüfe die neueste Version -->
             <executions>
                 <execution>
                     <id>prepare-agent</id>
@@ -186,10 +231,13 @@
                     <goals>
                         <goal>report</goal>
                     </goals>
+                    <configuration>
+                      <dataFile>target/jacoco.exec</dataFile>
+                      <outputDirectory>target/site/jacoco</outputDirectory>
+                    </configuration>
                 </execution>
             </executions>
         </plugin>
       </plugins>
-    </pluginManagement>
   </build>
 </project>

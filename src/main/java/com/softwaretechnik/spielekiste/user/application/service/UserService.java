@@ -52,4 +52,8 @@ public class UserService {
     public List<UserEntity> findAllUsers() {
         return userRepository.findAllUsers();
     }
+
+    public UserEntity getCurrentUser() {
+        return UserContext.getCurrentUser();
+    }
 }

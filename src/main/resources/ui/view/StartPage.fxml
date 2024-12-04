@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.layout.*?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.softwaretechnik.spielekiste.ui.controller.StartPageController">
+   <children>
+      <Text id="pageTitle" layoutX="95.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Was ist dein Profilname?">
+         <font>
+            <Font size="40.0" />
+         </font>
+      </Text>
+      <HBox layoutX="92.0" layoutY="157.0" spacing="10.0">
+         <children>
+            <Button fx:id="button1" mnemonicParsing="false" onMouseClicked="#handleButtonClick" prefHeight="61.0" prefWidth="108.0" style="-fx-background-color: #16386C;" text="1" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="button2" mnemonicParsing="false" onMouseClicked="#handleButtonClick" prefHeight="61.0" prefWidth="108.0" style="-fx-background-color: #16386C;" text="2" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="button3" mnemonicParsing="false" onMouseClicked="#handleButtonClick" prefHeight="61.0" prefWidth="108.0" style="-fx-background-color: #16386C;" text="+" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+      <Button id="createProfileButton" layoutX="91.0" layoutY="245.0" mnemonicParsing="false" onMouseClicked="#handleCreateProfile" prefHeight="61.0" prefWidth="418.0" style="-fx-background-color: #16386C;" text="Ich habe noch kein Profil" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+   </children>
+</Pane>
