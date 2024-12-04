@@ -33,7 +33,7 @@ public class SQLiteManager {
                     "PRIMARY KEY(user_id, game_id))";
             statement.execute(createUserGamePointsTable);
 
-            final String createBadgeTable = "CREATE TABLE IF NOT EXISTS badge (" +
+            final String createBadgesTable = "CREATE TABLE IF NOT EXISTS badges (" +
                     "id INTEGER PRIMARY KEY AUTOINCREMENT, " + // Auto-Inkrement für eindeutige ID
                     "gameId INTEGER NOT NULL, " +              // Spiel-ID
                     "userId INTEGER NOT NULL, " +              // Nutzer-ID
@@ -43,7 +43,7 @@ public class SQLiteManager {
                     "FOREIGN KEY(userId) REFERENCES users(id), " + // Fremdschlüssel auf Nutzer
                     "FOREIGN KEY(gameId) REFERENCES games(id))";   // Fremdschlüssel auf Spiele
 
-            statement.execute(createBadgeTable);
+            statement.execute(createBadgesTable);
 
 
             final String createCurrentQuestionTable = "CREATE TABLE IF NOT EXISTS current_question (" +
@@ -76,6 +76,11 @@ public class SQLiteManager {
             statement.execute("INSERT INTO quiz_questions (id, quiz_id, user_id, question, answer_options, correct_answer) VALUES (1, 1, 1, 'What is 2+2?', '2,3,4,5', '4')");
             statement.execute("INSERT INTO quiz_questions (id, quiz_id, user_id, question, answer_options, correct_answer) VALUES (2, 1, 1, 'What is the capital of France?', 'Berlin,London,Paris,Rome', 'Paris')");
             statement.execute("INSERT INTO quiz_questions (id, quiz_id, user_id, question, answer_options, correct_answer) VALUES (3, 1, 1, 'What color is the sky on a clear day?', 'Red,Blue,Green,Yellow', 'Blue')");
+
+            // Insert sample data into badges table
+            statement.execute("DELETE FROM badges"); // Clear existing data
+            statement.execute("INSERT INTO badges (id, gameId, userId, name, text, hasEarned) VALUES (1, 1, 1, 'First Game', 'Play your first Game.')");
+            statement.execute("INSERT INTO badges (id, gameId, userId, name, text, hasEarned) VALUES (2, 1, 1, 'New Highscore!', 'Beat your Highscore.')");
         } catch (SQLException e) {
             LOGGER.log(Level.SEVERE, "Database initialization error", e);
         }

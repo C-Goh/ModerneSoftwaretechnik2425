@@ -89,7 +89,7 @@ public class BadgeRepositoryImpl implements BadgeRepository {
                 while (resultSet.next()) {
                     badges.add(new BadgeEntity(
                         resultSet.getInt("id"),
-                        resultSet.getInt("gameID"),
+                        resultSet.getInt("gameId"),
                         resultSet.getString("name"),
                         resultSet.getString("text"),
                         resultSet.getBoolean("hasEarned"),
