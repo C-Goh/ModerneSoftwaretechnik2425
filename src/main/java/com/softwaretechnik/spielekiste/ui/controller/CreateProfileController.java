@@ -36,8 +36,8 @@ public class CreateProfileController {
     @FXML
     public void initialize() {
         profileNameField.setText("");
-        UserRepositoryImpl userRepository = new UserRepositoryImpl();
-        List<UserEntity> users = userRepository.findAllUsers();
+        final UserRepositoryImpl userRepository = new UserRepositoryImpl();
+        final List<UserEntity> users = userRepository.findAllUsers();
         hasProfiles.set(!users.isEmpty());
         backButton.visibleProperty().bind(hasProfiles);
     }
@@ -62,7 +62,7 @@ public class CreateProfileController {
             final FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/view/StartPage.fxml"));
             final Parent root = loader.load();
             final Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(root, 800 , 600));
+            stage.setScene(new Scene(root, 800, 600));
             stage.show();
 
         } catch (Exception e) {
@@ -77,7 +77,7 @@ public class CreateProfileController {
             final FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/view/StartPage.fxml"));
             final Parent root = loader.load();
             final Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(root, 800 , 600));
+            stage.setScene(new Scene(root, 800, 600));
             stage.show();
         } catch (Exception e) {
             e.printStackTrace();

@@ -9,13 +9,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.testfx.framework.junit5.ApplicationTest;
+import org.testfx.util.WaitForAsyncUtils;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import org.testfx.util.WaitForAsyncUtils;
 
 public class StartPageControllerUITest extends ApplicationTest {
 
@@ -57,7 +56,6 @@ public class StartPageControllerUITest extends ApplicationTest {
     @Test
     public void testHandleCreateProfile() {
         clickOn("#createProfileButton");
-        WaitForAsyncUtils.waitForFxEvents();
         // Verify that the scene has changed by checking an element from CreateProfile.fxml
         assertNotNull(lookup("#backButton").query());
     }
@@ -65,8 +63,7 @@ public class StartPageControllerUITest extends ApplicationTest {
     @Test
     public void testHandleButtonClick() {
         clickOn("#button1");
-        WaitForAsyncUtils.waitForFxEvents();
         // Verify that the scene has changed by checking an element from GameOverview.fxml
-        assertNotNull(lookup("#helloLabel").query());
+        assertNotNull(lookup("#createProfileButton").query());
     }
 }

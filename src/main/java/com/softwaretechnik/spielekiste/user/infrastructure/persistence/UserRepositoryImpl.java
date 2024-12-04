@@ -19,7 +19,6 @@ public class UserRepositoryImpl implements UserRepository {
     private final UserDomainService userDomainService = new UserDomainService();
 
 
-
     @Override
     public void createUser(UserEntity user) {
         try {
@@ -103,7 +102,7 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public void saveGamePoints(int userId, int gameId, int points) {
-        String sql = "INSERT INTO user_game_points (user_id, game_id, points) VALUES (?, ?, ?) " +
+        final String sql = "INSERT INTO user_game_points (user_id, game_id, points) VALUES (?, ?, ?) " +
                 "ON CONFLICT(user_id, game_id) DO UPDATE SET points = user_game_points.points + excluded.points";
 
         try (Connection connection = SQLiteManager.getConnection();

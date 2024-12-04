@@ -15,7 +15,7 @@ public class LoggingAspect {
     @Around("logPointCut()")
     public Object logAroundMethodExecution(ProceedingJoinPoint joinPoint) throws Throwable {
         System.out.println("Method execution: " + joinPoint.getSignature());
-        Object result = joinPoint.proceed();
+        final Object result = joinPoint.proceed();
         System.out.println("Method executed: " + joinPoint.getSignature());
         return result;
     }
