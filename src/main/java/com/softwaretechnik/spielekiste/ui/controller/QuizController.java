@@ -10,11 +10,8 @@ import com.softwaretechnik.spielekiste.user.infrastructure.persistence.UserRepos
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import org.springframework.stereotype.Controller;
 
-@Controller
 public class QuizController {
-
     @FXML
     private Label questionLabel;
 

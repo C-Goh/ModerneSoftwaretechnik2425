@@ -2,7 +2,6 @@ package com.softwaretechnik.spielekiste.ui.controller;
 
 import com.softwaretechnik.spielekiste.user.application.service.UserContext;
 import com.softwaretechnik.spielekiste.user.domain.entity.UserEntity;
-import com.softwaretechnik.spielekiste.user.domain.repository.UserRepository;
 import com.softwaretechnik.spielekiste.user.infrastructure.persistence.UserRepositoryImpl;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,21 +11,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 
 import java.util.List;
 
-@Controller
 public class StartPageController {
-
-    private final UserRepository userRepository;
-
-    // Spring injiziert automatisch eine Instanz von UserRepositoryImpl
-    @Autowired
-    public StartPageController(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
 
     @FXML
     private Button button1;
@@ -53,6 +41,7 @@ public class StartPageController {
 
     @FXML
     public void initialize() {
+        final UserRepositoryImpl userRepository = new UserRepositoryImpl();
         final List<UserEntity> users = userRepository.findAllUsers();
 
         if (!users.isEmpty()) {
@@ -84,6 +73,7 @@ public class StartPageController {
             handleCreateProfile(event);
         } else {
             final int userId = (int) clickedButton.getUserData();
+            final UserRepositoryImpl userRepository = new UserRepositoryImpl();
             final UserEntity selectedProfile = userRepository.findUserById(userId);
             UserContext.setCurrentUser(selectedProfile);
 

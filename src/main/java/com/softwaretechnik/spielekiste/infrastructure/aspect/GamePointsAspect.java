@@ -2,21 +2,24 @@ package com.softwaretechnik.spielekiste.infrastructure.aspect;
 
 import com.softwaretechnik.spielekiste.user.domain.repository.UserRepository;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
+import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.Pointcut;
 
 @Aspect
-@Component
 public class GamePointsAspect {
 
-    private final UserRepository userRepository;
+    private UserRepository userRepository;
 
-    public GamePointsAspect(@Qualifier("userRepository") UserRepository userRepository) {
+    // Default constructor required by AspectJ weaving
+    public GamePointsAspect() {
+    }
+
+    // Setter for dependency injection
+    public void setUserRepository(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
-    @Before("execution(* com.softwaretechnik.spielekiste.game.service.GameService.endGame(..))")
+    @After("execution(* com.softwaretechnik.spielekiste.game.service.GameService.endGame(..))")
     public void saveGamePoints() {
         if (userRepository != null) {
             // Save game points logic
