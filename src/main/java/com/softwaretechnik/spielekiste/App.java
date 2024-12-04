@@ -1,10 +1,8 @@
 package com.softwaretechnik.spielekiste;
 
-import com.softwaretechnik.spielekiste.game.service.GameService;
 import com.softwaretechnik.spielekiste.infrastructure.aspect.GamePointsAspect;
 import com.softwaretechnik.spielekiste.infrastructure.persistence.SQLiteManager;
 import com.softwaretechnik.spielekiste.user.domain.entity.UserEntity;
-import com.softwaretechnik.spielekiste.user.domain.repository.UserRepository;
 import com.softwaretechnik.spielekiste.user.infrastructure.config.PropertyLoader;
 import com.softwaretechnik.spielekiste.user.infrastructure.persistence.UserRepositoryImpl;
 import javafx.application.Application;
@@ -37,8 +35,8 @@ public class App extends Application {
         SQLiteManager.initializeDatabase();
 
         // Create GamePointsAspect and inject the UserRepository manually
-        UserRepositoryImpl userRepository = new UserRepositoryImpl();
-        GamePointsAspect gamePointsAspect = new GamePointsAspect();
+        final UserRepositoryImpl userRepository = new UserRepositoryImpl();
+        final GamePointsAspect gamePointsAspect = new GamePointsAspect();
         gamePointsAspect.setUserRepository(userRepository); // Manually inject the dependency
 
         // Ensure AspectJ weaving happens at runtime
