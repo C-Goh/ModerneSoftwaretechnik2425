@@ -1,6 +1,6 @@
 package com.softwaretechnik.spielekiste.user.infrastructure.persistence;
 
-import com.softwaretechnik.spielekiste.infrastructure.persistence.SQLiteManager;
+import com.softwaretechnik.spielekiste.shared.infrastructure.persistence.SQLiteManager;
 import com.softwaretechnik.spielekiste.user.domain.entity.UserEntity;
 import com.softwaretechnik.spielekiste.user.domain.repository.UserRepository;
 import com.softwaretechnik.spielekiste.user.domain.service.UserDomainService;
@@ -21,12 +21,6 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public void createUser(UserEntity user) {
-        try {
-            userDomainService.validateUser(user);
-        } catch (IllegalArgumentException e) {
-            LOGGER.log(Level.WARNING, e.getMessage());
-            return;
-        }
 
         if (findUserByName(user.getName()) != null) {
             LOGGER.log(Level.WARNING, "User already exists with name: {0}", user.getName());
@@ -115,7 +109,6 @@ public class UserRepositoryImpl implements UserRepository {
             e.printStackTrace();
         }
     }
-
 
     @Override
     public UserEntity findUserByName(String name) {

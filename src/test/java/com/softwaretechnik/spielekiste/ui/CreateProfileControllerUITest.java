@@ -1,7 +1,7 @@
 package com.softwaretechnik.spielekiste.ui;
 
-import com.softwaretechnik.spielekiste.infrastructure.persistence.SQLiteManager;
-import com.softwaretechnik.spielekiste.user.infrastructure.config.PropertyLoader;
+import com.softwaretechnik.spielekiste.shared.infrastructure.persistence.SQLiteManager;
+import com.softwaretechnik.spielekiste.shared.infrastructure.config.PropertyLoader;
 import com.softwaretechnik.spielekiste.user.infrastructure.persistence.UserRepositoryImpl;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

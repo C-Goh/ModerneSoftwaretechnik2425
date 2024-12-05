@@ -1,4 +1,4 @@
-package com.softwaretechnik.spielekiste.infrastructure.aspect;
+package com.softwaretechnik.spielekiste.shared.infrastructure.aspect;
 
 import com.softwaretechnik.spielekiste.user.domain.repository.UserRepository;
 import org.aspectj.lang.annotation.Aspect;

@@ -1,4 +1,4 @@
-package com.softwaretechnik.spielekiste.infrastructure.aspect;
+package com.softwaretechnik.spielekiste.shared.infrastructure.aspect;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;

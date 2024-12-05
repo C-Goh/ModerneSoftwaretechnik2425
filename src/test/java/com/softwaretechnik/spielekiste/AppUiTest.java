@@ -1,7 +1,7 @@
 package com.softwaretechnik.spielekiste;
 
-import com.softwaretechnik.spielekiste.infrastructure.persistence.SQLiteManager;
-import com.softwaretechnik.spielekiste.user.infrastructure.config.PropertyLoader;
+import com.softwaretechnik.spielekiste.shared.infrastructure.persistence.SQLiteManager;
+import com.softwaretechnik.spielekiste.shared.infrastructure.config.PropertyLoader;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.junit.jupiter.api.Test;

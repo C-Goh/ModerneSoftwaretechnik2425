@@ -1,4 +1,4 @@
-package com.softwaretechnik.spielekiste.user.infrastructure.config;
+package com.softwaretechnik.spielekiste.shared.infrastructure.config;
 
 import java.io.FileInputStream;
 import java.io.IOException;

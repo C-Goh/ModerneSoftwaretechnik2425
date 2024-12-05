@@ -1,9 +1,9 @@
 package com.softwaretechnik.spielekiste;
 
-import com.softwaretechnik.spielekiste.infrastructure.aspect.GamePointsAspect;
-import com.softwaretechnik.spielekiste.infrastructure.persistence.SQLiteManager;
+import com.softwaretechnik.spielekiste.shared.infrastructure.aspect.GamePointsAspect;
+import com.softwaretechnik.spielekiste.shared.infrastructure.persistence.SQLiteManager;
 import com.softwaretechnik.spielekiste.user.domain.entity.UserEntity;
-import com.softwaretechnik.spielekiste.user.infrastructure.config.PropertyLoader;
+import com.softwaretechnik.spielekiste.shared.infrastructure.config.PropertyLoader;
 import com.softwaretechnik.spielekiste.user.infrastructure.persistence.UserRepositoryImpl;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

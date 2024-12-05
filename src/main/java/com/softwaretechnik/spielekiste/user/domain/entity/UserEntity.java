@@ -1,5 +1,6 @@
 package com.softwaretechnik.spielekiste.user.domain.entity;
 
+
 public class UserEntity {
     private int id;
 
