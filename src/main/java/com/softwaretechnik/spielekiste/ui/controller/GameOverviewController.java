@@ -40,13 +40,13 @@ public class GameOverviewController {
     @FXML
     private void loadAchievementsPage(MouseEvent event) {
         System.out.println("Badge icon clicked. Loading achievements page.");
-        // Implement logic to switch to the achievements page.
+        // TODO Implement logic to switch to the achievements page.
     }
 
     @FXML
     private void loadStartPage(MouseEvent event) {
         System.out.println("Back button clicked. Loading start page.");
-        // Implement logic to switch to the start page.
+        // TODO Implement logic to switch to the start page.
     }
 
     @FXML
@@ -55,7 +55,7 @@ public class GameOverviewController {
             final FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/view/quiz.fxml"));
             final Parent root = loader.load();
             final Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(root, 800 , 600));
+            stage.setScene(new Scene(root, 800, 600));
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
