@@ -5,11 +5,6 @@ import com.softwaretechnik.spielekiste.user.infrastructure.persistence.UserRepos
 
 public class GameService {
 
-    private UserRepository userRepository;
-
-    public GameService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
 
     public void endGame(int userId, int gameId, int points) {
         if (userId <= 0 || gameId <= 0 || points < 0) {

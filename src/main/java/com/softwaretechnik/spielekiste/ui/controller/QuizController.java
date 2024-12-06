@@ -3,11 +3,13 @@ package com.softwaretechnik.spielekiste.ui.controller;
 import com.softwaretechnik.spielekiste.game.service.GameService;
 import com.softwaretechnik.spielekiste.quiz.domain.entity.QuizEntity;
 import com.softwaretechnik.spielekiste.quiz.infrastructure.persistence.QuizRepositoryImpl;
+import com.softwaretechnik.spielekiste.shared.infrastructure.aspect.GamePointsAdvice;
 import com.softwaretechnik.spielekiste.user.application.service.UserContext;
 import com.softwaretechnik.spielekiste.user.infrastructure.persistence.UserRepositoryImpl;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import org.springframework.aop.framework.ProxyFactory;
 
 public class QuizController {
     @FXML
@@ -35,10 +37,13 @@ public class QuizController {
     private QuizEntity quiz;
     private QuizRepositoryImpl quizRepository = new QuizRepositoryImpl();
     private UserRepositoryImpl userRepository = new UserRepositoryImpl();
-    private GameService gameService = new GameService(userRepository);
+    private GameService gameService;
+
 
     @FXML
     public void initialize() {
+        gameService = createGameServiceProxy();
+
         startQuiz();
         loadNextQuestion();
     }
@@ -88,6 +93,15 @@ public class QuizController {
             }
             updateScore();
         }
+    }
+
+    private GameService createGameServiceProxy() {
+        // Create the proxy for GameService
+        ProxyFactory proxyFactory = new ProxyFactory();
+        proxyFactory.setTarget(new GameService()); // Set the target to your GameService instance
+        proxyFactory.addAdvice(new GamePointsAdvice(userRepository)); // Add the advice
+
+        return (GameService) proxyFactory.getProxy(); // Return the proxied GameService
     }
 
     private void updateScore() {
