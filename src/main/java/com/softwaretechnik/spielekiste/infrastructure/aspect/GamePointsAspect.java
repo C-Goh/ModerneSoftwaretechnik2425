@@ -1,9 +1,9 @@
 package com.softwaretechnik.spielekiste.infrastructure.aspect;
 
-import com.softwaretechnik.spielekiste.user.domain.repository.UserRepository;
-import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.After;
-import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.annotation.Aspect;
+
+import com.softwaretechnik.spielekiste.user.domain.repository.UserRepository;
 
 @Aspect
 public class GamePointsAspect {

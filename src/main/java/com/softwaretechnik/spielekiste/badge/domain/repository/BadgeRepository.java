@@ -12,7 +12,7 @@ public interface BadgeRepository {
 
     public List<BadgeEntity> findAllBadges();
     
-    //public List<BadgeEntity> findAllBadgesbyGame(int gameId);
+    public List<BadgeEntity> findAllBadgesbyGame(int gameId);
 
     public List<BadgeEntity> findAllEarnedBadges(int userId, boolean hasEarned);
 
