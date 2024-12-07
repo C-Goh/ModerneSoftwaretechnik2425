@@ -17,6 +17,31 @@ import com.softwaretechnik.spielekiste.user.infrastructure.persistence.UserRepos
 
 public class BadgeRepositoryImpl implements BadgeRepository {
 
+    @Override
+    public List<BadgeEntity> findAllBadgesbyGame(int gameId) {
+        final List<BadgeEntity> badges = new ArrayList<>();
+        final String getAllBadgesSQL = "SELECT * FROM badges WHERE gameId = ?";
+        try (Connection connection = SQLiteManager.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(getAllBadgesSQL)) {
+            preparedStatement.setInt(1, gameId);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    badges.add(new BadgeEntity(
+                        resultSet.getInt("id"),
+                        resultSet.getInt("gameID"),
+                        resultSet.getString("name"),
+                        resultSet.getString("text"),
+                        resultSet.getBoolean("hasEarned"),
+                        resultSet.getInt("userId")
+                    ));
+                }
+            }
+        } catch (SQLException e) {
+            LOGGER.log(Level.SEVERE, "Error getting badges for gameId: " + gameId, e);
+        }
+        return badges;
+    }
+
     private static final Logger LOGGER = Logger.getLogger(UserRepositoryImpl.class.getName());
 
     @Override
