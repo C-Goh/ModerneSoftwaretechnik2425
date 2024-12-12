@@ -9,12 +9,12 @@ public class BadgeOverviewController {
     
     private BadgeService badgeService;
 
-    public void BadgeController(BadgeService badgeService) {
+    public void BadgeOverviewController(BadgeService badgeService) {
         this.badgeService = badgeService;
     }
 
     public void showBadges() {
-        List<BadgeEntity> badges = badgeService.getAllBadges();
+        final List<BadgeEntity> badges = badgeService.getAllBadges();
         for (BadgeEntity badge : badges) {
             if (badge.getHasEarned()) {
                 System.out.println("You have earned the badge: " + badge.getName());
