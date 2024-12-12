@@ -1,17 +1,17 @@
-package com.softwaretechnik.spielekiste.shared.infrastructure.aspect;
 
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
 
 import com.softwaretechnik.spielekiste.user.domain.repository.UserRepository;
 
+
 @Aspect
-public class GamePointsAspect {
+public class BadgeAspect {
+
 
     private UserRepository userRepository;
 
-    // Default constructor required by AspectJ weaving
-    public GamePointsAspect() {
+    public BadgeAspect() {
     }
 
     // Setter for dependency injection
@@ -20,12 +20,13 @@ public class GamePointsAspect {
     }
 
     @After("execution(* com.softwaretechnik.spielekiste.game.service.GameService.endGame(..))")
-    public void saveGamePoints() {
+    public void awardBadge() {
         if (userRepository != null) {
             // Save game points logic
-            System.out.println("Saving game points for user...");
+            System.out.println("Awarding badge for user...");
         } else {
             System.out.println("UserRepository not initialized.");
         }
     }
+    
 }
