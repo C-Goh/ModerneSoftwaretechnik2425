@@ -9,7 +9,7 @@ public class BadgeOverviewController {
     
     private BadgeService badgeService;
 
-    public void BadgeOverviewController(BadgeService badgeService) {
+    public void badgeController(BadgeService badgeService) {
         this.badgeService = badgeService;
     }
 
