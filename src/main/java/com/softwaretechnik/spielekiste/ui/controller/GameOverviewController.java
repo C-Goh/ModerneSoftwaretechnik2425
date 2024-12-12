@@ -38,15 +38,31 @@ public class GameOverviewController {
     }
 
     @FXML
-    private void loadAchievementsPage(MouseEvent event) {
-        System.out.println("Badge icon clicked. Loading achievements page.");
-        // TODO Implement logic to switch to the achievements page.
+    private void loadBadgeOverviewPage(MouseEvent event) {
+        try {
+            // Load BadgeOverview.fxml
+            final FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/view/BadgeOverview.fxml"));
+            final Parent root = loader.load();
+            final Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root, 800, 600));
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     private void loadStartPage(MouseEvent event) {
-        System.out.println("Back button clicked. Loading start page.");
-        // TODO Implement logic to switch to the start page.
+        try {
+            // Load StartPage.fxml
+            final FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/view/StartPage.fxml"));
+            final Parent root = loader.load();
+            final Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root, 800, 600));
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML

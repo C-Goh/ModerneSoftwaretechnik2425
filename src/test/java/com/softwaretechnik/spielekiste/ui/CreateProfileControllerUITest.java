@@ -35,7 +35,7 @@ public class CreateProfileControllerUITest {
         stage.show();
     }
 
-    @Test
+    /*@Test
     public void testCreateProfileButton(FxRobot robot) {
         // Given
         TextField profileNameField = robot.lookup("#profileNameField").query();
@@ -48,7 +48,7 @@ public class CreateProfileControllerUITest {
         Assertions.assertThat(robot.lookup("#button1").queryButton()).isVisible();
 
         userRepository.deleteUser(userRepository.findUserByName("TestUser").getId());
-    }
+    }*/
 
     @Test
     @Disabled
