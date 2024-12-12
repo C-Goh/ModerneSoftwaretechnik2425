@@ -33,6 +33,8 @@ public class UserService {
      */
     public void createUser(UserEntity user) {
         userDomainService.validateUser(user);
+        // TODO return when invalid
+
         userRepository.createUser(user);
     }
 

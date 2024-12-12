@@ -10,8 +10,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.net.URL;
 import java.util.List;
 
 public class StartPageController {
@@ -26,13 +28,22 @@ public class StartPageController {
     private Button button3;
 
     @FXML
+    private Text profileName1;
+
+    @FXML
+    private Text profileName2;
+
+    @FXML
+    private Text profileName3;
+
+    @FXML
     private void handleCreateProfile(MouseEvent event) {
         try {
             // Load CreateProfile.fxml
             final FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/view/CreateProfile.fxml"));
             final Parent root = loader.load();
             final Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(root, 800 , 600));
+            stage.setScene(new Scene(root, 800, 600));
             stage.show();
         } catch (Exception e) {
             e.printStackTrace();
@@ -45,31 +56,31 @@ public class StartPageController {
         final List<UserEntity> users = userRepository.findAllUsers();
 
         if (!users.isEmpty()) {
-            button1.setText(users.get(0).getName());
+            profileName1.setText(users.get(0).getName());
             button1.setUserData(users.get(0).getId());
         } else {
-            button1.setText("+");
+            profileName1.setText("+");
         }
 
         if (users.size() > 1) {
-            button2.setText(users.get(1).getName());
+            profileName2.setText(users.get(1).getName());
             button2.setUserData(users.get(1).getId());
         } else {
-            button2.setText("+");
+            profileName2.setText("+");
         }
 
         if (users.size() > 2) {
-            button3.setText(users.get(2).getName());
+            profileName3.setText(users.get(2).getName());
             button3.setUserData(users.get(2).getId());
         } else {
-            button3.setText("+");
+            profileName3.setText("+");
         }
     }
 
     @FXML
     private void handleButtonClick(MouseEvent event) {
         final Button clickedButton = (Button) event.getSource();
-        if ("+".equals(clickedButton.getText())) {
+        if (clickedButton.getUserData() == null) {
             handleCreateProfile(event);
         } else {
             final int userId = (int) clickedButton.getUserData();
@@ -82,12 +93,11 @@ public class StartPageController {
                 final FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/view/GameOverview.fxml"));
                 final Parent root = loader.load();
                 final Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                stage.setScene(new Scene(root, 800 , 600));
+                stage.setScene(new Scene(root, 800, 600));
                 stage.show();
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
         }
     }
 }

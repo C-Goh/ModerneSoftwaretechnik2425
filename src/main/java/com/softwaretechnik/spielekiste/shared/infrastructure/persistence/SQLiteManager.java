@@ -1,4 +1,4 @@
-package com.softwaretechnik.spielekiste.infrastructure.persistence;
+package com.softwaretechnik.spielekiste.shared.infrastructure.persistence;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,7 +11,7 @@ public class SQLiteManager {
     private static final Logger LOGGER = Logger.getLogger(SQLiteManager.class.getName());
 
     public static Connection getConnection() throws SQLException {
-        String databaseUrl = System.getProperty("db.url");
+        final String databaseUrl = System.getProperty("db.url");
         if (databaseUrl == null || databaseUrl.isEmpty()) {
             throw new IllegalStateException("Database URL is not set");
         }

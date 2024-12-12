@@ -1,18 +1,13 @@
 package com.softwaretechnik.spielekiste.quiz.domain.infrastructure.persistence;
 
-import com.softwaretechnik.spielekiste.infrastructure.persistence.SQLiteManager;
+import com.softwaretechnik.spielekiste.shared.infrastructure.persistence.SQLiteManager;
 import com.softwaretechnik.spielekiste.quiz.domain.entity.QuizEntity;
 import com.softwaretechnik.spielekiste.quiz.infrastructure.persistence.QuizRepositoryImpl;
-import com.softwaretechnik.spielekiste.user.application.service.UserContext;
-import com.softwaretechnik.spielekiste.user.infrastructure.config.PropertyLoader;
-import com.softwaretechnik.spielekiste.user.infrastructure.persistence.UserRepositoryImpl;
+import com.softwaretechnik.spielekiste.shared.infrastructure.config.PropertyLoader;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;

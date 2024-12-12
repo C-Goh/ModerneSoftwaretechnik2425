@@ -1,6 +1,6 @@
 package com.softwaretechnik.spielekiste.quiz.infrastructure.persistence;
 
-import com.softwaretechnik.spielekiste.infrastructure.persistence.SQLiteManager;
+import com.softwaretechnik.spielekiste.shared.infrastructure.persistence.SQLiteManager;
 import com.softwaretechnik.spielekiste.quiz.domain.entity.QuizEntity;
 import com.softwaretechnik.spielekiste.quiz.domain.repository.QuizRepository;
 

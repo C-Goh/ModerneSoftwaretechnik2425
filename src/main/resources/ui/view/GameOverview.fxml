@@ -1,53 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
 <?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Button?>
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.softwaretechnik.spielekiste.ui.controller.GameOverviewController">
-   <children>
-      <StackPane layoutX="257.0" layoutY="47.0" prefHeight="150.0" prefWidth="200.0" onMouseClicked="#loadQuizPage">
-         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="/Bildmaterial/Spiel.png" />
-            </image>
-         </ImageView>
-         <Label text="Quiz" style="-fx-font-size: 24px; -fx-text-fill: white;" />
-      </StackPane>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="257.0" layoutY="204.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="/Bildmaterial/Spiel.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="50.0" layoutY="205.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="/Bildmaterial/Spiel.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="50.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="/Bildmaterial/Spiel.png" />
-         </image>
-      </ImageView>
-      <ImageView id="profileImageView " fx:id="profileImageView" fitHeight="90.0" fitWidth="90.0" layoutX="477.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="/Bildmaterial/Profilbild.png" />
-         </image>
-      </ImageView>
-      <Label fx:id="helloLabel" layoutX="485.0" layoutY="140.0" text="hello {name}" />
 
-      <ImageView id="badgeIcon" fx:id="badgeIcon" fitHeight="90.0" fitWidth="90.0" layoutX="477.0" layoutY="155.0" onMouseClicked="#loadAchievementsPage" pickOnBounds="true" preserveRatio="true">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.softwaretechnik.spielekiste.ui.controller.GameOverviewController">
+   <children>
+      <ImageView id="profileImageView " fx:id="profileImageView" fitHeight="90.0" fitWidth="90.0" layoutX="477.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="/Bildmaterial/Abzeichen.png" />
+            <Image url="@/Bildmaterial/Profilbild.png" />
          </image>
       </ImageView>
-      <ImageView id="backButton" fx:id="backButton" fitHeight="90.0" fitWidth="90.0" layoutX="477.0" layoutY="264.0" onMouseClicked="#loadStartPage" pickOnBounds="true" preserveRatio="true">
+      <Label fx:id="helloLabel" layoutX="487.0" layoutY="144.0" text="Hallo {name}" />
+
+      <ImageView id="badgeIcon" fx:id="badgeIcon" fitHeight="90.0" fitWidth="90.0" layoutX="477.0" layoutY="188.0" onMouseClicked="#loadBadgeOverviewPage" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="/Bildmaterial/Pfeil.png" />
+            <Image url="@/Bildmaterial/Abzeichen.png" />
          </image>
       </ImageView>
+      <ImageView id="backButton" fx:id="backButton" fitHeight="90.0" fitWidth="90.0" layoutX="477.0" layoutY="294.0" onMouseClicked="#loadStartPage" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@/Bildmaterial/Pfeil.png" />
+         </image>
+      </ImageView>
+      <VBox layoutX="33.0" layoutY="50.0" prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <HBox prefHeight="150.0" prefWidth="382.0">
+               <children>
+                  <ImageView fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@/Bildmaterial/Spiel.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@/Bildmaterial/Spiel.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets bottom="20.0" />
+                     </HBox.margin>
+                  </ImageView>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="-5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="138.0" prefWidth="410.0">
+               <children>
+                  <ImageView fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@/Bildmaterial/Spiel.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@/Bildmaterial/Spiel.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </ImageView>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
    </children>
 </Pane>

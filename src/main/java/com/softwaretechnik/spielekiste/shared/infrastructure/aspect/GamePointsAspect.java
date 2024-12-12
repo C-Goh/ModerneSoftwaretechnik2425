@@ -1,4 +1,4 @@
-package com.softwaretechnik.spielekiste.infrastructure.aspect;
+package com.softwaretechnik.spielekiste.shared.infrastructure.aspect;
 
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;

@@ -1,4 +1,4 @@
-package com.softwaretechnik.spielekiste.infrastructure.aspect;
+package com.softwaretechnik.spielekiste.shared.infrastructure.aspect;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -15,7 +15,7 @@ public class LoggingAspect {
     @Around("logPointCut()")
     public Object logAroundMethodExecution(ProceedingJoinPoint joinPoint) throws Throwable {
         System.out.println("Method execution: " + joinPoint.getSignature());
-        Object result = joinPoint.proceed();
+        final Object result = joinPoint.proceed();
         System.out.println("Method executed: " + joinPoint.getSignature());
         return result;
     }

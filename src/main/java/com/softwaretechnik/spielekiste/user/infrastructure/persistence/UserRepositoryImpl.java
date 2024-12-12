@@ -1,6 +1,6 @@
 package com.softwaretechnik.spielekiste.user.infrastructure.persistence;
 
-import com.softwaretechnik.spielekiste.infrastructure.persistence.SQLiteManager;
+import com.softwaretechnik.spielekiste.shared.infrastructure.persistence.SQLiteManager;
 import com.softwaretechnik.spielekiste.user.domain.entity.UserEntity;
 import com.softwaretechnik.spielekiste.user.domain.repository.UserRepository;
 import com.softwaretechnik.spielekiste.user.domain.service.UserDomainService;
@@ -17,7 +17,6 @@ import java.util.logging.Logger;
 public class UserRepositoryImpl implements UserRepository {
     private static final Logger LOGGER = Logger.getLogger(UserRepositoryImpl.class.getName());
     private final UserDomainService userDomainService = new UserDomainService();
-
 
 
     @Override
@@ -103,7 +102,7 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public void saveGamePoints(int userId, int gameId, int points) {
-        String sql = "INSERT INTO user_game_points (user_id, game_id, points) VALUES (?, ?, ?) " +
+        final String sql = "INSERT INTO user_game_points (user_id, game_id, points) VALUES (?, ?, ?) " +
                 "ON CONFLICT(user_id, game_id) DO UPDATE SET points = user_game_points.points + excluded.points";
 
         try (Connection connection = SQLiteManager.getConnection();
@@ -116,7 +115,6 @@ public class UserRepositoryImpl implements UserRepository {
             e.printStackTrace();
         }
     }
-
 
     @Override
     public UserEntity findUserByName(String name) {
