@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 
 import com.softwaretechnik.spielekiste.badge.domain.entity.BadgeEntity;
 import com.softwaretechnik.spielekiste.badge.domain.repository.BadgeRepository;
-import com.softwaretechnik.spielekiste.infrastructure.persistence.SQLiteManager;
+import com.softwaretechnik.spielekiste.shared.infrastructure.persistence.SQLiteManager;
 import com.softwaretechnik.spielekiste.user.infrastructure.persistence.UserRepositoryImpl;
 
 public class BadgeRepositoryImpl implements BadgeRepository {
