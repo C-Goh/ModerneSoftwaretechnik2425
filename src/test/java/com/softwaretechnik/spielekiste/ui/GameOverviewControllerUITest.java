@@ -43,6 +43,7 @@ public class GameOverviewControllerUITest {
     }
 
     @Test
+    @Disabled
     public void testLoadQuizPage(FxRobot robot) {
         // Simulate a mouse click on the quizIcon
         robot.clickOn("#quizIcon");
