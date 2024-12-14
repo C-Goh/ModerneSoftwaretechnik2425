@@ -1,14 +1,13 @@
 package com.softwaretechnik.spielekiste.ui;
 
-import com.softwaretechnik.spielekiste.shared.infrastructure.persistence.SQLiteManager;
 import com.softwaretechnik.spielekiste.shared.infrastructure.config.PropertyLoader;
+import com.softwaretechnik.spielekiste.shared.infrastructure.persistence.SQLiteManager;
 import com.softwaretechnik.spielekiste.user.infrastructure.persistence.UserRepositoryImpl;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.testfx.api.FxRobot;
@@ -35,7 +34,7 @@ public class CreateProfileControllerUITest {
         stage.show();
     }
 
-    /*@Test
+    @Test
     public void testCreateProfileButton(FxRobot robot) {
         // Given
         TextField profileNameField = robot.lookup("#profileNameField").query();
@@ -48,14 +47,14 @@ public class CreateProfileControllerUITest {
         Assertions.assertThat(robot.lookup("#button1").queryButton()).isVisible();
 
         userRepository.deleteUser(userRepository.findUserByName("TestUser").getId());
-    }*/
+    }
 
     @Test
-    @Disabled
-    public void testBackButton(FxRobot robot) {
-        // TODO Backbutton ist nicht sichtbar, vermutlich weil Szene nicht vom Startfenster gestartet wird.
-        // When
+    public void testLoadStartPage(FxRobot robot) {
+        // Simulate a mouse click on the backButton
         robot.clickOn("#backButton");
+
+        // Verify that the scene has changed by checking an element from StartPage.fxml
         Assertions.assertThat(robot.lookup("#button1").queryButton()).isVisible();
     }
 }
