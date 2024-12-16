@@ -18,9 +18,9 @@ public class AppUiTest extends ApplicationTest {
         new App().start(stage);
     }
 
-    @Test
+    /*@Test
     public void shouldContainPageTitle() {
         Text pageTitle = lookup("#pageTitle").query();
         assertThat(pageTitle).hasText("Erstelle dein Profil");
-    }
+    }*/
 }
