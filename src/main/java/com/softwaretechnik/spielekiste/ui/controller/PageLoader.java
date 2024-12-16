@@ -28,11 +28,11 @@ public class PageLoader {
     private void loadPage(String fxmlFile, double width, double height, Event event) {
         try {
             // Lade die FXML-Datei
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
-            Parent root = loader.load();
+            final FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
+            final Parent root = loader.load();
 
             // Aktuelle Bühne ermitteln
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            final Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
             // Neue Szene setzen
             stage.setScene(new Scene(root, width, height));
