@@ -40,6 +40,10 @@ public class CreateProfileController {
         final List<UserEntity> users = userRepository.findAllUsers();
         hasProfiles.set(!users.isEmpty());
         backButton.visibleProperty().bind(hasProfiles);
+
+        if (users.isEmpty()) {
+            hasProfiles.set(true);
+        }
     }
 
     @FXML

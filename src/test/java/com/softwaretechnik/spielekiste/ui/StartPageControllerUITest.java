@@ -53,10 +53,20 @@ public class StartPageControllerUITest extends ApplicationTest {
         assertEquals("+", profileName3.getText());
     }
 
-    /*@Test
+    @Test
     public void testHandleButtonClick() {
         clickOn("#button1");
         // Verify that the scene has changed by checking an element from GameOverview.fxml
         assertNotNull(lookup("#profileNameField").query());
-    }*/
+    }
+
+
+    @Test
+    public void testHandleCreateProfile() {
+        // Simulate a mouse click on the button1
+        clickOn("#button1");
+
+        // Verify that the scene has changed by checking an element from CreateProfile.fxml
+        assertNotNull(lookup("#profileNameField").query());
+    }
 }

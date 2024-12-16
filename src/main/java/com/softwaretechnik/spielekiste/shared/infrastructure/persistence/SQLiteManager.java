@@ -79,8 +79,8 @@ public class SQLiteManager {
 
             // Insert sample data into badges table
             statement.execute("DELETE FROM badges"); // Clear existing data
-            statement.execute("INSERT INTO badges (id, gameId, userId, name, text, hasEarned) VALUES (1, 1, 1, 'First Game', 'Play your first Game.')");
-            statement.execute("INSERT INTO badges (id, gameId, userId, name, text, hasEarned) VALUES (2, 1, 1, 'New Highscore!', 'Beat your Highscore.')");
+            statement.execute("INSERT INTO badges (id, gameId, userId, name, text, hasEarned) VALUES (1, 1, 1, 'First Game', 'Play your first Game.', true)");
+            statement.execute("INSERT INTO badges (id, gameId, userId, name, text, hasEarned) VALUES (2, 1, 1, 'New Highscore!', 'Beat your Highscore.', false)");
         } catch (SQLException e) {
             LOGGER.log(Level.SEVERE, "Database initialization error", e);
         }
