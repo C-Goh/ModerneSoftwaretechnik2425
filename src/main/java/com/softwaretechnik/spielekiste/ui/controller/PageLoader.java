@@ -24,71 +24,38 @@ public class PageLoader {
         return instance;
     }
 
-    public void loadStartPage(MouseEvent event) {
+    // Allgemeine Methode zum Laden der Seite
+    private void loadPage(String fxmlFile, double width, double height, Event event) {
         try {
-            // Lade die StartPage.fxml
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/view/StartPage.fxml"));
+            // Lade die FXML-Datei
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
             Parent root = loader.load();
 
             // Aktuelle Bühne ermitteln
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
             // Neue Szene setzen
-            stage.setScene(new Scene(root, 800, 600));
+            stage.setScene(new Scene(root, width, height));
             stage.show();
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    // Spezifische Methoden zum Laden der einzelnen Seiten
+    public void loadStartPage(MouseEvent event) {
+        loadPage("/ui/view/StartPage.fxml", 600, 400, event);
     }
 
     public void loadQuizPage(MouseEvent event) {
-        try {
-            // Lade die Quiz-Seite
-            final FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/view/Quiz.fxml"));
-            final Parent root = loader.load();
-
-            // Aktuelle Bühne ermitteln
-            final Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-            // Neue Szene setzen
-            stage.setScene(new Scene(root, 800, 600));
-            stage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        loadPage("/ui/view/Quiz.fxml", 600, 400, event);
     }
 
     public void loadBadgeOverviewPage(MouseEvent event) {
-        try {
-            // Lade die BadgeOverview-Seite (BadgeOverview.fxml)
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/view/BadgeOverview.fxml"));
-            Parent root = loader.load();
-
-            // Aktuelle Bühne ermitteln
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-            // Neue Szene setzen
-            stage.setScene(new Scene(root, 800, 600));
-            stage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        loadPage("/ui/view/BadgeOverview.fxml", 600, 400, event);
     }
 
     public void loadGameOverviewPage(Event event) {
-        try {
-            // Lade die GameOverview-Seite (GameOverview.fxml)
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/view/GameOverview.fxml"));
-            Parent root = loader.load();
-
-            // Aktuelle Bühne ermitteln
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-            // Neue Szene setzen
-            stage.setScene(new Scene(root, 800, 600));
-            stage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        loadPage("/ui/view/GameOverview.fxml", 600, 400, event);
     }
 }

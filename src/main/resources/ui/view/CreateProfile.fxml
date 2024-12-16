@@ -10,7 +10,7 @@
    <children>
       <ImageView id="profilePicture" fx:id="profileImageView" fitHeight="139.0" fitWidth="136.0" layoutX="396.0" layoutY="78.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="350.0" AnchorPane.rightAnchor="40.0">
          <image>
-            <Image url="@/Bildmaterial/Profilbild.png" />
+            <Image url="@../../Bildmaterial/Profilbild.png" />
          </image>
       </ImageView>
       <Text id="pageTitle" layoutX="352.0" layoutY="259.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Profilbild" AnchorPane.leftAnchor="355.0" AnchorPane.rightAnchor="40.0">
@@ -31,10 +31,10 @@
       </Text>
       <ImageView id="backButton" fx:id="backButton" fitHeight="90.0" fitWidth="90.0" layoutX="480.0" layoutY="276.0" onMouseClicked="#loadStartPage" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="430.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="270.0">
          <image>
-            <Image url="@/Bildmaterial/Pfeil.png" />
+            <Image url="@../../Bildmaterial/Pfeil.png" />
          </image>
       </ImageView>
-      <Button id="createProfileButton" layoutX="20.0" layoutY="270.0" mnemonicParsing="false" onMouseClicked="#createProfile" prefHeight="47.0" prefWidth="109.0" style="-fx-background-color: #16386C;" text="erstellen" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="20.0">
+      <Button id="createProfileButton" layoutX="20.0" layoutY="282.0" mnemonicParsing="false" onMouseClicked="#createProfile" prefHeight="47.0" prefWidth="109.0" style="-fx-background-color: #16386C;" text="erstellen" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="20.0">
          <font>
             <Font size="20.0" />
          </font>
