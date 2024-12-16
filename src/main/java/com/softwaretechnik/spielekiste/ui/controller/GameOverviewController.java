@@ -39,42 +39,16 @@ public class GameOverviewController {
 
     @FXML
     private void loadBadgeOverviewPage(MouseEvent event) {
-        try {
-            // Load BadgeOverview.fxml
-            final FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/view/BadgeOverview.fxml"));
-            final Parent root = loader.load();
-            final Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(root, 800, 600));
-            stage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        PageLoader.getInstance().loadBadgeOverviewPage(event);
     }
 
     @FXML
     private void loadStartPage(MouseEvent event) {
-        try {
-            // Load StartPage.fxml
-            final FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/view/StartPage.fxml"));
-            final Parent root = loader.load();
-            final Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(root, 800, 600));
-            stage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        PageLoader.getInstance().loadStartPage(event);
     }
 
     @FXML
     private void loadQuizPage(MouseEvent event) {
-        try {
-            final FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/view/quiz.fxml"));
-            final Parent root = loader.load();
-            final Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(root, 800, 600));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        PageLoader.getInstance().loadQuizPage(event);
     }
 }

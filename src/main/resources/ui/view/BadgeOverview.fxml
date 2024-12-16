@@ -1,122 +1,126 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
-      prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.softwaretechnik.spielekiste.ui.controller.BadgeOverviewController">
-    <children>
-        <ScrollPane fx:id="scrollPane" layoutX="57.0" layoutY="108.0" prefHeight="242.0" prefWidth="378.0">
-            <content>
-                <VBox fx:id="vBoxContent" prefHeight="366.0" prefWidth="385.0" style="-fx-background-color: #FFFFFF;">
-                    <children>
-                        <HBox prefHeight="100.0" prefWidth="348.0">
-                            <children>
-                                <ImageView fitHeight="100.0" fitWidth="100.0" opacity="0.5" pickOnBounds="true"
-                                           preserveRatio="true">
-                                    <image>
-                                        <Image url="/Bildmaterial/Abzeichen.png"/>
-                                    </image>
-                                </ImageView>
-                                <TextArea editable="false" prefHeight="100.0" prefWidth="247.0"
-                                          style="-fx-background-color: #FFFFFF; -fx-effect: null; -fx-border-color: transparent; -fx-background-insets: 0;"
-                                          text="Quizmaster&#10;&#10;Du hast alle Fragen im Quiz &#10;richtig beantwortet!&#10;Mach weiter so ">
-                                    <HBox.margin>
-                                        <Insets left="20.0" right="20.0"/>
-                                    </HBox.margin>
-                                </TextArea>
-                            </children>
-                            <VBox.margin>
-                                <Insets bottom="20.0"/>
-                            </VBox.margin>
-                        </HBox>
-                        <HBox prefHeight="100.0" prefWidth="348.0">
-                            <children>
-                                <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="/Bildmaterial/Abzeichen.png"/>
-                                    </image>
-                                </ImageView>
-                                <TextArea editable="false" prefHeight="100.0" prefWidth="247.0"
-                                          style="-fx-background-color: #FFFFFF; -fx-border-style: none;"
-                                          text="Fleißige Biene &#10;&#10;Super, du hast alle Minispiele einmal &#10;durchgespielt. Welches ist dein &#10;Lieblingsspiel? ">
-                                    <HBox.margin>
-                                        <Insets left="20.0" right="20.0"/>
-                                    </HBox.margin>
-                                </TextArea>
-                            </children>
-                            <padding>
-                                <Insets bottom="20.0"/>
-                            </padding>
-                        </HBox>
-                        <HBox prefHeight="100.0" prefWidth="348.0">
-                            <children>
-                                <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="/Bildmaterial/Abzeichen.png"/>
-                                    </image>
-                                </ImageView>
-                                <TextArea editable="false" prefHeight="100.0" prefWidth="247.0"
-                                          style="-fx-background-color: #FFFFFF;"
-                                          text="Reaktionstalent&#10;&#10;Du hast 3 mal deinen &#10;Rekord im  QuickKlick&#10;gebrochen - Bravo!">
-                                    <HBox.margin>
-                                        <Insets left="20.0" right="20.0"/>
-                                    </HBox.margin>
-                                    <opaqueInsets>
-                                        <Insets/>
-                                    </opaqueInsets>
-                                </TextArea>
-                            </children>
-                            <VBox.margin>
-                                <Insets bottom="20.0"/>
-                            </VBox.margin>
-                        </HBox>
-                        <HBox prefHeight="100.0" prefWidth="348.0">
-                            <children>
-                                <ImageView fitHeight="100.0" fitWidth="100.0" opacity="0.5" pickOnBounds="true"
-                                           preserveRatio="true">
-                                    <image>
-                                        <Image url="/Bildmaterial/Abzeichen.png"/>
-                                    </image>
-                                </ImageView>
-                                <TextArea editable="false" prefHeight="100.0" prefWidth="247.0"
-                                          style="-fx-background-color: #FFFFFF; -fx-border-style: none;"
-                                          text="Fleißige Biene &#10;&#10;Super, du hast alle Minispiele einmal &#10;durchgespielt. Welches ist dein &#10;Lieblingsspiel? ">
-                                    <HBox.margin>
-                                        <Insets left="20.0" right="20.0"/>
-                                    </HBox.margin>
-                                </TextArea>
-                            </children>
-                            <padding>
-                                <Insets bottom="20.0"/>
-                            </padding>
-                        </HBox>
-                    </children>
-                </VBox>
-            </content>
-        </ScrollPane>
-        <ImageView id="backButton" fx:id="backButton" fitHeight="90.0" fitWidth="90.0" layoutX="481.0" layoutY="274.0"
-                   onMouseClicked="#loadGameOverviewPage" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="/Bildmaterial/Pfeil.png"/>
-            </image>
-        </ImageView>
-        <ImageView id="profileImageView " fx:id="profileImageView" fitHeight="90.0" fitWidth="90.0" layoutX="481.0"
-                   layoutY="32.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="/Bildmaterial/Profilbild.png"/>
-            </image>
-        </ImageView>
-        <Text id="pageTitle" layoutX="57.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0"
-              text="Deine Abzeichen">
-            <font>
-                <Font size="40.0"/>
-            </font>
-        </Text>
-    </children>
-</Pane>
+
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.softwaretechnik.spielekiste.ui.controller.BadgeOverviewController">
+   <children>
+      <ScrollPane fx:id="scrollPane" layoutX="20.0" layoutY="122.0" prefHeight="242.0" prefWidth="378.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="150.0">
+         <content>
+            <VBox fx:id="vBoxContent" prefHeight="366.0" prefWidth="385.0" style="-fx-background-color: #FFFFFF;">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="348.0">
+                     <children>
+                        <ImageView fitHeight="100.0" fitWidth="100.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="/Bildmaterial/Abzeichen.png" />
+                           </image>
+                        </ImageView>
+                        <TextArea editable="false" prefHeight="100.0" prefWidth="247.0" style="-fx-background-color: #FFFFFF; -fx-effect: null; -fx-border-color: transparent; -fx-background-insets: 0;" text="Spielfuchs&#10;&#10;Gewinne dein erstes TicTacToe-Spiel! &#10;Zeig, dass du den besten Plan hast, &#10;um deinen Gegner auszutricksen.">
+                           <HBox.margin>
+                              <Insets left="20.0" right="20.0" />
+                           </HBox.margin>
+                        </TextArea>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="20.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="348.0">
+                     <children>
+                        <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="/Bildmaterial/Abzeichen.png" />
+                           </image>
+                        </ImageView>
+                        <TextArea editable="false" prefHeight="100.0" prefWidth="247.0" style="-fx-background-color: #FFFFFF; -fx-border-style: none;" text="TicTacToe-Legende&#10;&#10;Gewinne drei Spiele in Folge! &#10;Dein taktisches Geschick macht dich &#10;unschlagbar auf dem Spielfeld.">
+                           <HBox.margin>
+                              <Insets left="20.0" right="20.0" />
+                           </HBox.margin>
+                        </TextArea>
+                     </children>
+                     <padding>
+                        <Insets bottom="20.0" />
+                     </padding>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="348.0">
+                     <children>
+                        <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="/Bildmaterial/Abzeichen.png" />
+                           </image>
+                        </ImageView>
+                        <TextArea editable="false" prefHeight="100.0" prefWidth="247.0" style="-fx-background-color: #FFFFFF;" text="Rateprofi&#10;&#10;Beantworte fünf Fragen richtig! &#10;Dein Wissen macht dich zu einem &#10;wahren Quiz-Meister.">
+                           <HBox.margin>
+                              <Insets left="20.0" right="20.0" />
+                           </HBox.margin>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </TextArea>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="20.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="348.0">
+                     <children>
+                        <ImageView fitHeight="100.0" fitWidth="100.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="/Bildmaterial/Abzeichen.png" />
+                           </image>
+                        </ImageView>
+                        <TextArea editable="false" prefHeight="100.0" prefWidth="247.0" style="-fx-background-color: #FFFFFF; -fx-border-style: none;" text="Superhirn&#10;Erreiche die volle Punktzahl in einem Quiz!&#10;Dein schlaues Köpfchen verdient Applaus.&#10;">
+                           <HBox.margin>
+                              <Insets left="20.0" right="20.0" />
+                           </HBox.margin>
+                        </TextArea>
+                     </children>
+                     <padding>
+                        <Insets bottom="20.0" />
+                     </padding>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="348.0">
+                     <children>
+                        <ImageView fitHeight="100.0" fitWidth="100.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="/Bildmaterial/Abzeichen.png" />
+                           </image>
+                        </ImageView>
+                        <TextArea editable="false" prefHeight="100.0" prefWidth="247.0" style="-fx-background-color: #FFFFFF; -fx-border-style: none;" text="Speedstar&#10;&#10;Treffe den Punkt zehnmal super schnell &#10;hintereinander! Deine Reaktion ist &#10;unschlagbar.">
+                           <HBox.margin>
+                              <Insets left="20.0" right="20.0" />
+                           </HBox.margin>
+                        </TextArea>
+                     </children>
+                     <padding>
+                        <Insets bottom="20.0" />
+                     </padding>
+                  </HBox>
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+      <ImageView id="backButton" fx:id="backButton" fitHeight="90.0" fitWidth="90.0" layoutX="481.0" layoutY="274.0" onMouseClicked="#loadGameOverview" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="20.0">
+         <image>
+            <Image url="/Bildmaterial/Pfeil.png" />
+         </image>
+      </ImageView>
+      <Text id="pageTitle" layoutX="32.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Deine Abzeichen" AnchorPane.bottomAnchor="305.00390625" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="304.1435546875" AnchorPane.topAnchor="40.0">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <ImageView id="profileImageView " fx:id="profileImageView" fitHeight="90.0" fitWidth="90.0" layoutX="481.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="20.0">
+         <image>
+            <Image url="/Bildmaterial/Profilbild.png" />
+         </image>
+      </ImageView>
+      <ChoiceBox fx:id="categoryChoiceBox" layoutX="308.0" layoutY="81.0" prefHeight="12.0" prefWidth="98.0" AnchorPane.rightAnchor="150.0" />
+   </children>
+</AnchorPane>
