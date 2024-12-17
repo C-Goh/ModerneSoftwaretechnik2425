@@ -8,6 +8,7 @@ import com.softwaretechnik.spielekiste.user.infrastructure.persistence.UserRepos
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 
 public class QuizController {
     @FXML
@@ -89,8 +90,12 @@ public class QuizController {
             updateScore();
         }
     }
-
     private void updateScore() {
         scoreLabel.setText("Score: " + score);
+    }
+
+    @FXML
+    private void loadGameOverview(MouseEvent event) {
+        PageLoader.getInstance().loadGameOverviewPage(event);
     }
 }

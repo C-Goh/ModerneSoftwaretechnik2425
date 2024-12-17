@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.*?>
-<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.control.Label?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.softwaretechnik.spielekiste.ui.controller.GameOverviewController">
    <children>
-      <ImageView id="profileImageView " fx:id="profileImageView" fitHeight="90.0" fitWidth="90.0" layoutX="477.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView id="profileImageView" fx:id="profileImageView" fitHeight="90.0" fitWidth="90.0" layoutX="477.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@/Bildmaterial/Profilbild.png" />
          </image>
@@ -30,7 +28,8 @@
          <children>
             <HBox prefHeight="181.0" prefWidth="304.0">
                <children>
-                  <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                  <!-- Klickbares Bild -->
+                  <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" onMouseClicked="#loadQuizPage">
                      <image>
                         <Image url="@/Bildmaterial/Spiel.png" />
                      </image>
@@ -40,7 +39,7 @@
                   </ImageView>
                   <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@/Bildmaterial/Spiel.png" />
+                        <Image url="@/Bildmaterial/DefaultSpiel.png" />
                      </image>
                      <HBox.margin>
                         <Insets bottom="20.0" />
@@ -55,7 +54,7 @@
                <children>
                   <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@/Bildmaterial/Spiel.png" />
+                        <Image url="@/Bildmaterial/DefaultSpiel.png" />
                      </image>
                      <HBox.margin>
                         <Insets right="20.0" />
@@ -63,7 +62,7 @@
                   </ImageView>
                   <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@/Bildmaterial/Spiel.png" />
+                        <Image url="@/Bildmaterial/DefaultSpiel.png" />
                      </image>
                      <HBox.margin>
                         <Insets />
