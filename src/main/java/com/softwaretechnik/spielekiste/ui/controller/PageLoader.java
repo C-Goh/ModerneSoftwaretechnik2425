@@ -58,4 +58,7 @@ public class PageLoader {
     public void loadGameOverviewPage(Event event) {
         loadPage("/ui/view/GameOverview.fxml", 600, 400, event);
     }
+    public void loadQuizPage(Event event) {
+        loadPage("/ui/view/Quiz.fxml", 600, 400, event);
+    }
 }
