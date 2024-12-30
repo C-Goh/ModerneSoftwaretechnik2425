@@ -1,12 +1,12 @@
 package com.softwaretechnik.spielekiste.ui.controller;
 
+import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import javafx.event.Event;
 
 public class PageLoader {
 
@@ -58,7 +58,7 @@ public class PageLoader {
     public void loadGameOverviewPage(Event event) {
         loadPage("/ui/view/GameOverview.fxml", 600, 400, event);
     }
-    public void loadQuizPage(Event event) {
+    /*public void loadQuizPage(Event event) {
         loadPage("/ui/view/Quiz.fxml", 600, 400, event);
-    }
+    }*/
 }
