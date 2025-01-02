@@ -40,6 +40,10 @@ public class CreateProfileController {
         final List<UserEntity> users = userRepository.findAllUsers();
         hasProfiles.set(!users.isEmpty());
         backButton.visibleProperty().bind(hasProfiles);
+
+        if (users.isEmpty()) {
+            hasProfiles.set(true);
+        }
     }
 
     @FXML
@@ -72,15 +76,6 @@ public class CreateProfileController {
 
     @FXML
     private void loadStartPage(MouseEvent event) {
-        try {
-            // Load StartPage.fxml
-            final FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/view/StartPage.fxml"));
-            final Parent root = loader.load();
-            final Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(root, 800, 600));
-            stage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        PageLoader.getInstance().loadStartPage(event);
     }
 }

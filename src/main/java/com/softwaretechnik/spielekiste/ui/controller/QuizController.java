@@ -1,6 +1,7 @@
 package com.softwaretechnik.spielekiste.ui.controller;
 
 import com.softwaretechnik.spielekiste.game.service.GameService;
+import com.softwaretechnik.spielekiste.game.service.GameServiceFactory;
 import com.softwaretechnik.spielekiste.quiz.domain.entity.QuizEntity;
 import com.softwaretechnik.spielekiste.quiz.infrastructure.persistence.QuizRepositoryImpl;
 import com.softwaretechnik.spielekiste.shared.infrastructure.aspect.GamePointsAdvice;
@@ -10,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import org.springframework.aop.framework.ProxyFactory;
+import javafx.scene.input.MouseEvent;
 
 public class QuizController {
     @FXML
@@ -42,7 +44,8 @@ public class QuizController {
 
     @FXML
     public void initialize() {
-        gameService = createGameServiceProxy();
+        GameServiceFactory gameServiceFactory = new GameServiceFactory(userRepository);
+        gameService = gameServiceFactory.createGameServiceProxy();
 
         startQuiz();
         loadNextQuestion();
@@ -95,16 +98,12 @@ public class QuizController {
         }
     }
 
-    private GameService createGameServiceProxy() {
-        // Create the proxy for GameService
-        ProxyFactory proxyFactory = new ProxyFactory();
-        proxyFactory.setTarget(new GameService()); // Set the target to your GameService instance
-        proxyFactory.addAdvice(new GamePointsAdvice(userRepository)); // Add the advice
-
-        return (GameService) proxyFactory.getProxy(); // Return the proxied GameService
-    }
-
     private void updateScore() {
         scoreLabel.setText("Score: " + score);
+    }
+
+    @FXML
+    private void loadGameOverview(MouseEvent event) {
+        PageLoader.getInstance().loadGameOverviewPage(event);
     }
 }

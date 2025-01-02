@@ -13,6 +13,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.net.URL;
 import java.util.List;
 
 public class StartPageController {
@@ -97,7 +98,6 @@ public class StartPageController {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
         }
     }
 }

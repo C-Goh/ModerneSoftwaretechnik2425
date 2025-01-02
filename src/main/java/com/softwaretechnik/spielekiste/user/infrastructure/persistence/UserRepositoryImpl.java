@@ -21,6 +21,12 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public void createUser(UserEntity user) {
+        try {
+            userDomainService.validateUser(user);
+        } catch (IllegalArgumentException e) {
+            LOGGER.log(Level.WARNING, e.getMessage());
+            return;
+        }
 
         if (findUserByName(user.getName()) != null) {
             LOGGER.log(Level.WARNING, "User already exists with name: {0}", user.getName());

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
 <?import java.lang.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.layout.*?>
@@ -10,16 +10,16 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.softwaretechnik.spielekiste.ui.controller.StartPageController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.softwaretechnik.spielekiste.ui.controller.StartPageController">
    <children>
-      <Text id="pageTitle" layoutX="170.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Willkommen bei der Spielekiste!">
+      <Text id="pageTitle" layoutX="36.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Willkommen bei der Spielekiste!" AnchorPane.bottomAnchor="300.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="45.0">
          <font>
-            <Font size="30.0" />
+            <Font size="40.0" />
          </font>
       </Text>
-      <HBox layoutX="-2.0" layoutY="188.0" prefHeight="198.0" prefWidth="809.0">
+      <HBox layoutX="5.0" layoutY="141.0" prefHeight="198.0" prefWidth="590.0" AnchorPane.bottomAnchor="61.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="141.0">
          <children>
-            <Button fx:id="button1" style="-fx-background-color: transparent;" onMouseClicked="#handleButtonClick">
+            <Button fx:id="button1" onMouseClicked="#handleButtonClick" style="-fx-background-color: transparent;">
                <graphic>
                   <VBox prefHeight="198.0" prefWidth="200.0">
                      <HBox.margin>
@@ -28,7 +28,7 @@
                      <children>
                         <ImageView fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../Bildmaterial/Profilbild.png" />
+                              <Image url="/Bildmaterial/Profilbild.png" />
                            </image>
                            <VBox.margin>
                               <Insets left="30.0" />
@@ -39,20 +39,20 @@
                               <Font size="20.0" />
                            </font>
                            <VBox.margin>
-                              <Insets left="65.0" />
+                              <Insets left="55.0" top="10.0" />
                            </VBox.margin>
                         </Text>
                      </children>
                   </VBox>
                </graphic>
             </Button>
-            <Button fx:id="button2" style="-fx-background-color: transparent;" onMouseClicked="#handleButtonClick">
+            <Button fx:id="button2" onMouseClicked="#handleButtonClick" style="-fx-background-color: transparent;">
                <graphic>
                   <VBox prefHeight="198.0" prefWidth="200.0">
                      <children>
                         <ImageView fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../Bildmaterial/Profilbild.png" />
+                              <Image url="/Bildmaterial/Profilbild.png" />
                            </image>
                            <VBox.margin>
                               <Insets left="30.0" />
@@ -63,20 +63,20 @@
                               <Font size="20.0" />
                            </font>
                            <VBox.margin>
-                              <Insets left="65.0" />
+                              <Insets left="55.0" top="10.0" />
                            </VBox.margin>
                         </Text>
                      </children>
                   </VBox>
                </graphic>
             </Button>
-            <Button fx:id="button3" style="-fx-background-color: transparent;" onMouseClicked="#handleButtonClick">
+            <Button fx:id="button3" onMouseClicked="#handleButtonClick" style="-fx-background-color: transparent;">
                <graphic>
                   <VBox prefHeight="198.0" prefWidth="200.0">
                      <children>
                         <ImageView fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../Bildmaterial/Profilbild.png" />
+                              <Image url="/Bildmaterial/Profilbild.png" />
                            </image>
                            <VBox.margin>
                               <Insets left="30.0" />
@@ -87,7 +87,7 @@
                               <Font size="20.0" />
                            </font>
                            <VBox.margin>
-                              <Insets left="65.0" />
+                              <Insets left="55.0" top="10.0" />
                            </VBox.margin>
                         </Text>
                      </children>
@@ -97,4 +97,4 @@
          </children>
       </HBox>
    </children>
-</Pane>
+</AnchorPane>
