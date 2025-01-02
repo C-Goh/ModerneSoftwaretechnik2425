@@ -14,7 +14,7 @@ public class GameServiceFactory {
 
     public GameService createGameServiceProxy() {
         // Create the proxy for GameService
-        ProxyFactory proxyFactory = new ProxyFactory();
+        final ProxyFactory proxyFactory = new ProxyFactory();
         proxyFactory.setTarget(new GameService()); // Set the target to your GameService instance
         proxyFactory.addAdvice(new GamePointsAdvice(userRepository)); // Add the advice
 
