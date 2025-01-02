@@ -7,6 +7,7 @@ import com.softwaretechnik.spielekiste.user.domain.entity.UserEntity;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -64,5 +65,13 @@ public class QuizControllerUITest {
 
         // Verify that the quiz completion message is displayed
         Assertions.assertThat(robot.lookup("#questionLabel").queryLabeled()).hasText("Quiz completed!");
+    }
+
+    @Test
+    public void testLoadGameOverview(FxRobot robot) {
+        robot.clickOn("#backButton");
+
+        // Verify that the scene has changed by checking an element from GameOverview.fxml
+        Assertions.assertThat(robot.lookup("#profileImageView").queryAs(ImageView.class)).isVisible();
     }
 }
