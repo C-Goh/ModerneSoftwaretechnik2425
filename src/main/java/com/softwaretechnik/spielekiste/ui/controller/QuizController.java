@@ -1,13 +1,16 @@
 package com.softwaretechnik.spielekiste.ui.controller;
 
 import com.softwaretechnik.spielekiste.game.service.GameService;
+import com.softwaretechnik.spielekiste.game.service.GameServiceFactory;
 import com.softwaretechnik.spielekiste.quiz.domain.entity.QuizEntity;
 import com.softwaretechnik.spielekiste.quiz.infrastructure.persistence.QuizRepositoryImpl;
+import com.softwaretechnik.spielekiste.shared.infrastructure.aspect.GamePointsAdvice;
 import com.softwaretechnik.spielekiste.user.application.service.UserContext;
 import com.softwaretechnik.spielekiste.user.infrastructure.persistence.UserRepositoryImpl;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import org.springframework.aop.framework.ProxyFactory;
 import javafx.scene.input.MouseEvent;
 
 public class QuizController {
@@ -36,10 +39,14 @@ public class QuizController {
     private QuizEntity quiz;
     private QuizRepositoryImpl quizRepository = new QuizRepositoryImpl();
     private UserRepositoryImpl userRepository = new UserRepositoryImpl();
-    private GameService gameService = new GameService(userRepository);
+    private GameService gameService;
+
 
     @FXML
     public void initialize() {
+        GameServiceFactory gameServiceFactory = new GameServiceFactory(userRepository);
+        gameService = gameServiceFactory.createGameServiceProxy();
+
         startQuiz();
         loadNextQuestion();
     }
@@ -90,6 +97,7 @@ public class QuizController {
             updateScore();
         }
     }
+
     private void updateScore() {
         scoreLabel.setText("Score: " + score);
     }
