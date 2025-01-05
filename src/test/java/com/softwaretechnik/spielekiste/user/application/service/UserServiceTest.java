@@ -1,19 +1,22 @@
 package com.softwaretechnik.spielekiste.user.application.service;
 
-import com.softwaretechnik.spielekiste.user.domain.entity.UserEntity;
-import com.softwaretechnik.spielekiste.user.domain.repository.UserRepository;
-import com.softwaretechnik.spielekiste.user.domain.service.UserDomainService;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
-
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.doThrow;
+import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+import com.softwaretechnik.spielekiste.user.domain.entity.UserEntity;
+import com.softwaretechnik.spielekiste.user.domain.repository.UserRepository;
+import com.softwaretechnik.spielekiste.user.domain.service.UserDomainService;
 
 @ExtendWith(MockitoExtension.class)
 public class UserServiceTest {
@@ -81,5 +84,31 @@ public class UserServiceTest {
 
         assertEquals(users, result);
         verify(userRepository).findAllUsers();
+    }
+
+    /*@Test
+    public void getCurrentUser() {
+        UserEntity currentUser = new UserEntity();
+        when(UserContext.getCurrentUser()).thenReturn(currentUser);
+
+        UserEntity result = userService.getCurrentUser();
+
+        assertEquals(currentUser, result);
+    }
+*/
+    @Test
+    public void createUser_InvalidUser_ShouldThrowException() {
+        UserEntity user = new UserEntity(); // Ungültiger Benutzer
+        doThrow(new IllegalArgumentException("Invalid user"))
+            .when(userDomainService)
+            .validateUser(user);
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            userService.createUser(user);
+        });
+
+        assertEquals("Invalid user", exception.getMessage());
+        verify(userDomainService).validateUser(user);
+        verify(userRepository, never()).createUser(user);
     }
 }
