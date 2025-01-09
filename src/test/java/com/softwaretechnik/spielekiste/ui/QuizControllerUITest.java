@@ -43,7 +43,7 @@ public class QuizControllerUITest {
     @Test
     public void testStartQuiz(FxRobot robot) {
         // Überprüfen, dass die erste Frage angezeigt wird
-        Assertions.assertThat(robot.lookup("#questionLabel").queryLabeled()).hasText("Question goes here");
+        Assertions.assertThat(robot.lookup("#questionLabel").queryLabeled()).hasText("What is 2+2?");
     }
 
     @Test
@@ -52,7 +52,7 @@ public class QuizControllerUITest {
         robot.clickOn("#answerButton1");
 
         // Überprüfen, dass die nächste Frage angezeigt wird
-        Assertions.assertThat(robot.lookup("#questionLabel").queryLabeled()).hasText("Question goes here");
+        Assertions.assertThat(robot.lookup("#questionLabel").queryLabeled()).hasText("What is the capital of France?");
     }
 
     @Test

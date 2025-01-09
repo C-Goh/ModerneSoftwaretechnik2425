@@ -4,16 +4,10 @@ import com.softwaretechnik.spielekiste.user.application.service.UserContext;
 import com.softwaretechnik.spielekiste.user.domain.entity.UserEntity;
 import com.softwaretechnik.spielekiste.user.infrastructure.persistence.UserRepositoryImpl;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
-import java.net.URL;
 import java.util.List;
 
 public class StartPageController {
@@ -67,6 +61,7 @@ public class StartPageController {
             profileName3.setText("+");
         }
     }
+
     @FXML
     private void handleButtonClick(MouseEvent event) {
         final Button clickedButton = (Button) event.getSource();

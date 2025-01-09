@@ -47,7 +47,8 @@ public class PageLoader {
     }
 
     public void loadCreateProfilePage(Event event) {
-        loadPage("/ui/view/CreateProfile.fxml", 900, 600, event);}
+        loadPage("/ui/view/CreateProfile.fxml", 900, 600, event);
+    }
 
     public void loadQuizPage(MouseEvent event) {
         loadPage("/ui/view/Quiz.fxml", 900, 600, event);
