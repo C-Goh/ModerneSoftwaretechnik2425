@@ -34,7 +34,7 @@ public class GameOverviewController {
     }
 
     public void setHelloText(String name) {
-        helloLabel.setText("hello " + name);
+        helloLabel.setText("Hallo " + name);
     }
 
     @FXML

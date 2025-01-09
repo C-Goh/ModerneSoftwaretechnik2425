@@ -5,15 +5,10 @@ import com.softwaretechnik.spielekiste.user.infrastructure.persistence.UserRepos
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
 import java.util.List;
 
@@ -62,12 +57,7 @@ public class CreateProfileController {
             final UserRepositoryImpl userRepository = new UserRepositoryImpl();
             userRepository.createUser(user);
 
-            // Load StartPage.fxml
-            final FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/view/StartPage.fxml"));
-            final Parent root = loader.load();
-            final Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(root, 800, 600));
-            stage.show();
+            PageLoader.getInstance().loadStartPage(event);
 
         } catch (Exception e) {
             e.printStackTrace();

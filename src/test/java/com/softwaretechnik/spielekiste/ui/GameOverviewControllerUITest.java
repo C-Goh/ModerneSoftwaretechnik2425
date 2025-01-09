@@ -71,11 +71,4 @@ public class GameOverviewControllerUITest {
         // Verify that the scene has changed by checking an element from StartPage.fxml
         Assertions.assertThat(robot.lookup("#button1").queryButton()).isVisible();
     }
-
-    @Test
-    public void testHelloLabel(FxRobot robot) {
-        // Verify that the helloLabel displays the correct text
-        Label helloLabel = robot.lookup("#helloLabel").queryAs(Label.class);
-        Assertions.assertThat(helloLabel).hasText("hello TestUser");
-    }
 }

@@ -1,19 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.image.*?>
-<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.*?>
 
-<BorderPane prefHeight="275.0" prefWidth="405.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.softwaretechnik.spielekiste.ui.controller.QuizController">
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.softwaretechnik.spielekiste.ui.controller.QuizController" style="-fx-background-color: #FFFFFF;" stylesheets="@styles.css">
+
+    <!-- Oben (Top) - Der Titelbereich mit dem Label für den Titel des Spiels -->
     <top>
-        <Label style="-fx-font-size: 24px; -fx-text-fill: black;" text="Who Wants to Be a Millionaire?" BorderPane.alignment="CENTER" />
+        <VBox alignment="CENTER">
+            <children>
+                <Label style="-fx-font-size: 40px; -fx-text-fill: black;" text="Wer wird Millionär?" /> <!-- Label für den Titel -->
+            </children>
+            <padding>
+                <Insets top="40.0" />
+            </padding>
+        </VBox>
     </top>
+
+    <!-- Zentrum (Center) - Bereich für die Frage und Antwort-Buttons -->
     <center>
         <VBox alignment="CENTER" prefHeight="192.0" prefWidth="405.0" spacing="20.0">
             <children>
-                <Label fx:id="questionLabel" style="-fx-font-size: 18px; -fx-text-fill: black;" text="Question goes here" wrapText="true" />
+                <Label fx:id="questionLabel" style="-fx-font-size: 24px; -fx-text-fill: black;" text="Question goes here" wrapText="true" />
+
+                <!-- GridPane für die Antwort-Buttons -->
                 <GridPane alignment="CENTER" hgap="10" vgap="10">
                     <children>
                         <Button fx:id="answerButton1" onAction="#handleAnswerButtonClick" style="-fx-background-color: #16386C;" styleClass="styled-button" text="Answer 1" GridPane.columnIndex="0" GridPane.rowIndex="0" />
@@ -21,29 +33,36 @@
                         <Button fx:id="answerButton3" onAction="#handleAnswerButtonClick" style="-fx-background-color: #16386C;" styleClass="styled-button" text="Answer 3" GridPane.columnIndex="0" GridPane.rowIndex="1" />
                         <Button fx:id="answerButton4" onAction="#handleAnswerButtonClick" style="-fx-background-color: #16386C;" styleClass="styled-button" text="Answer 4" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                     </children>
+                    <!-- Spalten- und Zeilenkonfiguration für das GridPane -->
                     <columnConstraints>
-                        <ColumnConstraints />
-                        <ColumnConstraints />
+                        <ColumnConstraints /> <!-- Erste Spalte -->
+                        <ColumnConstraints /> <!-- Zweite Spalte -->
                     </columnConstraints>
                     <rowConstraints>
-                        <RowConstraints />
-                        <RowConstraints />
+                        <RowConstraints /> <!-- Erste Zeile -->
+                        <RowConstraints /> <!-- Zweite Zeile -->
                     </rowConstraints>
                 </GridPane>
-                <Label fx:id="scoreLabel" style="-fx-font-size: 18px; -fx-text-fill: black;" text="Score: 0" />
-                <ImageView fx:id="backButton" fitHeight="57.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" onMouseClicked="#loadGameOverview">
+
+                <!-- Label für den aktuellen Punktestand -->
+                <Label fx:id="scoreLabel" style="-fx-font-size: 24px; -fx-text-fill: black;" text="Score: 0" />
+            </children>
+        </VBox>
+    </center>
+
+    <!-- Unten (Bottom) - Der Bereich für den Zurück-Button -->
+    <bottom>
+        <VBox alignment="CENTER_RIGHT">
+            <children>
+                <ImageView fx:id="backButton" fitHeight="135.0" fitWidth="135.0" pickOnBounds="true" preserveRatio="true" onMouseClicked="#loadGameOverview">
                     <image>
                         <Image url="@../../Bildmaterial/Pfeil.png" />
                     </image>
                 </ImageView>
             </children>
-            <VBox.margin>
-                <Insets left="300.0" top="-50.0" />
-            </VBox.margin>
             <padding>
-                <Insets bottom="30.0" top="20.0" />
+                <Insets right="20.0" bottom="20.0" />
             </padding>
         </VBox>
-    </center>
+    </bottom>
 </BorderPane>
-

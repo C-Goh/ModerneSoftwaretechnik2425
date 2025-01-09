@@ -34,14 +34,9 @@ public class BadgeOverviewController {
 
     @FXML
     public void initialize() {
-        // Setze Eigenschaften für ScrollPane und VBox
         scrollPane.setFitToWidth(true);
-        vBoxContent.setSpacing(10); // Passt den Abstand zwischen den HBox-Elementen an
-
-        // Füge die Items zur ChoiceBox hinzu
+        vBoxContent.setSpacing(10);
         categoryChoiceBox.getItems().addAll("Alle", "Quiz", "TicTacToe", "Taschenrechner", "QuickKlick");
-
-        // Setze einen Standardwert für die ChoiceBox
         categoryChoiceBox.setValue("Alle");
     }
 

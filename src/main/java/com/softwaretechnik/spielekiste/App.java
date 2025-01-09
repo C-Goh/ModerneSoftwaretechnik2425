@@ -29,6 +29,9 @@ public class App extends Application {
         final Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(fxmlFile)));
         primaryStage.setTitle(users.isEmpty() ? "Profil erstellen" : "Spielekiste");
         primaryStage.setScene(new Scene(root, 600, 400));
+        // Fenstergröße fixieren
+        primaryStage.setResizable(false);
+
         primaryStage.show();
     }
 

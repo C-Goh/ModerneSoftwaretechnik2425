@@ -1,100 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.image.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.softwaretechnik.spielekiste.ui.controller.StartPageController">
+<Pane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.softwaretechnik.spielekiste.ui.controller.StartPageController" style="-fx-background-color: #F57041;" prefWidth="600.0" prefHeight="400.0">
+
    <children>
-      <Text id="pageTitle" layoutX="36.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Willkommen bei der Spielekiste!" AnchorPane.bottomAnchor="300.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="45.0">
-         <font>
-            <Font size="40.0" />
-         </font>
-      </Text>
-      <HBox layoutX="5.0" layoutY="141.0" prefHeight="198.0" prefWidth="590.0" AnchorPane.bottomAnchor="61.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="141.0">
+      <VBox spacing="45.0" alignment="CENTER" layoutX="0.0" layoutY="0.0" prefWidth="600.0" prefHeight="400.0">
+         <!-- Titelbereich -->
          <children>
-            <Button fx:id="button1" onMouseClicked="#handleButtonClick" style="-fx-background-color: transparent;">
-               <graphic>
-                  <VBox prefHeight="198.0" prefWidth="200.0">
-                     <HBox.margin>
-                        <Insets left="100.0" />
-                     </HBox.margin>
-                     <children>
-                        <ImageView fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="/Bildmaterial/Profilbild.png" />
-                           </image>
-                           <VBox.margin>
-                              <Insets left="30.0" />
-                           </VBox.margin>
-                        </ImageView>
-                        <Text fx:id="profileName1" strokeType="OUTSIDE" strokeWidth="0.0" text="Name1">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets left="55.0" top="10.0" />
-                           </VBox.margin>
-                        </Text>
-                     </children>
-                  </VBox>
-               </graphic>
-            </Button>
-            <Button fx:id="button2" onMouseClicked="#handleButtonClick" style="-fx-background-color: transparent;">
-               <graphic>
-                  <VBox prefHeight="198.0" prefWidth="200.0">
-                     <children>
-                        <ImageView fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="/Bildmaterial/Profilbild.png" />
-                           </image>
-                           <VBox.margin>
-                              <Insets left="30.0" />
-                           </VBox.margin>
-                        </ImageView>
-                        <Text fx:id="profileName2" strokeType="OUTSIDE" strokeWidth="0.0" text="Name2">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets left="55.0" top="10.0" />
-                           </VBox.margin>
-                        </Text>
-                     </children>
-                  </VBox>
-               </graphic>
-            </Button>
-            <Button fx:id="button3" onMouseClicked="#handleButtonClick" style="-fx-background-color: transparent;">
-               <graphic>
-                  <VBox prefHeight="198.0" prefWidth="200.0">
-                     <children>
-                        <ImageView fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="/Bildmaterial/Profilbild.png" />
-                           </image>
-                           <VBox.margin>
-                              <Insets left="30.0" />
-                           </VBox.margin>
-                        </ImageView>
-                        <Text fx:id="profileName3" strokeType="OUTSIDE" strokeWidth="0.0" text="Name3">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets left="55.0" top="10.0" />
-                           </VBox.margin>
-                        </Text>
-                     </children>
-                  </VBox>
-               </graphic>
-            </Button>
+            <Text id="pageTitle" strokeType="OUTSIDE" strokeWidth="0.0" text="Willkommen bei der Spielekiste!" textAlignment="CENTER" style="-fx-fill: white;">
+               <font>
+                  <Font size="40" />
+               </font>
+            </Text>
+            <!-- Buttonbereich -->
+            <HBox spacing="30.0" alignment="CENTER">
+               <children>
+                  <!-- Erster Button -->
+                  <Button fx:id="button1" onMouseClicked="#handleButtonClick" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <VBox alignment="CENTER" spacing="15.0">
+                           <children>
+                              <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="/Bildmaterial/Profilbild.png" />
+                                 </image>
+                              </ImageView>
+                              <Text fx:id="profileName1" text="Name1" textAlignment="CENTER" style="-fx-fill: white;">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </VBox>
+                     </graphic>
+                  </Button>
+                  <!-- Zweiter Button -->
+                  <Button fx:id="button2" onMouseClicked="#handleButtonClick" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <VBox alignment="CENTER" spacing="15.0">
+                           <children>
+                              <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="/Bildmaterial/Profilbild.png" />
+                                 </image>
+                              </ImageView>
+                              <Text fx:id="profileName2" text="Name2" textAlignment="CENTER" style="-fx-fill: white; -fx-font-weight: bold;">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </VBox>
+                     </graphic>
+                  </Button>
+                  <!-- Dritter Button -->
+                  <Button fx:id="button3" onMouseClicked="#handleButtonClick" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <VBox alignment="CENTER" spacing="15.0">
+                           <children>
+                              <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="/Bildmaterial/Profilbild.png" />
+                                 </image>
+                              </ImageView>
+                              <Text fx:id="profileName3" text="Name3" textAlignment="CENTER" style="-fx-fill: white; -fx-font-weight: bold;">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </VBox>
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
          </children>
-      </HBox>
+      </VBox>
    </children>
-</AnchorPane>
+</Pane>

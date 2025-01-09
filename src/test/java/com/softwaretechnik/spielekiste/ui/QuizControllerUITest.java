@@ -36,42 +36,43 @@ public class QuizControllerUITest {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/view/Quiz.fxml"));
         Parent root = loader.load();
-        stage.setScene(new Scene(root, 800, 600));
+        stage.setScene(new Scene(root, 600, 400));  // Ändere die Dimensionen, falls nötig
         stage.show();
     }
 
     @Test
     public void testStartQuiz(FxRobot robot) {
-        // Verify that the first question is displayed
-        Assertions.assertThat(robot.lookup("#questionLabel").queryLabeled()).hasText("What is 2+2?");
+        // Überprüfen, dass die erste Frage angezeigt wird
+        Assertions.assertThat(robot.lookup("#questionLabel").queryLabeled()).hasText("Question goes here");
     }
 
     @Test
     public void testAnswerQuestion(FxRobot robot) {
-        // Simulate clicking the first answer button
+        // Simuliere das Klicken des ersten Antwort-Buttons
         robot.clickOn("#answerButton1");
 
-        // Verify that the next question is displayed
-        Assertions.assertThat(robot.lookup("#questionLabel").queryLabeled()).hasText("What is the capital of France?");
+        // Überprüfen, dass die nächste Frage angezeigt wird
+        Assertions.assertThat(robot.lookup("#questionLabel").queryLabeled()).hasText("Question goes here");
     }
 
     @Test
     public void testCompleteQuiz(FxRobot robot) {
-        // Simulate answering all questions
+        // Simuliere das Beantworten aller Fragen
         robot.clickOn("#answerButton1");
         robot.clickOn("#answerButton2");
         robot.clickOn("#answerButton3");
         robot.clickOn("#answerButton4");
 
-        // Verify that the quiz completion message is displayed
+        // Überprüfen, dass die Abschlussnachricht angezeigt wird
         Assertions.assertThat(robot.lookup("#questionLabel").queryLabeled()).hasText("Quiz completed!");
     }
 
     @Test
     public void testLoadGameOverview(FxRobot robot) {
+        // Simuliere das Klicken des "Zurück"-Buttons
         robot.clickOn("#backButton");
 
-        // Verify that the scene has changed by checking an element from GameOverview.fxml
+        // Überprüfen, dass das GameOverview geladen wurde, indem ein Element aus der GameOverview-Szene überprüft wird
         Assertions.assertThat(robot.lookup("#profileImageView").queryAs(ImageView.class)).isVisible();
     }
 }

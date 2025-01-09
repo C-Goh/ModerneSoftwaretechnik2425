@@ -38,16 +38,7 @@ public class StartPageController {
 
     @FXML
     private void handleCreateProfile(MouseEvent event) {
-        try {
-            // Load CreateProfile.fxml
-            final FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/view/CreateProfile.fxml"));
-            final Parent root = loader.load();
-            final Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(root, 800, 600));
-            stage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        PageLoader.getInstance().loadCreateProfilePage(event);
     }
 
     @FXML
@@ -76,7 +67,6 @@ public class StartPageController {
             profileName3.setText("+");
         }
     }
-
     @FXML
     private void handleButtonClick(MouseEvent event) {
         final Button clickedButton = (Button) event.getSource();
@@ -87,17 +77,8 @@ public class StartPageController {
             final UserRepositoryImpl userRepository = new UserRepositoryImpl();
             final UserEntity selectedProfile = userRepository.findUserById(userId);
             UserContext.setCurrentUser(selectedProfile);
-
-            // Load GameOverview.fxml
-            try {
-                final FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/view/GameOverview.fxml"));
-                final Parent root = loader.load();
-                final Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                stage.setScene(new Scene(root, 800, 600));
-                stage.show();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            PageLoader.getInstance().loadGameOverviewPage(event);
         }
     }
+
 }
