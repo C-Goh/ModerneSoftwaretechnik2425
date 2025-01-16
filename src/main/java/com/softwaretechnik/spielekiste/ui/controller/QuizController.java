@@ -1,17 +1,20 @@
 package com.softwaretechnik.spielekiste.ui.controller;
 
+import com.softwaretechnik.spielekiste.badge.domain.service.ScoreBadgeCondition;
 import com.softwaretechnik.spielekiste.game.service.GameService;
 import com.softwaretechnik.spielekiste.game.service.GameServiceFactory;
 import com.softwaretechnik.spielekiste.quiz.domain.entity.QuizEntity;
 import com.softwaretechnik.spielekiste.quiz.infrastructure.persistence.QuizRepositoryImpl;
-import com.softwaretechnik.spielekiste.shared.infrastructure.aspect.GamePointsAdvice;
 import com.softwaretechnik.spielekiste.user.application.service.UserContext;
+import com.softwaretechnik.spielekiste.user.domain.entity.UserEntity;
 import com.softwaretechnik.spielekiste.user.infrastructure.persistence.UserRepositoryImpl;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import org.springframework.aop.framework.ProxyFactory;
 import javafx.scene.input.MouseEvent;
+import com.softwaretechnik.spielekiste.badge.domain.service.BadgeDomainService;
+
+import java.util.List;
 
 public class QuizController {
     @FXML
@@ -61,6 +64,9 @@ public class QuizController {
     private void startQuiz() {
         final int quizId = 1; // Example quiz ID
         quiz = quizRepository.startQuiz(quizId);
+        gameService.setUser(UserContext.getCurrentUser());
+        gameService.setGameType("Quiz");
+
     }
 
     private void loadNextQuestion() {
@@ -84,6 +90,10 @@ public class QuizController {
             final int points = quizRepository.getFinalPoints(quiz.getId(), userId);
 
             gameService.endGame(userId, gameId, points);
+            gameService.setScore(points);
+
+            // Check and award badges
+            UserEntity user = userRepository.findUserById(userId);
         }
     }
 
@@ -91,9 +101,7 @@ public class QuizController {
         if (quiz != null && currentQuestionIndex > 0) {
             final QuizEntity.Question currentQuestion = quiz.getQuestions().get(currentQuestionIndex - 1);
             final boolean isCorrect = quizRepository.checkAnswer(quiz.getId(), currentQuestion.getId(), userId, selectedAnswer);
-            if (isCorrect) {
-                score++;
-            }
+            score += isCorrect ? 1 : 0;
             updateScore();
         }
     }
