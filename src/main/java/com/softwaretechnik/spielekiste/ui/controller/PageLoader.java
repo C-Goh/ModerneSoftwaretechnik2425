@@ -42,23 +42,25 @@ public class PageLoader {
         }
     }
 
-    // Spezifische Methoden zum Laden der einzelnen Seiten
     public void loadStartPage(MouseEvent event) {
         loadPage("/ui/view/StartPage.fxml", 600, 400, event);
     }
 
+    public void loadCreateProfilePage(Event event) {
+        loadPage("/ui/view/CreateProfile.fxml", 900, 600, event);
+    }
+
     public void loadQuizPage(MouseEvent event) {
-        loadPage("/ui/view/Quiz.fxml", 600, 400, event);
+        loadPage("/ui/view/Quiz.fxml", 900, 600, event);
     }
 
     public void loadBadgeOverviewPage(MouseEvent event) {
-        loadPage("/ui/view/BadgeOverview.fxml", 600, 400, event);
+        loadPage("/ui/view/BadgeOverview.fxml", 900, 600, event);
     }
 
     public void loadGameOverviewPage(Event event) {
-        loadPage("/ui/view/GameOverview.fxml", 600, 400, event);
+        loadPage("/ui/view/GameOverview.fxml", 900, 600, event);
     }
-    /*public void loadQuizPage(Event event) {
-        loadPage("/ui/view/Quiz.fxml", 600, 400, event);
-    }*/
 }
+
+
