@@ -1,6 +1,5 @@
 package com.softwaretechnik.spielekiste.ui.controller;
 
-import com.softwaretechnik.spielekiste.badge.domain.service.ScoreBadgeCondition;
 import com.softwaretechnik.spielekiste.game.service.GameService;
 import com.softwaretechnik.spielekiste.game.service.GameServiceFactory;
 import com.softwaretechnik.spielekiste.quiz.domain.entity.QuizEntity;
@@ -12,9 +11,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
-import com.softwaretechnik.spielekiste.badge.domain.service.BadgeDomainService;
-
-import java.util.List;
 
 public class QuizController {
     @FXML
@@ -89,8 +85,8 @@ public class QuizController {
 
             final int points = quizRepository.getFinalPoints(quiz.getId(), userId);
 
-            gameService.endGame(userId, gameId, points);
             gameService.setScore(points);
+            gameService.endGame(userId, gameId, points);
 
             // Check and award badges
             UserEntity user = userRepository.findUserById(userId);

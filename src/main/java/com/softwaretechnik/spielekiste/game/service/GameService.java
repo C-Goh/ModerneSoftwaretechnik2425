@@ -81,7 +81,6 @@ public class GameService implements Game {
 
         badgeDomainService.checkAndAwardBadges(this);
 
-
         // Save the game points, assuming the aspect will handle it
         System.out.println("Game has ended for User ID: " + userId + ", Game ID: " + gameId);
     }

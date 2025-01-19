@@ -35,8 +35,8 @@ public class SQLiteManager {
 
             final String createBadgesTable = "CREATE TABLE IF NOT EXISTS badges (" +
                     "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    "badgeId STRING NOT NULL, " +
-                    "gameType STRING NOT NULL, " +
+                    "badgeId TEXT NOT NULL, " +
+                    "gameType TEXT NOT NULL, " +
                     "userId INTEGER NOT NULL, " +
                     "name TEXT NOT NULL, " +
                     "text TEXT, " +
