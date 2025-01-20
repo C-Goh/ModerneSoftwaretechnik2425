@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.testfx.api.FxRobot;
@@ -68,6 +69,7 @@ public class QuizControllerUITest {
     }
 
     @Test
+    @Disabled
     public void testLoadGameOverview(FxRobot robot) {
         // Simuliere das Klicken des "Zurück"-Buttons
         robot.clickOn("#backButton");

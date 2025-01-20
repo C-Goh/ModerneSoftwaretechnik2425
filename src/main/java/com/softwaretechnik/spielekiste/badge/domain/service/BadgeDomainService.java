@@ -18,16 +18,16 @@ public class BadgeDomainService<T> {
     }
 
     public void checkAndAwardBadges(Game game) {
-        System.out.println("checkAndAwardBadges called with game: " + game);
-        System.out.println("Badge conditions size: " + badgeConditions.size());
+        //System.out.println("checkAndAwardBadges called with game: " + game);
+        //System.out.println("Badge conditions size: " + badgeConditions.size());
 
         for (BadgeCondition<T> condition : badgeConditions) {
-            System.out.println("Checking condition: " + condition.getBadgeId());
+            //System.out.println("Checking condition: " + condition.getBadgeId());
             if (condition.isConditionMet(game) && !userHasBadge(game.getUser(), condition.getBadgeId())) {
-                System.out.println("Awarding badge: " + condition.getBadgeId() + " to user: " + game.getUser().getId() + " for game type: " + game.getGameType());
+                //System.out.println("Awarding badge: " + condition.getBadgeId() + " to user: " + game.getUser().getId() + " for game type: " + game.getGameType());
                 condition.awardBadge(game.getUser(), condition.getBadgeId(), game.getGameType());
             } else {
-                System.out.println("Condition not met or badge already awarded for badge: " + condition.getBadgeId());
+                //System.out.println("Condition not met or badge already awarded for badge: " + condition.getBadgeId());
             }
         }
     }

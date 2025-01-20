@@ -10,6 +10,7 @@ import com.softwaretechnik.spielekiste.user.infrastructure.persistence.UserRepos
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
 public class QuizController {
@@ -31,6 +32,9 @@ public class QuizController {
     @FXML
     private Label scoreLabel;
 
+    @FXML
+    private ImageView backButton; // Add @FXML annotation here
+
     final int userId = UserContext.getCurrentUser().getId();
     final int gameId = 1;
     private int score = 0;
@@ -40,12 +44,12 @@ public class QuizController {
     private UserRepositoryImpl userRepository = new UserRepositoryImpl();
     private GameService gameService;
 
-
     @FXML
     public void initialize() {
         GameServiceFactory gameServiceFactory = new GameServiceFactory(userRepository);
         gameService = gameServiceFactory.createGameServiceProxy();
 
+        backButton.setVisible(false); // Hide the back button initially
         startQuiz();
         loadNextQuestion();
     }
@@ -62,7 +66,6 @@ public class QuizController {
         quiz = quizRepository.startQuiz(quizId);
         gameService.setUser(UserContext.getCurrentUser());
         gameService.setGameType("Quiz");
-
     }
 
     private void loadNextQuestion() {
@@ -90,6 +93,8 @@ public class QuizController {
 
             // Check and award badges
             UserEntity user = userRepository.findUserById(userId);
+
+            backButton.setVisible(true); // Show the back button when the quiz is completed
         }
     }
 
