@@ -7,6 +7,7 @@ import com.softwaretechnik.spielekiste.user.domain.service.UserDomainService;
 import com.softwaretechnik.spielekiste.user.infrastructure.persistence.UserRepositoryImpl;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -17,6 +18,10 @@ public class UpdateProfileController {
 
     @FXML
     private TextField profileNameField;
+
+    public Button updateProfileButton;
+
+    public Button deleteProfilButton;
 
     private UserService userService;
 

@@ -10,7 +10,6 @@ import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.testfx.api.FxRobot;
@@ -43,7 +42,6 @@ public class GameOverviewControllerUITest {
     }
 
     @Test
-    @Disabled
     public void testLoadQuizPage(FxRobot robot) {
         // Simulate a mouse click on the quizIcon
         robot.clickOn("#quizIcon");
@@ -53,14 +51,11 @@ public class GameOverviewControllerUITest {
     }
 
     @Test
-    @Disabled
     public void testLoadBadgeOverviewPage(FxRobot robot) {
-        //TODO Fix this test
-        // Simulate a mouse click on the badgeIcon
         robot.clickOn("#badgeIcon");
 
         // Verify that the scene has changed by checking an element from BadgeOverview.fxml
-        Assertions.assertThat(robot.lookup("#profileImageView").queryAs(ImageView.class)).isVisible();
+        Assertions.assertThat(robot.lookup("#backButton").queryAs(ImageView.class)).isVisible();
     }
 
     @Test

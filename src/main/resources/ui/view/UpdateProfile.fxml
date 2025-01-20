@@ -19,10 +19,10 @@
                 <Text id="pageTitle" text="Bearbeite dein Profil" style="-fx-font-size: 40px; -fx-fill: black;"/>
                 <Text id="nameLabel" text="Name" style="-fx-font-size: 30px; -fx-fill: black;"/>
                 <TextField fx:id="profileNameField" prefWidth="400.0" prefHeight="50.0" style="-fx-font-size: 30px;"/>
-                <Button id="updateProfileButton" text="speichern"
+                <Button fx:id="updateProfileButton" text="Speichern"
                         style="-fx-background-color: #16386C; -fx-text-fill: white; -fx-font-size: 30px;"
                         onMouseClicked="#updateProfile"/>
-                <Button id="deleteProfilButton" text="Profil löschen"
+                <Button fx:id="deleteProfilButton" text="Profil löschen"
                         style="-fx-background-color: #16386C; -fx-text-fill: white; -fx-font-size: 30px;"
                         onMouseClicked="#deleteProfile"/>
             </children>
