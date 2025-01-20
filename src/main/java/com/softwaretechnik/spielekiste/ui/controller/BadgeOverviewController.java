@@ -72,7 +72,12 @@ public class BadgeOverviewController {
     private void displayBadges(List<BadgeEntity> badges, String category) {
         vBoxContent.getChildren().clear();
         if (badges.isEmpty()) {
-            Text noBadgesText = new Text("Du hast in dem Spiel " + category + " noch keine Abzeichen verdient.");
+            Text noBadgesText;
+            if ("Alle".equals(category)) {
+                noBadgesText = new Text("Du hast noch keine Abzeichen verdient.");
+            } else {
+                noBadgesText = new Text("Du hast in dem Spiel " + category + " noch keine Abzeichen verdient.");
+            }
             noBadgesText.setStyle("-fx-font-size: 16px; -fx-text-fill: black;");
             vBoxContent.getChildren().add(noBadgesText);
         } else {
@@ -91,7 +96,6 @@ public class BadgeOverviewController {
         ImageView imageView = new ImageView("/Bildmaterial/Abzeichen.png");
         imageView.setFitHeight(200.0);
         imageView.setFitWidth(200.0);
-        imageView.setOpacity(0.5);
         imageView.setPickOnBounds(true);
         imageView.setPreserveRatio(true);
 
@@ -100,7 +104,7 @@ public class BadgeOverviewController {
         textArea.setPrefHeight(200.0);
         textArea.setPrefWidth(350.0);
         textArea.setStyle("-fx-background-color: #FFFFFF; -fx-border-color: transparent; -fx-font-size: 16px;");
-        textArea.setText("\n\n\n" + badge.getName() + "\n\n" + badge.getText());
+        textArea.setText("\n\n" + badge.getName() + "\n\n" + badge.getText());
 
         hBox.getChildren().addAll(imageView, textArea);
         return hBox;

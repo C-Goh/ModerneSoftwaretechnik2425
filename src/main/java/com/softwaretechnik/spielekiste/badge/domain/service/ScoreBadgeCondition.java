@@ -27,8 +27,8 @@ public class ScoreBadgeCondition<T extends Game> implements BadgeCondition<T> {
         badge.setBadgeId(badgeId);
         badge.setGameType(gameId);
         badge.setUserId(user.getId());
-        badge.setName("Score Badge " + badgeId);
-        badge.setText("This badge is awarded for achieving the required score.");
+        badge.setName(badgeId);
+        badge.setText("Glückwunsch!\nDu hast dieses Abzeichen erhalten,weil du\nin dem Spiel Quiz insgesamt " + requiredScore + " Fragen\nrichtig beantwortet hast!");
         badge.setCondition("Score >= " + requiredScore);
         badge.setHasEarned(true);
         badgeRepository.save(badge);

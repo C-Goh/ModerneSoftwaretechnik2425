@@ -4,8 +4,13 @@ import com.softwaretechnik.spielekiste.badge.domain.service.BadgeCondition;
 import com.softwaretechnik.spielekiste.badge.domain.service.BadgeDomainService;
 import com.softwaretechnik.spielekiste.badge.domain.service.ScoreBadgeCondition;
 import com.softwaretechnik.spielekiste.game.domain.Game;
+import com.softwaretechnik.spielekiste.shared.infrastructure.persistence.SQLiteManager;
 import com.softwaretechnik.spielekiste.user.domain.entity.UserEntity;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,10 +24,12 @@ public class GameService implements Game {
 
     public GameService() {
         List<BadgeCondition<Game>> badgeConditions = new ArrayList<>();
-        badgeConditions.add(new ScoreBadgeCondition<>("scoreBadge1", 1));
-        badgeConditions.add(new ScoreBadgeCondition<>("scoreBadge3", 3));
-        badgeConditions.add(new ScoreBadgeCondition<>("scoreBadge5", 5)); // Example condition
-        badgeConditions.add(new ScoreBadgeCondition<>("scoreBadge10", 10)); // Example condition
+        badgeConditions.add(new ScoreBadgeCondition<>("Abzeichen 1", 1));
+        badgeConditions.add(new ScoreBadgeCondition<>("Abzeichen 2", 3));
+        badgeConditions.add(new ScoreBadgeCondition<>("Abzeichen 3", 5)); // Example condition
+        badgeConditions.add(new ScoreBadgeCondition<>("Abzeichen 4", 10)); // Example condition
+        badgeConditions.add(new ScoreBadgeCondition<>("Abzeichen 5", 50)); // Example condition
+        badgeConditions.add(new ScoreBadgeCondition<>("Abzeichen 6", 100)); // Example condition
         this.badgeDomainService = new BadgeDomainService<>(badgeConditions);
     }
 
@@ -40,7 +47,8 @@ public class GameService implements Game {
 
     @Override
     public void setScore(int score) {
-        this.score = score;
+        int additionalPoints = getUserGamePoints(user.getId(), 1); // Assuming gameId is 1 for this example
+        this.score = score + additionalPoints;
     }
 
 
@@ -83,5 +91,22 @@ public class GameService implements Game {
 
         // Save the game points, assuming the aspect will handle it
         System.out.println("Game has ended for User ID: " + userId + ", Game ID: " + gameId);
+    }
+
+    private int getUserGamePoints(int userId, int gameId) {
+        int userGamePoints = 0;
+        try (Connection connection = SQLiteManager.getConnection();
+             PreparedStatement statement = connection.prepareStatement(
+                     "SELECT points FROM user_game_points WHERE user_id = ? AND game_id = ?")) {
+            statement.setInt(1, userId);
+            statement.setInt(2, gameId);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                userGamePoints = resultSet.getInt("points");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return userGamePoints;
     }
 }
