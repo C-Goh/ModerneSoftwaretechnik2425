@@ -63,7 +63,7 @@ public class QuizController {
 
     private void startQuiz() {
         final int quizId = 1;
-        quizRepository.clearUserAnswers(quizId, userId);
+        quizRepository.clearUserAnswers(quizId);
         quiz = quizRepository.startQuiz(quizId);
         gameService.setUser(UserContext.getCurrentUser());
         gameService.setGameType("Quiz");
@@ -96,7 +96,7 @@ public class QuizController {
             backButton.setVisible(true);
 
             // Clear user answers after the quiz is completed
-            quizRepository.clearUserAnswers(quiz.getId(), userId);
+            quizRepository.clearUserAnswers(quiz.getId());
         }
     }
 

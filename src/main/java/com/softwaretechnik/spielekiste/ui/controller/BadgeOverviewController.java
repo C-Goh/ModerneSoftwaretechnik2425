@@ -3,6 +3,7 @@ package com.softwaretechnik.spielekiste.ui.controller;
 import com.softwaretechnik.spielekiste.badge.domain.entity.BadgeEntity;
 import com.softwaretechnik.spielekiste.badge.domain.repository.BadgeRepository;
 import com.softwaretechnik.spielekiste.badge.infrastructure.persistence.BadgeRepositoryImpl;
+import com.softwaretechnik.spielekiste.user.application.service.UserContext;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ScrollPane;
@@ -55,12 +56,14 @@ public class BadgeOverviewController {
     }
 
     private void loadBadges() {
-        List<BadgeEntity> badges = badgeRepository.findAll();
+        int userId = UserContext.getCurrentUser().getId();
+        List<BadgeEntity> badges = badgeRepository.findByUserId(userId);
         displayBadges(badges, "Alle");
     }
 
     private void filterBadges(String category) {
-        List<BadgeEntity> badges = badgeRepository.findAll();
+        int userId = UserContext.getCurrentUser().getId();
+        List<BadgeEntity> badges = badgeRepository.findByUserId(userId);
         if (!"Alle".equals(category)) {
             badges = badges.stream()
                     .filter(badge -> badge.getGameType().equalsIgnoreCase(category))

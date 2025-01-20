@@ -1,19 +1,15 @@
 package com.softwaretechnik.spielekiste.badge.infrastructure.persistence;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import com.softwaretechnik.spielekiste.badge.domain.entity.BadgeEntity;
+import com.softwaretechnik.spielekiste.badge.domain.repository.BadgeRepository;
+import com.softwaretechnik.spielekiste.shared.infrastructure.persistence.SQLiteManager;
+
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import com.softwaretechnik.spielekiste.badge.domain.entity.BadgeEntity;
-import com.softwaretechnik.spielekiste.badge.domain.repository.BadgeRepository;
-import com.softwaretechnik.spielekiste.shared.infrastructure.persistence.SQLiteManager;
 
 public class BadgeRepositoryImpl implements BadgeRepository {
 
@@ -57,18 +53,22 @@ public class BadgeRepositoryImpl implements BadgeRepository {
     @Override
     public List<BadgeEntity> findByUserId(int userId) {
         List<BadgeEntity> badges = new ArrayList<>();
-        String query = "SELECT * FROM badges WHERE userId = ?";
+        final String query = "SELECT * FROM badges WHERE userId = ?";
         try (Connection connection = SQLiteManager.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-
-            preparedStatement.setInt(1, userId);
-            try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                while (resultSet.next()) {
-                    badges.add(mapResultSetToBadgeEntity(resultSet));
-                }
+             PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setInt(1, userId);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                BadgeEntity badge = new BadgeEntity();
+                badge.setId(resultSet.getInt("id"));
+                badge.setUserId(resultSet.getInt("userId"));
+                badge.setName(resultSet.getString("name"));
+                badge.setText(resultSet.getString("text"));
+                badge.setGameType(resultSet.getString("gameType"));
+                badges.add(badge);
             }
         } catch (SQLException e) {
-            LOGGER.log(Level.SEVERE, "Error finding badges by userId", e);
+            LOGGER.log(Level.SEVERE, "Error retrieving badges by user ID", e);
         }
         return badges;
     }

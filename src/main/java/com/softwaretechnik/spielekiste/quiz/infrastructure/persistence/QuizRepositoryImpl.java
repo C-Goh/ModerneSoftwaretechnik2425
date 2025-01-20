@@ -129,12 +129,11 @@ public class QuizRepositoryImpl implements QuizRepository {
         return 0;
     }
 
-    public void clearUserAnswers(int quizId, int userId) {
-        final String deleteUserAnswersSQL = "DELETE FROM user_answers WHERE quiz_id = ? AND user_id = ?";
+    public void clearUserAnswers(int quizId) {
+        final String deleteUserAnswersSQL = "DELETE FROM user_answers WHERE quiz_id = ?";
         try (Connection connection = SQLiteManager.getConnection();
              PreparedStatement deleteUserAnswersStmt = connection.prepareStatement(deleteUserAnswersSQL)) {
             deleteUserAnswersStmt.setInt(1, quizId);
-            deleteUserAnswersStmt.setInt(2, userId);
             deleteUserAnswersStmt.executeUpdate();
         } catch (SQLException e) {
             LOGGER.log(Level.SEVERE, "Error clearing user answers", e);
