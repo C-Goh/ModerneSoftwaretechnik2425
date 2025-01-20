@@ -65,7 +65,7 @@ public class QuizControllerUITest {
         robot.clickOn("#answerButton4");
 
         // Überprüfen, dass die Abschlussnachricht angezeigt wird
-        Assertions.assertThat(robot.lookup("#questionLabel").queryLabeled()).hasText("Quiz completed!");
+        Assertions.assertThat(robot.lookup("#questionLabel").queryLabeled()).hasText("Quiz fertig!");
     }
 
     @Test

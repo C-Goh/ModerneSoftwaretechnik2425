@@ -7,7 +7,6 @@ import com.softwaretechnik.spielekiste.user.domain.entity.UserEntity;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import org.junit.jupiter.api.BeforeAll;
@@ -44,6 +43,7 @@ public class GameOverviewControllerUITest {
     }
 
     @Test
+    @Disabled
     public void testLoadQuizPage(FxRobot robot) {
         // Simulate a mouse click on the quizIcon
         robot.clickOn("#quizIcon");

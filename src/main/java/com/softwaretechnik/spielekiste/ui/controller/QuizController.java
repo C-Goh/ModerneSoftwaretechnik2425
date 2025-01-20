@@ -63,6 +63,7 @@ public class QuizController {
 
     private void startQuiz() {
         final int quizId = 1;
+        quizRepository.clearUserAnswers(quizId, userId);
         quiz = quizRepository.startQuiz(quizId);
         gameService.setUser(UserContext.getCurrentUser());
         gameService.setGameType("Quiz");
@@ -78,7 +79,7 @@ public class QuizController {
             answerButton4.setText(question.getAnswerOptions().get(3));
             currentQuestionIndex++;
         } else {
-            questionLabel.setText("Quiz completed!");
+            questionLabel.setText("Quiz fertig!");
             answerButton1.setDisable(true);
             answerButton2.setDisable(true);
             answerButton3.setDisable(true);

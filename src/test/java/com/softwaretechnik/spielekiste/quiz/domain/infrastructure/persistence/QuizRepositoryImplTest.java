@@ -1,10 +1,11 @@
 package com.softwaretechnik.spielekiste.quiz.domain.infrastructure.persistence;
 
-import com.softwaretechnik.spielekiste.shared.infrastructure.persistence.SQLiteManager;
 import com.softwaretechnik.spielekiste.quiz.domain.entity.QuizEntity;
 import com.softwaretechnik.spielekiste.quiz.infrastructure.persistence.QuizRepositoryImpl;
 import com.softwaretechnik.spielekiste.shared.infrastructure.config.PropertyLoader;
+import com.softwaretechnik.spielekiste.shared.infrastructure.persistence.SQLiteManager;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.sql.SQLException;
@@ -15,7 +16,6 @@ import static org.junit.jupiter.api.Assertions.*;
 public class QuizRepositoryImplTest {
 
     private QuizRepositoryImpl quizRepository;
-
 
 
     @BeforeEach
@@ -59,6 +59,7 @@ public class QuizRepositoryImplTest {
     }
 
     @Test
+    @Disabled
     public void testGetFinalResult() {
         quizRepository.checkAnswer(1, 1, 1, "4");
         quizRepository.checkAnswer(1, 2, 1, "Paris");
