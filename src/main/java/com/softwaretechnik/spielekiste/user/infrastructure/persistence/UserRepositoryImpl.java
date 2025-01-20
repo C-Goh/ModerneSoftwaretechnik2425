@@ -90,13 +90,33 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public void deleteUser(int id) {
+        final String deleteUserGamePointsSQL = "DELETE FROM user_game_points WHERE user_id = ?";
+        final String deleteBadgesSQL = "DELETE FROM badges WHERE userId = ?";
         final String deleteUserSQL = "DELETE FROM users WHERE id = ?";
-        try (Connection connection = SQLiteManager.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(deleteUserSQL)) {
-            preparedStatement.setInt(1, id);
-            preparedStatement.executeUpdate();
+
+        try (Connection connection = SQLiteManager.getConnection()) {
+            try (PreparedStatement deleteUserGamePointsStmt = connection.prepareStatement(deleteUserGamePointsSQL);
+                 PreparedStatement deleteBadgesStmt = connection.prepareStatement(deleteBadgesSQL);
+                 PreparedStatement deleteUserStmt = connection.prepareStatement(deleteUserSQL)) {
+
+                connection.setAutoCommit(false);
+
+                deleteUserGamePointsStmt.setInt(1, id);
+                deleteUserGamePointsStmt.executeUpdate();
+
+                deleteBadgesStmt.setInt(1, id);
+                deleteBadgesStmt.executeUpdate();
+
+                deleteUserStmt.setInt(1, id);
+                deleteUserStmt.executeUpdate();
+
+                connection.commit();
+            } catch (SQLException e) {
+                connection.rollback();
+                LOGGER.log(Level.SEVERE, "Error deleting user and related data", e);
+            }
         } catch (SQLException e) {
-            LOGGER.log(Level.SEVERE, "Error deleting user", e);
+            LOGGER.log(Level.SEVERE, "Database connection error", e);
         }
     }
 

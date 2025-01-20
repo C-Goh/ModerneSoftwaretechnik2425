@@ -110,7 +110,7 @@ public class QuizController {
     }
 
     private void updateScore() {
-        scoreLabel.setText("Score: " + score);
+        scoreLabel.setText("Punkte: " + score);
     }
 
     @FXML

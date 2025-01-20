@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.Group?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.Group?>
-
-<Pane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.softwaretechnik.spielekiste.ui.controller.GameOverviewController" style="-fx-background-color: #FFFFFF;">
+<Pane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.softwaretechnik.spielekiste.ui.controller.GameOverviewController"
+      style="-fx-background-color: #FFFFFF;">
 
     <children>
         <!-- Gruppe für die Anordnung der Elemente -->
@@ -17,7 +19,8 @@
                         <HBox prefHeight="181.0" prefWidth="304.0">
                             <children>
                                 <!-- Quiz Icon mit Klick-Event -->
-                                <ImageView fx:id="quizIcon" fitHeight="300.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true" onMouseClicked="#loadQuizPage">
+                                <ImageView fx:id="quizIcon" fitHeight="300.0" fitWidth="300.0" pickOnBounds="true"
+                                           preserveRatio="true" onMouseClicked="#loadQuizPage">
                                     <image>
                                         <Image url="@/Bildmaterial/Spiel.png"/>
                                     </image>
@@ -51,25 +54,30 @@
                 <!-- Profilbereich mit Label und Icons -->
                 <VBox alignment="CENTER" spacing="15.0">
                     <!-- Profilbild -->
-                    <ImageView id="profileImageView" fx:id="profileImageView" fitHeight="135.0" fitWidth="135.0" pickOnBounds="true" preserveRatio="true">
+                    <ImageView id="profileImageView" fx:id="profileImageView" fitHeight="130.0" fitWidth="130.0"
+                               pickOnBounds="true" preserveRatio="true">
                         <image>
                             <Image url="@/Bildmaterial/Profilbild.png"/>
                         </image>
                     </ImageView>
                     <!-- Begrüßungstext -->
-                    <Label fx:id="helloLabel" text="Hallo {name}" style="-fx-font-size: 20px;" />
+                    <Label fx:id="helloLabel" text="Hallo {name}" style="-fx-font-size: 20px;"/>
                     <!-- Abzeichen-Icon -->
-                    <ImageView id="badgeIcon" fx:id="badgeIcon" fitHeight="135.0" fitWidth="135.0" onMouseClicked="#loadBadgeOverviewPage" pickOnBounds="true" preserveRatio="true">
+                    <ImageView id="badgeIcon" fx:id="badgeIcon" fitHeight="130.0" fitWidth="130.0"
+                               onMouseClicked="#loadBadgeOverviewPage" pickOnBounds="true" preserveRatio="true">
                         <image>
                             <Image url="@/Bildmaterial/Abzeichen.png"/>
                         </image>
                     </ImageView>
                     <!-- Zurück-Button -->
-                    <ImageView id="backButton" fx:id="backButton" fitHeight="135.0" fitWidth="135.0" onMouseClicked="#loadStartPage" pickOnBounds="true" preserveRatio="true">
+                    <ImageView id="backButton" fx:id="backButton" fitHeight="130.0" fitWidth="130.0"
+                               onMouseClicked="#loadStartPage" pickOnBounds="true" preserveRatio="true">
                         <image>
                             <Image url="@/Bildmaterial/Pfeil.png"/>
                         </image>
                     </ImageView>
+                    <Button fx:id="deleteUserButton" text="Nutzer löschen" onMouseClicked="#deleteUser"
+                            style="-fx-background-color: red; -fx-text-fill: white;"/>
                 </VBox>
             </HBox>
         </Group>

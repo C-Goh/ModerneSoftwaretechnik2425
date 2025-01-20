@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
-<?import javafx.geometry.*?>
-
-<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.softwaretechnik.spielekiste.ui.controller.QuizController" style="-fx-background-color: #FFFFFF;" stylesheets="@styles.css">
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.softwaretechnik.spielekiste.ui.controller.QuizController"
+            style="-fx-background-color: #FFFFFF;" stylesheets="@styles.css">
 
     <!-- Oben (Top) - Der Titelbereich mit dem Label für den Titel des Spiels -->
     <top>
         <VBox alignment="CENTER">
             <children>
-                <Label style="-fx-font-size: 40px; -fx-text-fill: black;" text="Wer wird Millionär?" /> <!-- Label für den Titel -->
+                <Label style="-fx-font-size: 40px; -fx-text-fill: black;"
+                       text="Wer wird Millionär?"/> <!-- Label für den Titel -->
             </children>
             <padding>
-                <Insets top="40.0" />
+                <Insets top="40.0"/>
             </padding>
         </VBox>
     </top>
@@ -23,29 +26,38 @@
     <center>
         <VBox alignment="CENTER" prefHeight="192.0" prefWidth="405.0" spacing="20.0">
             <children>
-                <Label fx:id="questionLabel" style="-fx-font-size: 24px; -fx-text-fill: black;" text="Question goes here" wrapText="true" />
+                <Label fx:id="questionLabel" style="-fx-font-size: 24px; -fx-text-fill: black;"
+                       text="Question goes here" wrapText="true"/>
 
                 <!-- GridPane für die Antwort-Buttons -->
                 <GridPane alignment="CENTER" hgap="10" vgap="10">
                     <children>
-                        <Button fx:id="answerButton1" onAction="#handleAnswerButtonClick" style="-fx-background-color: #16386C;" styleClass="styled-button" text="Answer 1" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                        <Button fx:id="answerButton2" onAction="#handleAnswerButtonClick" style="-fx-background-color: #16386C;" styleClass="styled-button" text="Answer 2" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-                        <Button fx:id="answerButton3" onAction="#handleAnswerButtonClick" style="-fx-background-color: #16386C;" styleClass="styled-button" text="Answer 3" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                        <Button fx:id="answerButton4" onAction="#handleAnswerButtonClick" style="-fx-background-color: #16386C;" styleClass="styled-button" text="Answer 4" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Button fx:id="answerButton1" onAction="#handleAnswerButtonClick"
+                                style="-fx-background-color: #16386C;" styleClass="styled-button" text="Answer 1"
+                                GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                        <Button fx:id="answerButton2" onAction="#handleAnswerButtonClick"
+                                style="-fx-background-color: #16386C;" styleClass="styled-button" text="Answer 2"
+                                GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                        <Button fx:id="answerButton3" onAction="#handleAnswerButtonClick"
+                                style="-fx-background-color: #16386C;" styleClass="styled-button" text="Answer 3"
+                                GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                        <Button fx:id="answerButton4" onAction="#handleAnswerButtonClick"
+                                style="-fx-background-color: #16386C;" styleClass="styled-button" text="Answer 4"
+                                GridPane.columnIndex="1" GridPane.rowIndex="1"/>
                     </children>
                     <!-- Spalten- und Zeilenkonfiguration für das GridPane -->
                     <columnConstraints>
-                        <ColumnConstraints /> <!-- Erste Spalte -->
-                        <ColumnConstraints /> <!-- Zweite Spalte -->
+                        <ColumnConstraints/> <!-- Erste Spalte -->
+                        <ColumnConstraints/> <!-- Zweite Spalte -->
                     </columnConstraints>
                     <rowConstraints>
-                        <RowConstraints /> <!-- Erste Zeile -->
-                        <RowConstraints /> <!-- Zweite Zeile -->
+                        <RowConstraints/> <!-- Erste Zeile -->
+                        <RowConstraints/> <!-- Zweite Zeile -->
                     </rowConstraints>
                 </GridPane>
 
                 <!-- Label für den aktuellen Punktestand -->
-                <Label fx:id="scoreLabel" style="-fx-font-size: 24px; -fx-text-fill: black;" text="Score: 0" />
+                <Label fx:id="scoreLabel" style="-fx-font-size: 24px; -fx-text-fill: black;" text="Punkte: 0"/>
             </children>
         </VBox>
     </center>
@@ -54,14 +66,15 @@
     <bottom>
         <VBox alignment="CENTER_RIGHT">
             <children>
-                <ImageView fx:id="backButton" fitHeight="135.0" fitWidth="135.0" pickOnBounds="true" preserveRatio="true" onMouseClicked="#loadGameOverview">
+                <ImageView fx:id="backButton" fitHeight="135.0" fitWidth="135.0" pickOnBounds="true"
+                           preserveRatio="true" onMouseClicked="#loadGameOverview">
                     <image>
-                        <Image url="@../../Bildmaterial/Pfeil.png" />
+                        <Image url="@../../Bildmaterial/Pfeil.png"/>
                     </image>
                 </ImageView>
             </children>
             <padding>
-                <Insets right="20.0" bottom="20.0" />
+                <Insets right="20.0" bottom="20.0"/>
             </padding>
         </VBox>
     </bottom>
