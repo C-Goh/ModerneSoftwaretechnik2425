@@ -43,7 +43,6 @@ public class SQLiteManager {
                     "condition TEXT, " +
                     "hasEarned BOOLEAN DEFAULT 0, " +
                     "FOREIGN KEY(userId) REFERENCES users(id))";
-
             statement.execute(createBadgesTable);
 
             final String createCurrentQuestionTable = "CREATE TABLE IF NOT EXISTS current_question (" +
@@ -64,18 +63,27 @@ public class SQLiteManager {
             final String createQuizQuestionsTable = "CREATE TABLE IF NOT EXISTS quiz_questions (" +
                     "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     "quiz_id INTEGER, " +
-                    "user_id INTEGER, " +
                     "question TEXT, " +
                     "answer_options TEXT, " +
-                    "correct_answer TEXT, " +
-                    "user_answer TEXT)";
+                    "correct_answer TEXT)";
             statement.execute(createQuizQuestionsTable);
 
+            final String createUserAnswersTable = "CREATE TABLE IF NOT EXISTS user_answers (" +
+                    "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    "quiz_id INTEGER, " +
+                    "question_id INTEGER, " +
+                    "user_id INTEGER, " +
+                    "user_answer TEXT, " +
+                    "FOREIGN KEY(quiz_id) REFERENCES quiz(id), " +
+                    "FOREIGN KEY(question_id) REFERENCES quiz_questions(id), " +
+                    "FOREIGN KEY(user_id) REFERENCES users(id))";
+            statement.execute(createUserAnswersTable);
+
             // Insert sample data into quiz_questions table
-            statement.execute("DELETE FROM quiz_questions"); // Clear existing data
-            statement.execute("INSERT INTO quiz_questions (id, quiz_id, user_id, question, answer_options, correct_answer) VALUES (1, 1, 1, 'What is 2+2?', '2,3,4,5', '4')");
-            statement.execute("INSERT INTO quiz_questions (id, quiz_id, user_id, question, answer_options, correct_answer) VALUES (2, 1, 1, 'What is the capital of France?', 'Berlin,London,Paris,Rome', 'Paris')");
-            statement.execute("INSERT INTO quiz_questions (id, quiz_id, user_id, question, answer_options, correct_answer) VALUES (3, 1, 1, 'What color is the sky on a clear day?', 'Red,Blue,Green,Yellow', 'Blue')");
+            statement.execute("DELETE FROM quiz_questions");
+            statement.execute("INSERT INTO quiz_questions (id, quiz_id, question, answer_options, correct_answer) VALUES (1, 1, 'What is 2+2?', '2,3,4,5', '4')");
+            statement.execute("INSERT INTO quiz_questions (id, quiz_id, question, answer_options, correct_answer) VALUES (2, 1, 'What is the capital of France?', 'Berlin,London,Paris,Rome', 'Paris')");
+            statement.execute("INSERT INTO quiz_questions (id, quiz_id, question, answer_options, correct_answer) VALUES (3, 1, 'What color is the sky on a clear day?', 'Red,Blue,Green,Yellow', 'Blue')");
         } catch (SQLException e) {
             LOGGER.log(Level.SEVERE, "Database initialization error", e);
         }

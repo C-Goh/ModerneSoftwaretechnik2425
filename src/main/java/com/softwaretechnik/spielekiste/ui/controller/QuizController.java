@@ -33,7 +33,7 @@ public class QuizController {
     private Label scoreLabel;
 
     @FXML
-    private ImageView backButton; // Add @FXML annotation here
+    private ImageView backButton;
 
     final int userId = UserContext.getCurrentUser().getId();
     final int gameId = 1;
@@ -49,7 +49,7 @@ public class QuizController {
         GameServiceFactory gameServiceFactory = new GameServiceFactory(userRepository);
         gameService = gameServiceFactory.createGameServiceProxy();
 
-        backButton.setVisible(false); // Hide the back button initially
+        backButton.setVisible(false);
         startQuiz();
         loadNextQuestion();
     }
@@ -62,7 +62,7 @@ public class QuizController {
     }
 
     private void startQuiz() {
-        final int quizId = 1; // Example quiz ID
+        final int quizId = 1;
         quiz = quizRepository.startQuiz(quizId);
         gameService.setUser(UserContext.getCurrentUser());
         gameService.setGameType("Quiz");
@@ -78,7 +78,6 @@ public class QuizController {
             answerButton4.setText(question.getAnswerOptions().get(3));
             currentQuestionIndex++;
         } else {
-            // No more questions, show final result
             questionLabel.setText("Quiz completed!");
             answerButton1.setDisable(true);
             answerButton2.setDisable(true);
@@ -91,10 +90,12 @@ public class QuizController {
             gameService.setScore(points);
             gameService.endGame(userId, gameId, points);
 
-            // Check and award badges
             UserEntity user = userRepository.findUserById(userId);
 
-            backButton.setVisible(true); // Show the back button when the quiz is completed
+            backButton.setVisible(true);
+
+            // Clear user answers after the quiz is completed
+            quizRepository.clearUserAnswers(quiz.getId(), userId);
         }
     }
 
