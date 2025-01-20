@@ -21,6 +21,9 @@ public class GameOverviewController {
     private ImageView backButton;
 
     @FXML
+    private ImageView settingsIcon;
+
+    @FXML
     private Label helloLabel;
 
     private UserService userService;
@@ -55,10 +58,7 @@ public class GameOverviewController {
     }
 
     @FXML
-    private void deleteUser(MouseEvent event) {
-        final int userId = UserContext.getCurrentUser().getId();
-        userService.deleteUser(userId);
-        UserContext.setCurrentUser(null);
-        PageLoader.getInstance().loadStartPage(event);
+    private void loadUpdateProfilePage(MouseEvent event) {
+        PageLoader.getInstance().loadUpdateProfilePage(event);
     }
 }
