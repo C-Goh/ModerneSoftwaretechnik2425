@@ -81,9 +81,26 @@ public class SQLiteManager {
 
             // Insert sample data into quiz_questions table
             statement.execute("DELETE FROM quiz_questions");
-            statement.execute("INSERT INTO quiz_questions (id, quiz_id, question, answer_options, correct_answer) VALUES (1, 1, 'What is 2+2?', '2,3,4,5', '4')");
-            statement.execute("INSERT INTO quiz_questions (id, quiz_id, question, answer_options, correct_answer) VALUES (2, 1, 'What is the capital of France?', 'Berlin,London,Paris,Rome', 'Paris')");
-            statement.execute("INSERT INTO quiz_questions (id, quiz_id, question, answer_options, correct_answer) VALUES (3, 1, 'What color is the sky on a clear day?', 'Red,Blue,Green,Yellow', 'Blue')");
+            statement.execute("INSERT INTO quiz_questions (id, quiz_id, question, answer_options, correct_answer) VALUES (1, 1, 'Was ist 2+2?', '2,3,4,5', '4')");
+            statement.execute("INSERT INTO quiz_questions (id, quiz_id, question, answer_options, correct_answer) VALUES (2, 1, 'Was ist die Hauptstadt von Frankreich?', 'Berlin,London,Paris,Rome', 'Paris')");
+            statement.execute("INSERT INTO quiz_questions (id, quiz_id, question, answer_options, correct_answer) VALUES (3, 1, 'Welche Farbe hat der Himmel an einem klaren Tag?', 'Rot,Blau,Grün,Gelb', 'Blau')");
+            statement.execute("INSERT INTO quiz_questions (id, quiz_id, question, answer_options, correct_answer) VALUES (4, 1, 'Wie viele Tage hat ein Schaltjahr?', '365,366,367,368', '366')");
+            statement.execute("INSERT INTO quiz_questions (id, quiz_id, question, answer_options, correct_answer) VALUES (5, 1, 'Was ist die Hauptstadt von Deutschland?', 'Berlin,Hamburg,München,Köln', 'Berlin')");
+            statement.execute("INSERT INTO quiz_questions (id, quiz_id, question, answer_options, correct_answer) VALUES (6, 1, 'Wie viele Kontinente gibt es?', '5,6,7,8', '7')");
+            statement.execute("INSERT INTO quiz_questions (id, quiz_id, question, answer_options, correct_answer) VALUES (7, 1, 'Was ist die größte Wüste der Welt?', 'Sahara,Gobi,Antarktis,Arabische Wüste', 'Antarktis')");
+            statement.execute("INSERT INTO quiz_questions (id, quiz_id, question, answer_options, correct_answer) VALUES (8, 1, 'Wie viele Planeten hat unser Sonnensystem?', '7,8,9,10', '8')");
+            statement.execute("INSERT INTO quiz_questions (id, quiz_id, question, answer_options, correct_answer) VALUES (9, 1, 'Was ist die chemische Formel für Wasser?', 'H2O,CO2,O2,N2', 'H2O')");
+            statement.execute("INSERT INTO quiz_questions (id, quiz_id, question, answer_options, correct_answer) VALUES (10, 1, 'Wie viele Bundesländer hat Deutschland?', '14,15,16,17', '16')");
+            statement.execute("INSERT INTO quiz_questions (id, quiz_id, question, answer_options, correct_answer) VALUES (11, 1, 'Was ist die Hauptstadt von Italien?', 'Rom,Mailand,Neapel,Turin', 'Rom')");
+            statement.execute("INSERT INTO quiz_questions (id, quiz_id, question, answer_options, correct_answer) VALUES (12, 1, 'Wie viele Zähne hat ein erwachsener Mensch?', '28,30,32,34', '32')");
+            statement.execute("INSERT INTO quiz_questions (id, quiz_id, question, answer_options, correct_answer) VALUES (13, 1, 'Was ist die Hauptstadt von Spanien?', 'Madrid,Barcelona,Valencia,Sevilla', 'Madrid')");
+            statement.execute("INSERT INTO quiz_questions (id, quiz_id, question, answer_options, correct_answer) VALUES (14, 1, 'Wie viele Stunden hat ein Tag?', '22,23,24,25', '24')");
+            statement.execute("INSERT INTO quiz_questions (id, quiz_id, question, answer_options, correct_answer) VALUES (15, 1, 'Was ist die Hauptstadt von Österreich?', 'Wien,Graz,Salzburg,Innsbruck', 'Wien')");
+            statement.execute("INSERT INTO quiz_questions (id, quiz_id, question, answer_options, correct_answer) VALUES (16, 1, 'Wie viele Minuten hat eine Stunde?', '50,55,60,65', '60')");
+            statement.execute("INSERT INTO quiz_questions (id, quiz_id, question, answer_options, correct_answer) VALUES (17, 1, 'Was ist die Hauptstadt von Portugal?', 'Lissabon,Porto,Coimbra,Braga', 'Lissabon')");
+            statement.execute("INSERT INTO quiz_questions (id, quiz_id, question, answer_options, correct_answer) VALUES (18, 1, 'Wie viele Sekunden hat eine Minute?', '50,55,60,65', '60')");
+            statement.execute("INSERT INTO quiz_questions (id, quiz_id, question, answer_options, correct_answer) VALUES (19, 1, 'Was ist die Hauptstadt von Griechenland?', 'Athen,Thessaloniki,Patras,Heraklion', 'Athen')");
+            statement.execute("INSERT INTO quiz_questions (id, quiz_id, question, answer_options, correct_answer) VALUES (20, 1, 'Wie viele Monate hat ein Jahr?', '10,11,12,13', '12')");
         } catch (SQLException e) {
             LOGGER.log(Level.SEVERE, "Database initialization error", e);
         }

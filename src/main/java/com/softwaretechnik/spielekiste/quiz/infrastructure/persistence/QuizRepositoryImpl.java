@@ -19,7 +19,7 @@ public class QuizRepositoryImpl implements QuizRepository {
 
     @Override
     public QuizEntity startQuiz(int quizId) {
-        final String getQuestionsSQL = "SELECT * FROM quiz_questions WHERE quiz_id = ?";
+        final String getQuestionsSQL = "SELECT * FROM quiz_questions WHERE quiz_id = ? ORDER BY RANDOM() LIMIT 3";
         try (Connection connection = SQLiteManager.getConnection();
              PreparedStatement getQuestionsStmt = connection.prepareStatement(getQuestionsSQL)) {
             getQuestionsStmt.setInt(1, quizId);
@@ -99,7 +99,7 @@ public class QuizRepositoryImpl implements QuizRepository {
                 final int totalQuestions = resultSet.getInt("total_questions");
                 final int correctAnswers = resultSet.getInt("correct_answers");
                 final int percentage = (int) Math.round(((double) correctAnswers / totalQuestions) * 100);
-                return "Final result: " + correctAnswers + "/" + totalQuestions + " (" + percentage + "%)";
+                return "Ergebnis: " + correctAnswers + "/" + totalQuestions + " (" + percentage + "%)";
             }
         } catch (SQLException e) {
             LOGGER.log(Level.SEVERE, "Error getting final result", e);
