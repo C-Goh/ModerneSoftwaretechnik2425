@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+<Pane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.softwaretechnik.spielekiste.ui.controller.UpdateProfileController"
+      style="-fx-background-color: #FFFFFF;" prefWidth="800.0" prefHeight="600.0">
+
+    <children>
+        <!-- Gruppe 1: Links ausgerichtet -->
+        <VBox spacing="30.0" layoutX="40.0" layoutY="100.0">
+            <children>
+                <Text id="pageTitle" text="Bearbeite dein Profil" style="-fx-font-size: 40px; -fx-fill: black;"/>
+                <Text id="nameLabel" text="Name" style="-fx-font-size: 30px; -fx-fill: black;"/>
+                <TextField fx:id="profileNameField" prefWidth="400.0" prefHeight="50.0" style="-fx-font-size: 30px;"/>
+                <Button id="updateProfileButton" text="speichern"
+                        style="-fx-background-color: #16386C; -fx-text-fill: white; -fx-font-size: 30px;"
+                        onMouseClicked="#updateProfile"/>
+                <Button id="deleteProfilButton" text="Profil löschen"
+                        style="-fx-background-color: #16386C; -fx-text-fill: white; -fx-font-size: 30px;"
+                        onMouseClicked="#deleteProfile"/>
+            </children>
+        </VBox>
+
+        <!-- Gruppe 2: Profilbild und Text zentriert -->
+        <Group layoutX="500" layoutY="50.0">
+            <children>
+                <!-- Profilbild -->
+                <VBox spacing="10.0" alignment="CENTER">
+                    <children>
+                        <ImageView id="profilePicture" fx:id="profileImageView" fitHeight="300.0" fitWidth="300.0"
+                                   pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../Bildmaterial/Profilbild.png"/>
+                            </image>
+                        </ImageView>
+                        <Text id="profilePictureLabel" text="Profilbild" style="-fx-font-size: 30px; -fx-fill: black;"/>
+                    </children>
+                </VBox>
+            </children>
+        </Group>
+
+        <!-- Pfeil unten rechts -->
+        <ImageView id="backButton" fx:id="backButton" fitHeight="135.0" fitWidth="135.0" layoutX="700" layoutY="450"
+                   pickOnBounds="true" preserveRatio="true" onMouseClicked="#loadGameOverview">
+            <image>
+                <Image url="@../../Bildmaterial/Pfeil.png"/>
+            </image>
+        </ImageView>
+    </children>
+</Pane>
