@@ -1,22 +1,19 @@
 package com.softwaretechnik.spielekiste.badge.domain.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.softwaretechnik.spielekiste.badge.domain.entity.BadgeEntity;
 
 public interface BadgeRepository {
 
-    public BadgeEntity findBadgeById(int id);
+    List<BadgeEntity> findAll();
 
-    public BadgeEntity findBadgeByName(String name);
+    Optional<BadgeEntity> findById(int id);
 
-    public List<BadgeEntity> findAllBadges();
-    
-    public List<BadgeEntity> findAllBadgesbyGame(int gameId);
+    List<BadgeEntity> findByUserId(int userId);
 
-    public List<BadgeEntity> findAllEarnedBadges(int userId, boolean hasEarned);
+    BadgeEntity save(BadgeEntity badge);
 
-    public List<BadgeEntity> findAllEarnedBadgesbyGame(int userId, int gameId);
-
-    
+    void deleteById(int id);
 }

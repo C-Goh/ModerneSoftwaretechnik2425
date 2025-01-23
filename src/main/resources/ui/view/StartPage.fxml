@@ -12,7 +12,7 @@
         <VBox spacing="45.0" alignment="CENTER" layoutX="0.0" layoutY="0.0" prefWidth="600.0" prefHeight="400.0">
             <!-- Titelbereich -->
             <children>
-                <Text id="pageTitle" strokeType="OUTSIDE" strokeWidth="0.0" text="Willkommen bei der Spielekiste!"
+                <Text fx:id="pageTitle" strokeType="OUTSIDE" strokeWidth="0.0" text="Willkommen bei der Spielekiste!"
                       textAlignment="CENTER" style="-fx-fill: white;">
                     <font>
                         <Font size="40"/>

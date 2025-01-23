@@ -1,10 +1,13 @@
 package com.softwaretechnik.spielekiste.quiz.infrastructure.persistence;
 
-import com.softwaretechnik.spielekiste.shared.infrastructure.persistence.SQLiteManager;
 import com.softwaretechnik.spielekiste.quiz.domain.entity.QuizEntity;
 import com.softwaretechnik.spielekiste.quiz.domain.repository.QuizRepository;
+import com.softwaretechnik.spielekiste.shared.infrastructure.persistence.SQLiteManager;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -16,7 +19,7 @@ public class QuizRepositoryImpl implements QuizRepository {
 
     @Override
     public QuizEntity startQuiz(int quizId) {
-        final String getQuestionsSQL = "SELECT * FROM quiz_questions WHERE quiz_id = ?";
+        final String getQuestionsSQL = "SELECT * FROM quiz_questions WHERE quiz_id = ? ORDER BY RANDOM() LIMIT 3";
         try (Connection connection = SQLiteManager.getConnection();
              PreparedStatement getQuestionsStmt = connection.prepareStatement(getQuestionsSQL)) {
             getQuestionsStmt.setInt(1, quizId);
@@ -58,22 +61,21 @@ public class QuizRepositoryImpl implements QuizRepository {
 
     @Override
     public boolean checkAnswer(int quizId, int questionId, int userId, String answer) {
-        final String checkAnswerSQL = "SELECT correct_answer FROM quiz_questions WHERE quiz_id = ? AND id = ? AND user_id = ?";
-        final String updateUserAnswerSQL = "UPDATE quiz_questions SET user_answer = ? WHERE quiz_id = ? AND id = ? AND user_id = ?";
+        final String checkAnswerSQL = "SELECT correct_answer FROM quiz_questions WHERE quiz_id = ? AND id = ?";
+        final String insertUserAnswerSQL = "INSERT INTO user_answers (quiz_id, question_id, user_id, user_answer) VALUES (?, ?, ?, ?)";
         try (Connection connection = SQLiteManager.getConnection();
              PreparedStatement checkAnswerStmt = connection.prepareStatement(checkAnswerSQL);
-             PreparedStatement updateUserAnswerStmt = connection.prepareStatement(updateUserAnswerSQL)) {
+             PreparedStatement insertUserAnswerStmt = connection.prepareStatement(insertUserAnswerSQL)) {
             checkAnswerStmt.setInt(1, quizId);
             checkAnswerStmt.setInt(2, questionId);
-            checkAnswerStmt.setInt(3, userId);
             final ResultSet resultSet = checkAnswerStmt.executeQuery();
             if (resultSet.next()) {
                 final String correctAnswer = resultSet.getString("correct_answer");
-                updateUserAnswerStmt.setString(1, answer);
-                updateUserAnswerStmt.setInt(2, quizId);
-                updateUserAnswerStmt.setInt(3, questionId);
-                updateUserAnswerStmt.setInt(4, userId);
-                updateUserAnswerStmt.executeUpdate();
+                insertUserAnswerStmt.setInt(1, quizId);
+                insertUserAnswerStmt.setInt(2, questionId);
+                insertUserAnswerStmt.setInt(3, userId);
+                insertUserAnswerStmt.setString(4, answer);
+                insertUserAnswerStmt.executeUpdate();
                 return correctAnswer.equalsIgnoreCase(answer);
             }
         } catch (SQLException e) {
@@ -84,7 +86,10 @@ public class QuizRepositoryImpl implements QuizRepository {
 
     @Override
     public String getFinalResult(int quizId, int userId) {
-        final String getResultSQL = "SELECT COUNT(*) AS total_questions, SUM(CASE WHEN correct_answer = user_answer THEN 1 ELSE 0 END) AS correct_answers FROM quiz_questions WHERE quiz_id = ? AND user_id = ?";
+        final String getResultSQL = "SELECT COUNT(*) AS total_questions, SUM(CASE WHEN q.correct_answer = ua.user_answer THEN 1 ELSE 0 END) AS correct_answers " +
+                "FROM quiz_questions q " +
+                "LEFT JOIN user_answers ua ON q.id = ua.question_id " +
+                "WHERE q.quiz_id = ? AND ua.user_id = ?";
         try (Connection connection = SQLiteManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(getResultSQL)) {
             preparedStatement.setInt(1, quizId);
@@ -94,7 +99,7 @@ public class QuizRepositoryImpl implements QuizRepository {
                 final int totalQuestions = resultSet.getInt("total_questions");
                 final int correctAnswers = resultSet.getInt("correct_answers");
                 final int percentage = (int) Math.round(((double) correctAnswers / totalQuestions) * 100);
-                return "Final result: " + correctAnswers + "/" + totalQuestions + " (" + percentage + "%)";
+                return "Ergebnis: " + correctAnswers + "/" + totalQuestions + " (" + percentage + "%)";
             }
         } catch (SQLException e) {
             LOGGER.log(Level.SEVERE, "Error getting final result", e);
@@ -104,7 +109,10 @@ public class QuizRepositoryImpl implements QuizRepository {
 
     @Override
     public int getFinalPoints(int quizId, int userId) {
-        final String getResultSQL = "SELECT COUNT(*) AS total_questions, SUM(CASE WHEN correct_answer = user_answer THEN 1 ELSE 0 END) AS correct_answers FROM quiz_questions WHERE quiz_id = ? AND user_id = ?";
+        final String getResultSQL = "SELECT COUNT(*) AS total_questions, SUM(CASE WHEN q.correct_answer = ua.user_answer THEN 1 ELSE 0 END) AS correct_answers " +
+                "FROM quiz_questions q " +
+                "LEFT JOIN user_answers ua ON q.id = ua.question_id " +
+                "WHERE q.quiz_id = ? AND ua.user_id = ?";
         try (Connection connection = SQLiteManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(getResultSQL)) {
             preparedStatement.setInt(1, quizId);
@@ -113,12 +121,22 @@ public class QuizRepositoryImpl implements QuizRepository {
             if (resultSet.next()) {
                 final int totalQuestions = resultSet.getInt("total_questions");
                 final int correctAnswers = resultSet.getInt("correct_answers");
-                final double percentage = Math.round(((double) correctAnswers / totalQuestions) * 100);
                 return correctAnswers;
             }
         } catch (SQLException e) {
             LOGGER.log(Level.SEVERE, "Error getting final result", e);
         }
         return 0;
+    }
+
+    public void clearUserAnswers(int quizId) {
+        final String deleteUserAnswersSQL = "DELETE FROM user_answers WHERE quiz_id = ?";
+        try (Connection connection = SQLiteManager.getConnection();
+             PreparedStatement deleteUserAnswersStmt = connection.prepareStatement(deleteUserAnswersSQL)) {
+            deleteUserAnswersStmt.setInt(1, quizId);
+            deleteUserAnswersStmt.executeUpdate();
+        } catch (SQLException e) {
+            LOGGER.log(Level.SEVERE, "Error clearing user answers", e);
+        }
     }
 }

@@ -61,6 +61,10 @@ public class PageLoader {
     public void loadGameOverviewPage(Event event) {
         loadPage("/ui/view/GameOverview.fxml", 900, 600, event);
     }
+
+    public void loadUpdateProfilePage(Event event) {
+        loadPage("/ui/view/UpdateProfile.fxml", 900, 600, event);
+    }
 }
 
 
