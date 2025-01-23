@@ -21,7 +21,11 @@ public class GameService implements Game {
     private String gameType;
     private BadgeDomainService<Game> badgeDomainService;
 
-
+    /**
+     * TODO 
+     * Implement badgeConditions.add() not in GameService but in the GameController 
+     * so each game has its own badge conditions 
+     */
     public GameService() {
         List<BadgeCondition<Game>> badgeConditions = new ArrayList<>();
         badgeConditions.add(new ScoreBadgeCondition<>("Abzeichen 1", 1));
